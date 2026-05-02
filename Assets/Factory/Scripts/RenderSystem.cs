@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Factory.Scripts
+namespace Factory
 {
     public class RenderSystem : MonoBehaviour
     {
