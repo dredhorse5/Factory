@@ -10,7 +10,7 @@ namespace Factory
         public BuildSystem BuildSystem;
         public World World;
 
-        public GameManager Instance { get; private set; }
+        public static GameManager Instance { get; private set; }
 
         private uint belt1;
 

@@ -1,8 +1,11 @@
+using System;
+
 namespace Factory
 {
     public class BuildSystem
     {
         private readonly World world;
+        public static Action<uint> OnBeltCreated;
 
         public BuildSystem(World world)
         {
