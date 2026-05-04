@@ -7,31 +7,23 @@ namespace Factory
     {
         public void SetBelt(Belt belt)
         {
-            Build(belt);
-        }
+            var shape = Utils.GetTurn(belt);
 
-        private void Build(Belt belt)
-        {
-            var from = belt.topology.Start;
-            var to = belt.topology.End;
-
-            List<BeltTopology.Cell> cells;
-
-            bool end = false;
-
-            while (!end)
+            GameObject prefab = null;
+            switch (shape)
             {
-
-                void CheckRotate()
-                {
-                    
-                }
-
-                void Step()
-                {
-                    
-                }
+                case BeltShapes.Straight:
+                    prefab = PrefabDatabase.Instance.BeltModels.Forward;
+                    break;
+                case BeltShapes.CornerLeft:
+                    prefab = PrefabDatabase.Instance.BeltModels.LeftCorner;
+                    break;
+                case BeltShapes.CornerRight:
+                    prefab = PrefabDatabase.Instance.BeltModels.RightCorner;
+                    break;
             }
+
+            var model = Instantiate(prefab, transform.position, Quaternion.Euler(0,(int)belt.inputDirection * 90f, 0), transform);
         }
     }
 }

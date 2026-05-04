@@ -17,4 +17,4 @@ public class Belt
 
     public float progress;
 }
-public enum BeltDirections { Up, Right, Down, Left };
+public enum BeltDirections {NONE = -1, Up = 0, Right = 1, Down = 2, Left = 3 };

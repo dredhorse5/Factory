@@ -6,7 +6,6 @@ namespace Factory
 {
     public class RenderSystem : MonoBehaviour
     {
-
         private Dictionary<uint, BeltView> belts = new Dictionary<uint, BeltView>();
         private void OnEnable()
         {
@@ -22,8 +21,9 @@ namespace Factory
         {
             var prefab = PrefabDatabase.Instance.BeltView;
             var belt = GameManager.Instance.World.Belts[obj];
-            var view = Instantiate(prefab, Map.Instance.GetPosition(belt.topology.Start.pos), Quaternion.identity, transform);
+            var view = Instantiate(prefab, Map.Instance.GetPosition(belt.cell), Quaternion.identity, transform);
             view.SetBelt(belt);
+            belts.Add(obj, view);
         }
     }
 }

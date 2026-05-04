@@ -41,19 +41,20 @@ namespace Factory
                 // transfer (временно
                 if (belt.items[^1] != 0)
                 {
-                    var outputCell = GridUtils.GetOutputCell(belt);
-                    
-                    var next = _world.Belts[belt.nextBeltId];
-
-                    if (next.items[0] == 0)
+                    var nextBeltID = _world.OccupiedTiles[Utils.GetOutputCell(belt)];
+                    if (nextBeltID > 0)
                     {
-                        next.items[0] = belt.items[^1];
-                        belt.items[^1] = 0;
+                        var nextBelt = _world.Belts[nextBeltID];
+                        
+                        if (nextBelt.items[0] == 0)
+                        {
+                            nextBelt.items[0] = belt.items[^1];
+                            belt.items[^1] = 0;
+                        }
                     }
                 }
             }
         }
-        
         
         public void Dispose()
         {
