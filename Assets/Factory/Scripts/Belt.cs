@@ -6,28 +6,15 @@ using UnityEngine;
 [Serializable]
 public class Belt
 {
-    public float speed;
-    public float progress;
-    public int[] items;
-    
     public uint id;
-    public uint previousBeltId;
-    public uint nextBeltId;
 
-    public BeltTopology topology;
+    public float speed;
+    public int[] items;
+
+    public Vector2Int cell;
+    public BeltDirections inputDirection;
+    public BeltDirections outputDirection;
+
+    public float progress;
 }
-
-[Serializable]
-public struct BeltTopology
-{
-    public Cell Start;
-    public Cell End;
-
-    [Serializable]
-    public struct Cell
-    {
-        public Vector2Int pos;
-        public enum Rotations { R0, R90, R180, R270 };
-        public Rotations Rotation;
-    }
-}
+public enum BeltDirections { Up, Right, Down, Left };

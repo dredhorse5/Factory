@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Factory
 {
@@ -11,28 +12,30 @@ namespace Factory
         {
             this.world = world;
         }
-        public uint CreateBelt(int size, uint startBeltID, uint endBeltID)
+        
+        public uint CreateBelt(Vector2Int pos, BeltDirections inputDirection, BeltDirections outputDirection)
         {
-            if (startBeltID > 0 && world.Belts[startBeltID].nextBeltId != 0)
+            if (world.OccupiedTiles[pos] > 0)
+            {
+                Debug.LogError($"Tile already occupied: {pos}, by {world.OccupiedTiles[pos]}");
                 return 0;
-            if (endBeltID > 0 && world.Belts[endBeltID].previousBeltId != 0)
-                return 0;
+            }
 
             var belt = new Belt()
             {
-                id = world.NextBeltId++,
-                nextBeltId = endBeltID > 0 ? world.Belts[endBeltID].id : 0,
-                previousBeltId = startBeltID > 0 ? world.Belts[startBeltID].id : 0,
-                items = new int[size],
-                speed = 1
+                id = world.GetNextBeltId(),
+                
+                speed = GameSettings.BeltSpeed,
+                items = new int[GameSettings.BeltSize],
+                
+                cell = pos,
+                inputDirection = inputDirection,
+                outputDirection = outputDirection,
             };
             
-            if(startBeltID > 0)
-                world.Belts[startBeltID].nextBeltId = belt.id;
-            if(endBeltID > 0)
-                world.Belts[endBeltID].previousBeltId = belt.id;
-            
             world.Belts.Add(belt.id, belt);
+            world.OccupiedTiles.Add(pos, belt.id);
+            
             return belt.id;
         }
     }

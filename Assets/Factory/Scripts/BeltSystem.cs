@@ -39,8 +39,10 @@ namespace Factory
                 }
 
                 // transfer (временно
-                if (belt.items[^1] != 0 && belt.nextBeltId > 0)
+                if (belt.items[^1] != 0)
                 {
+                    var outputCell = GridUtils.GetOutputCell(belt);
+                    
                     var next = _world.Belts[belt.nextBeltId];
 
                     if (next.items[0] == 0)
