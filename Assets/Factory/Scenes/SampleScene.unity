@@ -12721,6 +12721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8bc960bc5c405f92b3511e0dec4480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemMesh: {fileID: -3645058858012553506, guid: 1dae4e3e9dead2f49acd0ab9a0569317,
+    type: 3}
+  ItemMaterial: {fileID: -6538903991835684241, guid: 1dae4e3e9dead2f49acd0ab9a0569317,
+    type: 3}
 --- !u!4 &484746180
 Transform:
   m_ObjectHideFlags: 0

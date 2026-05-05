@@ -11,7 +11,8 @@ namespace Factory
             new(0, -1),  // Down
             new(-1, 0)   // Left
         };
-
+        
+        public static Vector2 GetVectorDirection(BeltDirections directions) => DirVectors[(int)directions];
         public static Vector2Int GetOutputCell(Belt belt) => belt.cell + DirVectors[(int)belt.outputDirection];
         
         public static BeltShapes GetTurn(Belt belt)

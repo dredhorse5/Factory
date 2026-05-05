@@ -5,8 +5,12 @@ namespace Factory
 {
     public class BeltView : MonoBehaviour
     {
+        private Belt model;
+        
+        public Belt Model => model;
         public void SetBelt(Belt belt)
         {
+            model = belt;
             var shape = Utils.GetTurn(belt);
 
             GameObject prefab = null;
@@ -23,7 +27,7 @@ namespace Factory
                     break;
             }
 
-            var model = Instantiate(prefab, transform.position, Quaternion.Euler(0,(int)belt.inputDirection * 90f, 0), transform);
+            var mesh = Instantiate(prefab, transform.position, Quaternion.Euler(0,(int)belt.inputDirection * 90f, 0), transform);
         }
     }
 }

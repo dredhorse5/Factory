@@ -32,7 +32,7 @@ namespace Factory
         [ContextMenu("PutItem")]
         public void PutItem()
         {
-            //World.Belts[belt1].items[0] = Random.Range(0, 10);
+            World.Belts[1].items[0] = Random.Range(1, 10);
         }
         
     }
