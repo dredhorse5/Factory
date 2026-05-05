@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 namespace Factory
 {
@@ -52,8 +53,8 @@ namespace Factory
             {
                 if(beltModel.items[i] == 0)
                     continue;
-                var t = ((i + beltModel.progress) / beltModel.items.Length);
-                Vector2 itemPos = beltPos + new Vector3(direction.x - direction.x / 2f, 0, direction.y - direction.y / 2f) * t;
+                var t = ((float)(i + beltModel.progress) / (float)beltModel.items.Length);
+                Vector3 itemPos = beltPos + new Vector3(direction.x * t - direction.x/2f, .3f, direction.y * t - direction.y/2f);
                 RenderItem(beltModel.items[i], itemPos);
             }
         }

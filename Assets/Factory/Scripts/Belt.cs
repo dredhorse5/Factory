@@ -10,6 +10,7 @@ public class Belt
 
     public float speed;
     public int[] items;
+    public int itemToTransfer;
 
     public Vector2Int cell;
     public BeltDirections inputDirection;

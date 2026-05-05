@@ -17,10 +17,30 @@ namespace Factory
         public void Tick(float tickTime)
         {
             foreach (var belt in _world.Belts.Values)
-                TickBelt(belt, tickTime);
+                TransferItems(belt);
+            foreach (var belt in _world.Belts.Values)
+                MoveItems(belt, tickTime);
         }
 
-        private void TickBelt(Belt belt, float tickTime)
+        private void TransferItems(Belt belt)
+        {
+            if (belt.itemToTransfer > 0)
+            {
+                var nextBeltID = _world.OccupiedTiles[Utils.GetOutputCell(belt)];
+                if (nextBeltID > 0)
+                {
+                    var nextBelt = _world.Belts[nextBeltID];
+                        
+                    if (nextBelt.items[0] == 0)
+                    {
+                        nextBelt.items[0] = belt.itemToTransfer;
+                        belt.itemToTransfer = 0;
+                    }
+                }
+            }
+        }
+
+        private void MoveItems(Belt belt, float tickTime)
         {
             belt.progress += tickTime * belt.speed;
 
@@ -28,20 +48,13 @@ namespace Factory
             {
                 belt.progress -= 1f;
 
-                // внутреннее движение
-                for (var i = belt.items.Length - 1; i > 0; i--)
+                // transfer (временно)
+                if (belt.items[^1] != 0 && belt.itemToTransfer == 0)
                 {
-                    if (belt.items[i] == 0)
-                    {
-                        belt.items[i] = belt.items[i - 1];
-                        belt.items[i - 1] = 0;
-                    }
-                }
-
-                // transfer (временно
-                if (belt.items[^1] != 0)
-                {
-                    var nextBeltID = _world.OccupiedTiles[Utils.GetOutputCell(belt)];
+                    belt.itemToTransfer = belt.items[^1];
+                    belt.items[^1] = 0;
+                    
+                    /*var nextBeltID = _world.OccupiedTiles[Utils.GetOutputCell(belt)];
                     if (nextBeltID > 0)
                     {
                         var nextBelt = _world.Belts[nextBeltID];
@@ -51,8 +64,19 @@ namespace Factory
                             nextBelt.items[0] = belt.items[^1];
                             belt.items[^1] = 0;
                         }
+                    }*/
+                }
+                
+                // внутреннее движение
+                for (var i = belt.items.Length - 1; i > 0; i--)
+                {
+                    if (belt.items[i - 1] != 0)
+                    {
+                        belt.items[i] = belt.items[i - 1];
+                        belt.items[i - 1] = 0;
                     }
                 }
+
             }
         }
         
