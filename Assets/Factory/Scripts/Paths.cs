@@ -138,5 +138,10 @@ namespace Factory
         {
             BuildSystem.CreateBeltQueue(new []{0,0, 0,1, 1,1, 2,1, 2,0, 2,-1, 1,-1, 0,-1} , BeltDirections.Up, BeltDirections.Up);
         }
+
+        public void Path6()
+        {
+            BuildSystem.CreateBeltQueue(new []{0,0, 0,1, 1,1} , BeltDirections.Up, BeltDirections.Up);
+        }
     }
 }

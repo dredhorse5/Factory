@@ -47,14 +47,17 @@ namespace Factory
         {
             var beltModel = belt.Model;
             var beltPos = map.GetPosition(beltModel.cell);
-            var direction = Utils.GetVectorDirection(beltModel.inputDirection);
+            var inDir = Utils.GetVectorDirection(beltModel.inputDirection);
+            var outDir = Utils.GetVectorDirection(beltModel.outputDirection);
             
+            Vector3 itemPos = new Vector3();
             for (var i = 0; i < beltModel.items.Length; i++)
             {
                 if(beltModel.items[i] == 0)
                     continue;
+                
                 var t = ((float)(i + beltModel.progress) / (float)beltModel.items.Length);
-                Vector3 itemPos = beltPos + new Vector3(direction.x * t - direction.x/2f, .3f, direction.y * t - direction.y/2f);
+                itemPos = belt.GetItemPosition(t);
                 RenderItem(beltModel.items[i], itemPos);
             }
         }
