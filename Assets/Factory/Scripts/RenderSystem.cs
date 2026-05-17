@@ -46,9 +46,6 @@ namespace Factory
         private void RenderBelt(BeltView belt)
         {
             var beltModel = belt.Model;
-            var beltPos = map.GetPosition(beltModel.cell);
-            var inDir = Utils.GetVectorDirection(beltModel.inputDirection);
-            var outDir = Utils.GetVectorDirection(beltModel.outputDirection);
             
             Vector3 itemPos = new Vector3();
             for (var i = 0; i < beltModel.items.Length; i++)
@@ -56,9 +53,16 @@ namespace Factory
                 if(beltModel.items[i] == 0)
                     continue;
                 
-                var t = ((float)(i + beltModel.progress) / (float)beltModel.items.Length);
+                var t = ((float)(i + beltModel.progress[i]) / (float)beltModel.items.Length);
                 itemPos = belt.GetItemPosition(t);
                 RenderItem(beltModel.items[i], itemPos);
+            }
+
+            if (beltModel.itemToTransfer != 0)
+            {
+                var t = ((float)(beltModel.items.Length + beltModel.progress[^1]) / (float)beltModel.items.Length);
+                itemPos = belt.GetItemPosition(t);
+                RenderItem(beltModel.itemToTransfer, itemPos);
             }
         }
 

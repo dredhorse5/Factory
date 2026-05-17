@@ -25,7 +25,7 @@ namespace Factory
         private void Start()
         {
             paths = new Paths(BuildSystem);
-            paths.Path5();
+            paths.Path6();
         }
 
 

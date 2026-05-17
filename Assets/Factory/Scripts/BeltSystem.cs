@@ -26,57 +26,56 @@ namespace Factory
         {
             if (belt.itemToTransfer > 0)
             {
-                var nextBeltID = _world.OccupiedTiles[Utils.GetOutputCell(belt)];
-                if (nextBeltID > 0)
+                if(_world.GetOccupiedTileID(Utils.GetOutputCell(belt), out var nextBeltID))
                 {
-                    var nextBelt = _world.Belts[nextBeltID];
-                        
-                    if (nextBelt.items[0] == 0)
+                    if (nextBeltID > 0)
                     {
-                        nextBelt.items[0] = belt.itemToTransfer;
-                        belt.itemToTransfer = 0;
+                        var nextBelt = _world.Belts[nextBeltID];
+
+                        if (nextBelt.items[0] == 0)
+                        {
+                            nextBelt.items[0] = belt.itemToTransfer;
+                            nextBelt.progress[0] = 0f;
+                            belt.itemToTransfer = 0;
+                        }
                     }
                 }
             }
         }
 
         private void MoveItems(Belt belt, float tickTime)
-        {
-            belt.progress += tickTime * belt.speed;
+        { 
+            for (var i = 0; i < belt.progress.Length; i++)
+                if (belt.items[i] != 0)
+                    belt.progress[i] += tickTime * belt.speed;
 
-            if (belt.progress >= 1f)
+            for (var i = belt.items.Length - 1; i > 0; i--)
             {
-                belt.progress -= 1f;
-
-                // transfer (временно)
-                if (belt.items[^1] != 0 && belt.itemToTransfer == 0)
+                if (belt.progress[i] > 1f)
                 {
-                    belt.itemToTransfer = belt.items[^1];
-                    belt.items[^1] = 0;
-                    
-                    /*var nextBeltID = _world.OccupiedTiles[Utils.GetOutputCell(belt)];
-                    if (nextBeltID > 0)
+                    if (i == belt.items.Length - 1)
                     {
-                        var nextBelt = _world.Belts[nextBeltID];
-                        
-                        if (nextBelt.items[0] == 0)
+                        if (belt.itemToTransfer == 0)
                         {
-                            nextBelt.items[0] = belt.items[^1];
-                            belt.items[^1] = 0;
-                        }
-                    }*/
-                }
-                
-                // внутреннее движение
-                for (var i = belt.items.Length - 1; i > 0; i--)
-                {
-                    if (belt.items[i - 1] != 0)
+                            belt.itemToTransfer = belt.items[i];
+                            belt.items[i] = 0;
+                            belt.progress[i] = 0f;
+                        } 
+                        else
+                            belt.progress[i] = 1f;
+                    }
+                    else
                     {
-                        belt.items[i] = belt.items[i - 1];
-                        belt.items[i - 1] = 0;
+                        if(belt.items[i + 1] == 0)
+                        {
+                            belt.items[i + 1] = belt.items[i];
+                            belt.items[i] = 0;
+                            belt.progress[i] = 0f;
+                        }
+                        else
+                            belt.progress[i] = 1f;
                     }
                 }
-
             }
         }
         

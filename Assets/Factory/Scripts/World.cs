@@ -13,5 +13,17 @@ namespace Factory
         private uint NextBeltId = 0;
         
         public uint GetNextBeltId() => ++NextBeltId;
+        
+        public bool GetOccupiedTileID(Vector2Int position, out uint id)
+        {
+            if (OccupiedTiles.ContainsKey(position))
+            {
+                id = OccupiedTiles[position];
+                return true;
+            }
+
+            id = 0;
+            return false;
+        }
     }
 }

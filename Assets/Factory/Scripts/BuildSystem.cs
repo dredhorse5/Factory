@@ -63,6 +63,7 @@ namespace Factory
                 
                 speed = GameSettings.BeltSpeed,
                 items = new int[GameSettings.BeltSize],
+                progress = new float[GameSettings.BeltSize],
                 
                 cell = pos,
                 inputDirection = inputDirection,

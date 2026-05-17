@@ -10,12 +10,11 @@ public class Belt
 
     public float speed;
     public int[] items;
+    public float[] progress;
     public int itemToTransfer;
 
     public Vector2Int cell;
     public BeltDirections inputDirection;
     public BeltDirections outputDirection;
-
-    public float progress;
 }
 public enum BeltDirections {NONE = -1, Up = 0, Right = 1, Down = 2, Left = 3 };
