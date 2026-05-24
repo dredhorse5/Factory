@@ -15,11 +15,16 @@ namespace Factory
 
         private void Awake()
         {
-            TickInterval = 1f / targetTPS;
+            CalculateTickInterval();
         }
 
+        private void CalculateTickInterval()
+        {
+            TickInterval = 1f / targetTPS;
+        }
         private void Update()
         {
+            CalculateTickInterval();
             accumulator += Time.deltaTime;
 
             while (accumulator >= TickInterval)

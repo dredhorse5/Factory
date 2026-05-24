@@ -47,21 +47,38 @@ namespace Factory
                     itemPoints = new Vector3[2];
                     itemPoints[0] = straightPoint(0);
                     itemPoints[1] = straightPoint(1);
+
                     Vector3 straightPoint(float t) => pos + new Vector3(inDir.x * t - inDir.x / 2f, yPos, inDir.y * t - inDir.y / 2f);
+
                     break;
-                case BeltShapes.CornerRight:
+                
+                case BeltShapes.CornerRight: Corner(true); break;
+                case BeltShapes.CornerLeft: Corner(false); break;
+                    
+                void Corner(bool isRight)
+                {
                     itemPoints = new Vector3[4];
                     var centerv2 = (-inDir + outDir) / 2f;
+                    float t = 0f;
+                    float angle = 0f;
                     for (int i = 0; i < itemPoints.Length; i++)
                     {
-                        float t = (float)i / ((float)itemPoints.Length - 1f);
-                        float angle = (t + (int)belt.inputDirection - 1) * Mathf.PI / 2;
+                        if(isRight)
+                        {
+                            t = (float)i / ((float)itemPoints.Length - 1f);
+                            angle = (t + (int)belt.inputDirection - 1) * Mathf.PI / 2;
+                        }
+                        else
+                        {
+                            t = 1f - ((float)i / ((float)itemPoints.Length - 1f));
+                            angle = (t + (int)belt.inputDirection - 1) * Mathf.PI / 2 + Mathf.PI/2f;
+                        }
                         
-                        itemPoints[i] = cornerPoint(angle) + new Vector3(centerv2.x,0,centerv2.y);
+                        itemPoints[i] = cornerPointRight(angle) + new Vector3(centerv2.x, 0, centerv2.y);
                     }
-                    
-                    Vector3 cornerPoint(float angle) => pos + new Vector3(Mathf.Sin(angle)/2f, yPos, Mathf.Cos(angle)/2f);
-                    break;
+
+                    Vector3 cornerPointRight(float angle) => pos + new Vector3(Mathf.Sin(angle) / 2f, yPos, Mathf.Cos(angle) / 2f);
+                }
             }
         }
 

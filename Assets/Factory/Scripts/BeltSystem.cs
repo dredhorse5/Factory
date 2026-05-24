@@ -49,7 +49,7 @@ namespace Factory
                 if (belt.items[i] != 0)
                     belt.progress[i] += tickTime * belt.speed;
 
-            for (var i = belt.items.Length - 1; i > 0; i--)
+            for (var i = belt.items.Length - 1; i >= 0; i--)
             {
                 if (belt.progress[i] > 1f)
                 {
