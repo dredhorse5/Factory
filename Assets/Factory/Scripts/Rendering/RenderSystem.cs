@@ -41,14 +41,9 @@ namespace Factory
             GameManager.Instance.World.GetBuild(obj, out var build);
             if (BuildsDatabase.Instance.GetBuild(build.SoId, out var buildSo))
             {
-                var size = build.transform.GetRotatedSize;
-                var cellOffset = new Vector2Int(build.transform.Rotation is BuildRotations.R180 or BuildRotations.R270 ? size.x - 1 : 0,
-                    build.transform.Rotation is BuildRotations.R90 or BuildRotations.R180 ? size.y - 1 : 0);
-                var pos = map.GetPosition(build.transform.Position + cellOffset);
-                
-                var rot = Quaternion.Euler(0, (int)build.transform.Rotation * 90f, 0);
-                
+                var (pos, rot) = BuildTransformUtility.GetWorldTransform(build.transform, map);
                 var view = Instantiate(buildSo.Prefab, pos, rot);
+                view.transform.SetParent(transform);
                 builds.Add(obj, view);
             }
         }

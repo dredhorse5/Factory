@@ -99,7 +99,7 @@ namespace Factory
         public uint CreateBuild(BuildPlacement transform, BaseBuildSO buildSO)
         {
             var tiles = transform.GetOccupiedTiles(buildSO.Size);
-            if (world.IsAreaFree(tiles))
+            if (CanPlaceBuild(tiles, buildSO))
             {
                 var build = buildSO.CreateBuild(world.GetNextBuildId());
                 build.transform = new BuildTransform()
@@ -117,5 +117,13 @@ namespace Factory
             
             return 0;
         }
+
+        public bool CanPlaceBuild(BuildPlacement transform, BaseBuildSO buildSO)
+        {
+            var tiles = transform.GetOccupiedTiles(buildSO.Size);
+            return CanPlaceBuild(tiles, buildSO);
+        }
+        public bool CanPlaceBuild(Vector2Int[] tiles, BaseBuildSO buildSO) => world.IsAreaFree(tiles);
+
     }
 }

@@ -1,28 +1,29 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 public class BuildsDatabase : MonoBehaviour
 {
     [SerializeField] 
-    private BaseBuildSO[] Builds;
+    private BaseBuildSO[] builds;
     
     
-    private Dictionary<string, BaseBuildSO> builds;
+    private Dictionary<string, BaseBuildSO> buildsDictionary;
+    public BaseBuildSO[] AllBuilds => builds;
 
     public static BuildsDatabase Instance { get; private set; }
     private void Awake()
     {
-        
-        builds = new Dictionary<string, BaseBuildSO>();
-        for (var i = 0; i < Builds.Length; i++)
+        buildsDictionary = new Dictionary<string, BaseBuildSO>();
+        for (var i = 0; i < builds.Length; i++)
         {
-            if (!builds.TryAdd(Builds[i].ID, Builds[i]))
-                Debug.LogError("build with id " + Builds[i].ID + " already exists");
+            if (!buildsDictionary.TryAdd(builds[i].ID, builds[i]))
+                Debug.LogError("build with id " + builds[i].ID + " already exists");
         }
         
         Instance = this;
     }
 
-    public bool GetBuild(string id, out BaseBuildSO build) => builds.TryGetValue(id, out build);
+    public bool GetBuild(string id, out BaseBuildSO build) => buildsDictionary.TryGetValue(id, out build);
 }
