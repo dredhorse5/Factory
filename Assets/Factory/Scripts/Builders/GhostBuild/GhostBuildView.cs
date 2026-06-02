@@ -6,9 +6,12 @@ using UnityEngine.Rendering;
 public class GhostBuildView : MonoBehaviour
 {
     public Material ghostMaterial;
+    public Material ghostMaterialErrorPlace;
     private GhostBuildSystem system;
 
     private BaseBuildView _ghost;
+    private MeshRenderer[] _meshRenderers;
+    private bool _canPlace;
 
     private Map map;
     private void Start()
@@ -57,6 +60,7 @@ public class GhostBuildView : MonoBehaviour
         var (pos, rot) = BuildTransformUtility.GetWorldTransform(new BuildTransform(placement.Position,placement.Rotation, buildSo.Size), map);
         _ghost.transform.position = pos;
         _ghost.transform.rotation = rot;
+        UpdateMaterial(system.canBuild);
     }
     
     private void CreateGhost(BaseBuildSO obj)
@@ -65,9 +69,20 @@ public class GhostBuildView : MonoBehaviour
             DeleteGhost();
         _ghost = Instantiate(obj.Prefab);
         UpdateGhostTransform();
-        var meshRenderers = _ghost.GetComponentsInChildren<MeshRenderer>();
-        for (var i = 0; i < meshRenderers.Length; i++)
-            meshRenderers[i].sharedMaterial = ghostMaterial;
+        _meshRenderers = _ghost.GetComponentsInChildren<MeshRenderer>();
+        UpdateMaterial(system.canBuild, true);
+    }
+
+    private void UpdateMaterial(bool canPlace, bool updateImmediate = false)
+    {
+        if(_meshRenderers == null || _meshRenderers.Length == 0)
+            return;
+        if (updateImmediate || canPlace != _canPlace)
+        {
+            _canPlace = canPlace;
+            for (var i = 0; i < _meshRenderers.Length; i++)
+                _meshRenderers[i].sharedMaterial = _canPlace? ghostMaterial : ghostMaterialErrorPlace;
+        }
     }
 
     private void DeleteGhost()

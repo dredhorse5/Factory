@@ -16,7 +16,10 @@ public class GhostBuildSystem
     public event Action<BuildPlacement> PlaceDataChanged;
     
     public bool IsSelected => selectedBuild != null;
+    public bool canBuild => IsSelected && isPlaceFree;
     
+    private bool isPlaceFree;
+
     public GhostBuildSystem(BuildSystem buildSystem)
     {
         this.buildSystem = buildSystem;
@@ -33,19 +36,20 @@ public class GhostBuildSystem
     public void SelectBuild(BaseBuildSO buildSo)
     {
         selectedBuild = buildSo;
-        buildPlacement = new BuildPlacement();
         Selected?.Invoke(selectedBuild);
     }
     
     public void SetGhostPosition(Vector2Int cell)
     {
         buildPlacement.Position = cell;
+        isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
         PlaceDataChanged?.Invoke(buildPlacement);
     }
 
     public void SetGhostRotation(BuildRotations rotation)
     {
         buildPlacement.Rotation = rotation;
+        isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
         PlaceDataChanged?.Invoke(buildPlacement);
     }
 
@@ -61,6 +65,7 @@ public class GhostBuildSystem
         {
             i = ((int)(buildPlacement.Rotation));
             i--;
+            if(i < 0) i = 3;
         }
         i %= 4;
         SetGhostRotation((BuildRotations)i);
@@ -74,6 +79,7 @@ public class GhostBuildSystem
     public void CancelGhost()
     {
         selectedBuild = null;
+        buildPlacement = new BuildPlacement();
         Canceled?.Invoke();
     }
 }
