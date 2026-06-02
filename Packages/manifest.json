@@ -1,5 +1,7 @@
 {
   "dependencies": {
+
+    "jp.hadashikick.vcontainer": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.18.0",
     "com.dredhorse5.dredpack.uiwindow": "https://github.com/dredhorse5/DredWindow.git",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.ide.rider": "3.0.36",

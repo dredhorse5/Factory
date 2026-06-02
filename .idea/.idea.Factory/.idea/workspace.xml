@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9c5b78a-de25-42b1-839e-3b62037abb0f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Builds/Cube2X3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Builds/Cube2X3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/GhostBuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/GhostBuildSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/GhostBuildView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/GhostBuildView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +131,7 @@
       <workItem from="1779981114346" duration="912000" />
       <workItem from="1780042391667" duration="19148000" />
       <workItem from="1780309331658" duration="16663000" />
-      <workItem from="1780346579636" duration="7723000" />
+      <workItem from="1780346579636" duration="9682000" />
     </task>
     <servers />
   </component>
