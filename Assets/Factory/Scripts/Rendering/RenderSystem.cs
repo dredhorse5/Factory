@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using VContainer;
 
 namespace Factory
 {
@@ -13,7 +14,12 @@ namespace Factory
         private Dictionary<uint, BeltView> belts = new Dictionary<uint, BeltView>();
         private Dictionary<uint, BaseBuildView> builds = new Dictionary<uint, BaseBuildView>();
 
+        [Inject]
         private Map map;
+        [Inject]
+        private World world;
+        [Inject]
+        private BuildsDatabase buildsDatabase;
         private void OnEnable()
         {
             BuildSystem.OnBuildCreated += CreateBuild;
@@ -24,12 +30,6 @@ namespace Factory
             BuildSystem.OnBuildCreated -= CreateBuild;
         }
 
-
-        private void Start()
-        {
-            map = Map.Instance;
-        }
-
         private void Update()
         {
             foreach (var belt in belts.Values)
@@ -38,8 +38,8 @@ namespace Factory
 
         private void CreateBuild(uint obj)
         {
-            GameManager.Instance.World.GetBuild(obj, out var build);
-            if (BuildsDatabase.Instance.GetBuild(build.SoId, out var buildSo))
+            world.GetBuild(obj, out var build);
+            if (buildsDatabase.GetBuild(build.SoId, out var buildSo))
             {
                 var (pos, rot) = BuildTransformUtility.GetWorldTransform(build.transform, map);
                 var view = Instantiate(buildSo.Prefab, pos, rot);

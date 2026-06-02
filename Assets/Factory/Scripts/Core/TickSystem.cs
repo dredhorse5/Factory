@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace Factory
 {
-    public class TickSystem : MonoBehaviour
+    public class TickSystem : ITickable
     {
         public static event Action<float> OnTick;
 
@@ -13,8 +14,9 @@ namespace Factory
         public static uint CurrentTick { get; private set; }
         public static float TickInterval { get; private set; }
 
-        private void Awake()
+        public TickSystem(int targetTPS = 20)
         {
+            this.targetTPS = targetTPS;
             CalculateTickInterval();
         }
 
@@ -22,9 +24,8 @@ namespace Factory
         {
             TickInterval = 1f / targetTPS;
         }
-        private void Update()
+        public void Tick()
         {
-            CalculateTickInterval();
             accumulator += Time.deltaTime;
 
             while (accumulator >= TickInterval)

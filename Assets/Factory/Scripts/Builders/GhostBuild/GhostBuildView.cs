@@ -2,26 +2,27 @@ using System;
 using Factory;
 using UnityEngine;
 using UnityEngine.Rendering;
+using VContainer;
 
 public class GhostBuildView : MonoBehaviour
 {
     public Material ghostMaterial;
     public Material ghostMaterialErrorPlace;
+    [Inject]
     private GhostBuildSystem system;
 
     private BaseBuildView _ghost;
     private MeshRenderer[] _meshRenderers;
     private bool _canPlace;
 
+    [Inject]
     private Map map;
     private void Start()
     {
-        system = GameManager.Instance.GhostBuildSystem;
         system.Selected += OnBuildSelected;
         system.Canceled += OnBuildCanceled;
         system.PlaceDataChanged += OnPlaceDataChanged;
         
-        map = Map.Instance;
     }
 
     private void OnDestroy()

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 namespace Factory
 {
@@ -12,6 +13,9 @@ namespace Factory
         private Vector3[] itemPoints;
         
         public Belt Model => model;
+
+        [Inject]
+        private PrefabDatabase prefabDatabase;
         public void SetBelt(Belt belt)
         {
             model = belt;
@@ -21,13 +25,13 @@ namespace Factory
             switch (shape)
             {
                 case BeltShapes.Straight:
-                    prefab = PrefabDatabase.Instance.BeltModels.Forward;
+                    prefab = prefabDatabase.BeltModels.Forward;
                     break;
                 case BeltShapes.CornerLeft:
-                    prefab = PrefabDatabase.Instance.BeltModels.LeftCorner;
+                    prefab = prefabDatabase.BeltModels.LeftCorner;
                     break;
                 case BeltShapes.CornerRight:
-                    prefab = PrefabDatabase.Instance.BeltModels.RightCorner;
+                    prefab = prefabDatabase.BeltModels.RightCorner;
                     break;
             }
 

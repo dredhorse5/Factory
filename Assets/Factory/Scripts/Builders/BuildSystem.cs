@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using VContainer;
 
 namespace Factory
 {
@@ -7,6 +8,9 @@ namespace Factory
     {
         private readonly World world;
         public static Action<uint> OnBuildCreated;
+        
+        [Inject]
+        private BuildsDatabase buildsDatabase;
 
         public BuildSystem(World world)
         {
@@ -90,7 +94,7 @@ namespace Factory
 
         public uint CreateBuild(BuildPlacement transform, string buildID)
         {
-            if (BuildsDatabase.Instance.GetBuild(buildID, out var build))
+            if (buildsDatabase.GetBuild(buildID, out var build))
                 return CreateBuild(transform, build);
             Debug.LogError("Build not found with id: " + buildID);
             return 0;

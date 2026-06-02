@@ -12,7 +12,6 @@ public class BuildsDatabase : MonoBehaviour
     private Dictionary<string, BaseBuildSO> buildsDictionary;
     public BaseBuildSO[] AllBuilds => builds;
 
-    public static BuildsDatabase Instance { get; private set; }
     private void Awake()
     {
         buildsDictionary = new Dictionary<string, BaseBuildSO>();
@@ -21,8 +20,6 @@ public class BuildsDatabase : MonoBehaviour
             if (!buildsDictionary.TryAdd(builds[i].ID, builds[i]))
                 Debug.LogError("build with id " + builds[i].ID + " already exists");
         }
-        
-        Instance = this;
     }
 
     public bool GetBuild(string id, out BaseBuildSO build) => buildsDictionary.TryGetValue(id, out build);

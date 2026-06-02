@@ -7,12 +7,6 @@ namespace Factory
     {
         public BeltView BeltView;
         public BeltsModels BeltModels;
-        
-        public static PrefabDatabase Instance;
-        private void Awake()
-        {
-            Instance = this;
-        }
 
         [Serializable]
         public struct BeltsModels

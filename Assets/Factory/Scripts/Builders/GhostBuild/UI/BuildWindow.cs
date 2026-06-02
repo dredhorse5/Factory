@@ -3,6 +3,7 @@ using DredPack.UIWindow;
 using Factory;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 public class BuildWindow : WindowBehaviour
 {
@@ -18,12 +19,14 @@ public class BuildWindow : WindowBehaviour
     public Button BuildBtn;
 
     private BuildItem[] items;
+    [Inject]
     private GhostBuildSystem ghostBuildSystem;
+    [Inject]
+    private BuildsDatabase buildsDatabase;
     private void Start()
     {
-        ghostBuildSystem = GameManager.Instance.GhostBuildSystem;
         itemPrefab.gameObject.SetActive(false);
-        var builds = BuildsDatabase.Instance.AllBuilds;
+        var builds = buildsDatabase.AllBuilds;
         items = new BuildItem[builds.Length];
         for (var i = 0; i < builds.Length; i++)
             items[i] = CreateItem(builds[i]);

@@ -1,6 +1,7 @@
 using System;
 using Factory;
 using UnityEngine;
+using VContainer;
 
 public class GhostBuildSystem
 {
@@ -20,6 +21,8 @@ public class GhostBuildSystem
     
     private bool isPlaceFree;
 
+    [Inject]
+    private BuildsDatabase buildsDatabase;
     public GhostBuildSystem(BuildSystem buildSystem)
     {
         this.buildSystem = buildSystem;
@@ -27,7 +30,7 @@ public class GhostBuildSystem
 
     public void SelectBuild(string buildName)
     {
-        if (BuildsDatabase.Instance.GetBuild(buildName, out BaseBuildSO build))
+        if (buildsDatabase.GetBuild(buildName, out BaseBuildSO build))
             SelectBuild(build);
         else
             Debug.LogError($"Build {buildName} not found");
