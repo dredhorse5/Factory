@@ -23,6 +23,8 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<WorldFactory>(Lifetime.Singleton);
         builder.Register<WorldProvider>(Lifetime.Singleton);
         builder.RegisterComponentInHierarchy<Map>();
+        
+        builder.RegisterComponentInHierarchy<MainCamera>();
 
         builder.RegisterEntryPoint<GameEntryPoint>();
     }

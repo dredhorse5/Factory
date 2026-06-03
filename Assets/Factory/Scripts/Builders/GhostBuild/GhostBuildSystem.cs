@@ -5,7 +5,6 @@ using VContainer;
 
 public class GhostBuildSystem
 {
-    private readonly BuildSystem buildSystem;
 
     private BaseBuildSO selectedBuild;
     public BaseBuildSO SelectedBuild => selectedBuild;
@@ -23,10 +22,10 @@ public class GhostBuildSystem
 
     [Inject]
     private BuildsDatabase buildsDatabase;
-    public GhostBuildSystem(BuildSystem buildSystem)
-    {
-        this.buildSystem = buildSystem;
-    }
+    [Inject]
+    private MainCamera mainCamera;
+    [Inject]
+    private BuildSystem buildSystem;
 
     public void SelectBuild(string buildName)
     {
@@ -39,6 +38,7 @@ public class GhostBuildSystem
     public void SelectBuild(BaseBuildSO buildSo)
     {
         selectedBuild = buildSo;
+        SetGhostPosition(mainCamera.GetLookAtCell());
         Selected?.Invoke(selectedBuild);
     }
     

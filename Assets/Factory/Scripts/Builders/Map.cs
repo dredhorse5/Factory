@@ -15,6 +15,11 @@ public class Map : MonoBehaviour
         return new Vector3(cell.x * CellSize, 0, cell.y * CellSize);
     }
 
+    public Vector2Int GetCellByPosition(Vector3 position)
+    {
+        return new Vector2Int(Mathf.FloorToInt(position.x / CellSize), Mathf.FloorToInt(position.z / CellSize));
+    }
+
 
     [Inject]
     public void Construct(WorldProvider worldProvider, PrefabDatabase prefabDatabase)

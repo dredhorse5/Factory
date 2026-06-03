@@ -61,7 +61,7 @@ namespace Factory
         public bool IsAreaFree(Vector2Int[] tiles)
         {
             for (var i = 0; i < tiles.Length; i++)
-                if (HasBuild(tiles[i]))
+                if (HasBuild(tiles[i]) || terrain[tiles[i].x,tiles[i].y] == 0)
                     return false;
             return true;
         }
