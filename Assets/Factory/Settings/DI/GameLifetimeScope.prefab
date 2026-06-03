@@ -157,6 +157,10 @@ MonoBehaviour:
       type: 3}
     RightCorner: {fileID: 2186139686765533520, guid: 231c5f60435091d4187aef1992867335,
       type: 3}
+  TerrainTilesPrefab:
+  - {fileID: 9220367930515669852, guid: 79c0c950c0a434bd692404f458c248a6, type: 3}
+  - {fileID: 5337537871467581656, guid: 41067ea9b37ac4f419b6ef143ac3c0cc, type: 3}
+  - {fileID: 6113572874708301735, guid: b0abb7ac81fe2419eb43dd77dca1dfcc, type: 3}
 --- !u!1 &6559890621673963868
 GameObject:
   m_ObjectHideFlags: 0

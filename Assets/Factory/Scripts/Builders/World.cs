@@ -11,6 +11,7 @@ namespace Factory
         public Dictionary<uint, BaseBuild> Builds = new Dictionary<uint, BaseBuild>();
         public Dictionary<Vector2Int, uint> OccupiedTiles = new Dictionary<Vector2Int, uint>();
         public uint[,] tiles;
+        public uint[,] terrain;
         
         private uint NextBeltId = 0;
 

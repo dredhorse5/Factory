@@ -8,6 +8,8 @@ namespace Factory
         public BeltView BeltView;
         public BeltsModels BeltModels;
 
+        public GameObject[] TerrainTilesPrefab;
+
         [Serializable]
         public struct BeltsModels
         {

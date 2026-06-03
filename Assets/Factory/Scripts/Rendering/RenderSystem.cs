@@ -17,7 +17,7 @@ namespace Factory
         [Inject]
         private Map map;
         [Inject]
-        private World world;
+        private WorldProvider worldProvider;
         [Inject]
         private BuildsDatabase buildsDatabase;
         private void OnEnable()
@@ -38,7 +38,7 @@ namespace Factory
 
         private void CreateBuild(uint obj)
         {
-            world.GetBuild(obj, out var build);
+            worldProvider.world.GetBuild(obj, out var build);
             if (buildsDatabase.GetBuild(build.SoId, out var buildSo))
             {
                 var (pos, rot) = BuildTransformUtility.GetWorldTransform(build.transform, map);

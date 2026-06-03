@@ -1,18 +1,24 @@
 using Factory;
 using UnityEngine;
+using VContainer;
 using VContainer.Unity;
 
 public class GameEntryPoint : IStartable
 {
-    private readonly BuildSystem buildSystem;
-    
-    public GameEntryPoint(BuildSystem buildSystem)
-    {
-        this.buildSystem = buildSystem;
-    }
-    
+    [Inject]
+    private BuildSystem buildSystem;
+    [Inject]
+    private WorldProvider worldProvider;
+    [Inject]
+    private WorldFactory worldFactory;
+    [Inject]
+    private Map map;
     public void Start()
     {
+        var world = worldFactory.Create(256, 256);
+        worldProvider.SetWorld(world);
+        map.GenerateMap();
+        
         buildSystem.CreateBuild(new BuildPlacement(5, 3, BuildRotations.R0), "Cube2X3");
         buildSystem.CreateBuild(new BuildPlacement(9, 4, BuildRotations.R90), "Cube2X3");
         buildSystem.CreateBuild(new BuildPlacement(8, 8, BuildRotations.R180), "Cube2X3");

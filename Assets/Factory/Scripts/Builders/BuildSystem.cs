@@ -6,15 +6,15 @@ namespace Factory
 {
     public class BuildSystem
     {
-        private readonly World world;
+        private readonly WorldProvider worldProvider;
         public static Action<uint> OnBuildCreated;
         
         [Inject]
         private BuildsDatabase buildsDatabase;
 
-        public BuildSystem(World world)
+        public BuildSystem(WorldProvider worldProvider)
         {
-            this.world = world;
+            this.worldProvider = worldProvider;
         }
 
         #region Belt
@@ -65,15 +65,15 @@ namespace Factory
         
         public uint CreateBelt(Vector2Int pos, BeltDirections inputDirection, BeltDirections outputDirection)
         {
-            if (world.OccupiedTiles.ContainsKey(pos))
+            if (worldProvider.world.OccupiedTiles.ContainsKey(pos))
             {
-                Debug.LogError($"Tile already occupied: {pos}, by {world.OccupiedTiles[pos]}");
+                Debug.LogError($"Tile already occupied: {pos}, by {worldProvider.world.OccupiedTiles[pos]}");
                 return 0;
             }
 
             var belt = new Belt()
             {
-                id = world.GetNextBuildId(),
+                id = worldProvider.world.GetNextBuildId(),
                 
                 speed = GameSettings.BeltSpeed,
                 items = new int[GameSettings.BeltSize],
@@ -84,8 +84,8 @@ namespace Factory
                 outputDirection = outputDirection,
             };
             
-            world.Belts.Add(belt.id, belt);
-            world.OccupiedTiles.Add(pos, belt.id);
+            worldProvider.world.Belts.Add(belt.id, belt);
+            worldProvider.world.OccupiedTiles.Add(pos, belt.id);
             
             OnBuildCreated?.Invoke(belt.id);
             
@@ -105,16 +105,16 @@ namespace Factory
             var tiles = transform.GetOccupiedTiles(buildSO.Size);
             if (CanPlaceBuild(tiles, buildSO))
             {
-                var build = buildSO.CreateBuild(world.GetNextBuildId());
+                var build = buildSO.CreateBuild(worldProvider.world.GetNextBuildId());
                 build.transform = new BuildTransform()
                 {
                     Position = transform.Position,
                     Rotation = transform.Rotation,
                     Size = buildSO.Size
                 };
-                world.Builds.Add(build.id, build);
+                worldProvider.world.Builds.Add(build.id, build);
                 for (var i = 0; i < tiles.Length; i++)
-                    world.tiles[tiles[i].x, tiles[i].y] = build.id;
+                    worldProvider.world.tiles[tiles[i].x, tiles[i].y] = build.id;
                 OnBuildCreated?.Invoke(build.id);
             }
             else return 0;
@@ -127,7 +127,7 @@ namespace Factory
             var tiles = transform.GetOccupiedTiles(buildSO.Size);
             return CanPlaceBuild(tiles, buildSO);
         }
-        public bool CanPlaceBuild(Vector2Int[] tiles, BaseBuildSO buildSO) => world.IsAreaFree(tiles);
+        public bool CanPlaceBuild(Vector2Int[] tiles, BaseBuildSO buildSO) => worldProvider.world.IsAreaFree(tiles);
 
     }
 }
