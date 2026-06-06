@@ -22,7 +22,6 @@ public class GhostBuildView : MonoBehaviour
         system.Selected += OnBuildSelected;
         system.Canceled += OnBuildCanceled;
         system.PlaceDataChanged += OnPlaceDataChanged;
-        
     }
 
     private void OnDestroy()
@@ -93,5 +92,6 @@ public class GhostBuildView : MonoBehaviour
 
         Destroy(_ghost.gameObject);
         _ghost = null;
+        _meshRenderers = null;
     }
 }
