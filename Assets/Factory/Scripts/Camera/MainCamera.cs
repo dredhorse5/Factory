@@ -123,4 +123,17 @@ public class MainCamera : MonoBehaviour
     {
         return map.GetCellByPosition(transform.position);
     }
+
+    public Vector2Int GetLookAtCursorCell()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 10f;
+
+        Ray ray = targetCamera.ScreenPointToRay(mousePos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 5000f))
+            return map.GetCellByPosition(hit.point);
+        
+        return map.GetCellByPosition(ray.origin + ray.direction * 10f);
+    }
 }

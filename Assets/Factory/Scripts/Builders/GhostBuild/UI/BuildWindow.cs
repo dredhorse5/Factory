@@ -23,6 +23,8 @@ public class BuildWindow : WindowBehaviour
     private GhostBuildSystem ghostBuildSystem;
     [Inject]
     private BuildsDatabase buildsDatabase;
+    [Inject] 
+    private MainCamera camera;
     private void Start()
     {
         itemPrefab.gameObject.SetActive(false);
@@ -40,6 +42,8 @@ public class BuildWindow : WindowBehaviour
     {
         if(Window.General.CurrentState == StatesRead.Opened)
         {
+            if(!ghostBuildSystem.SelectedBuild)
+                return;
             if (Input.GetKeyDown(KeyCode.UpArrow))
                 ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x, ghostBuildSystem.BuildPlacement.Position.y + 1));
             if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -48,6 +52,9 @@ public class BuildWindow : WindowBehaviour
                 ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x - 1, ghostBuildSystem.BuildPlacement.Position.y));
             if (Input.GetKeyDown(KeyCode.RightArrow))
                 ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x + 1, ghostBuildSystem.BuildPlacement.Position.y));
+            ghostBuildSystem.SetGhostPosition(camera.GetLookAtCursorCell());
+            if(Input.GetMouseButtonDown(0))
+                ghostBuildSystem.BuildGhost();
         }
     }
     
@@ -71,5 +78,6 @@ public class BuildWindow : WindowBehaviour
     public void Select(BaseBuildSO buildSo)
     {
         ghostBuildSystem.SelectBuild(buildSo);
+        ghostBuildSystem.SetGhostPosition(camera.GetLookAtCursorCell());
     }
 }

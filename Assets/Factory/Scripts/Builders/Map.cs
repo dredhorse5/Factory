@@ -17,7 +17,7 @@ public class Map : MonoBehaviour
 
     public Vector2Int GetCellByPosition(Vector3 position)
     {
-        return new Vector2Int(Mathf.FloorToInt(position.x / CellSize), Mathf.FloorToInt(position.z / CellSize));
+        return new Vector2Int(Mathf.RoundToInt(position.x / CellSize), Mathf.RoundToInt(position.z / CellSize));
     }
 
 

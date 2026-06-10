@@ -17,6 +17,7 @@ public class GameLifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<PrefabDatabase>();
         builder.RegisterComponentInHierarchy<GhostBuildView>();
         
+        builder.RegisterComponentInHierarchy<MainCamera>();
         builder.RegisterComponentInHierarchy<BuildWindow>();
         
         builder.Register<IWorldGenerator, FlatWorldGenerator>(Lifetime.Singleton);
@@ -24,7 +25,6 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<WorldProvider>(Lifetime.Singleton);
         builder.RegisterComponentInHierarchy<Map>();
         
-        builder.RegisterComponentInHierarchy<MainCamera>();
 
         builder.RegisterEntryPoint<GameEntryPoint>();
     }

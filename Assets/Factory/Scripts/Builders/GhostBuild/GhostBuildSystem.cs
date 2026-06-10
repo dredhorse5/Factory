@@ -38,12 +38,13 @@ public class GhostBuildSystem
     public void SelectBuild(BaseBuildSO buildSo)
     {
         selectedBuild = buildSo;
-        SetGhostPosition(mainCamera.GetLookAtCell());
         Selected?.Invoke(selectedBuild);
     }
     
     public void SetGhostPosition(Vector2Int cell)
     {
+        if(!selectedBuild)
+            return;
         buildPlacement.Position = cell;
         isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
         PlaceDataChanged?.Invoke(buildPlacement);
@@ -51,6 +52,8 @@ public class GhostBuildSystem
 
     public void SetGhostRotation(BuildRotations rotation)
     {
+        if(!selectedBuild)
+            return;
         buildPlacement.Rotation = rotation;
         isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
         PlaceDataChanged?.Invoke(buildPlacement);
