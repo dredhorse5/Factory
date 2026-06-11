@@ -1,6 +1,7 @@
 using System;
 using DredPack.UIWindow;
 using Factory;
+using Factory.Input;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -25,6 +26,8 @@ public class BuildWindow : WindowBehaviour
     private BuildsDatabase buildsDatabase;
     [Inject] 
     private MainCamera camera;
+    [Inject] 
+    private IInputService inputService;
     private void Start()
     {
         itemPrefab.gameObject.SetActive(false);
@@ -44,17 +47,11 @@ public class BuildWindow : WindowBehaviour
         {
             if(!ghostBuildSystem.SelectedBuild)
                 return;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x, ghostBuildSystem.BuildPlacement.Position.y + 1));
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-                ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x, ghostBuildSystem.BuildPlacement.Position.y - 1));
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-                ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x - 1, ghostBuildSystem.BuildPlacement.Position.y));
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-                ghostBuildSystem.SetGhostPosition(new Vector2Int(ghostBuildSystem.BuildPlacement.Position.x + 1, ghostBuildSystem.BuildPlacement.Position.y));
             ghostBuildSystem.SetGhostPosition(camera.GetLookAtCursorCell());
-            if(Input.GetMouseButtonDown(0))
+            if(inputService.BuildPressed && !inputService.IsPointerOverUI)
                 ghostBuildSystem.BuildGhost();
+            if (inputService.RotateBuildingPressed)
+                RotateRight();
         }
     }
     

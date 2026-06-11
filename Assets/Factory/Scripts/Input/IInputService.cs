@@ -1,11 +1,14 @@
-using System.Numerics;
+using UnityEngine;
 
-namespace Factory.Scripts.Input
+namespace Factory.Input
 {
     public interface IInputService
     {
         Vector2 CameraMove { get; }
-        Vector2 CameraRotate { get; }
+        float CameraZoom { get; }
+        float CameraRotate { get; }
+        Vector2 Point { get; }
+        bool IsPointerOverUI { get; }
 
         bool RotateBuildingPressed { get; }
         bool BuildPressed { get; }

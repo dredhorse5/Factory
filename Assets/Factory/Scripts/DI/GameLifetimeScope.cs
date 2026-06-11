@@ -1,4 +1,5 @@
 using Factory;
+using Factory.Input;
 using Factory.WorldGenerator;
 using VContainer;
 using VContainer.Unity;
@@ -7,6 +8,8 @@ public class GameLifetimeScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {
+        builder.Register<IInputService, InputService>(Lifetime.Singleton);
+        
         builder.Register<BeltSystem>(Lifetime.Singleton);
         builder.Register<BuildSystem>(Lifetime.Singleton);
         builder.Register<GhostBuildSystem>(Lifetime.Singleton);

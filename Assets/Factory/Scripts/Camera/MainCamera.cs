@@ -1,3 +1,4 @@
+using Factory.Input;
 using UnityEngine;
 using VContainer;
 
@@ -32,7 +33,9 @@ public class MainCamera : MonoBehaviour
     private float yaw;
 
     [Inject] 
-    public Map map;
+    private Map map;
+    [Inject] 
+    private IInputService inputService;
 
     private void Awake()
     {
@@ -55,33 +58,22 @@ public class MainCamera : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector2 input = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.W)) input.y += 1;
-        if (Input.GetKey(KeyCode.S)) input.y -= 1;
-        if (Input.GetKey(KeyCode.D)) input.x += 1;
-        if (Input.GetKey(KeyCode.A)) input.x -= 1;
-
+        Vector2 input = inputService.CameraMove;
         Vector3 move = transform.forward * input.y + transform.right * input.x;
-
         move.y = 0f;
-
         transform.position += move.normalized * moveSpeed * moveSpeedByZoom.Evaluate(currentZoom) * Time.deltaTime;
     }
 
     private void HandleRotation()
     {
-        if (!Input.GetMouseButton(1))
-            return;
-
-        yaw += Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+        yaw += inputService.CameraRotate * rotationSpeed * Time.deltaTime;
 
         transform.rotation = Quaternion.Euler(0f, yaw, 0f);
     }
 
     private void HandleZoom(bool instant = false)
     {
-        float wheel = Input.mouseScrollDelta.y;
+        float wheel = inputService.CameraZoom;
 
         if (!instant && Mathf.Abs(wheel) < 0.01f)
             return;
@@ -126,10 +118,7 @@ public class MainCamera : MonoBehaviour
 
     public Vector2Int GetLookAtCursorCell()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10f;
-
-        Ray ray = targetCamera.ScreenPointToRay(mousePos);
+        Ray ray = targetCamera.ScreenPointToRay(inputService.Point);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 5000f))
             return map.GetCellByPosition(hit.point);
