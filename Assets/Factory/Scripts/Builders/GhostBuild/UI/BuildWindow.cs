@@ -9,25 +9,20 @@ using VContainer;
 public class BuildWindow : WindowBehaviour
 {
     [Header("Build Item")]
-    [SerializeField]
-    private GameObject itemContainer;
-    [SerializeField]
-    private BuildItem itemPrefab;
+    [SerializeField] GameObject itemContainer;
+    [SerializeField] BuildItem itemPrefab;
 
     [Header("Buttons")] 
-    public Button RotateRightBtn;
-    public Button RotateLeftBtn;
-    public Button BuildBtn;
+    [SerializeField] Button RotateRightBtn;
+    [SerializeField] Button RotateLeftBtn;
+    [SerializeField] Button BuildBtn;
 
     private BuildItem[] items;
-    [Inject]
-    private GhostBuildSystem ghostBuildSystem;
-    [Inject]
-    private BuildsDatabase buildsDatabase;
-    [Inject] 
-    private MainCamera camera;
-    [Inject] 
-    private IInputService inputService;
+    
+    [Inject] GhostBuildSystem ghostBuildSystem;
+    [Inject] BuildsDatabase buildsDatabase;
+    [Inject] MainCamera camera;
+    [Inject] IInputService inputService;
     private void Start()
     {
         itemPrefab.gameObject.SetActive(false);
@@ -36,9 +31,12 @@ public class BuildWindow : WindowBehaviour
         for (var i = 0; i < builds.Length; i++)
             items[i] = CreateItem(builds[i]);
         
-        RotateRightBtn.onClick.AddListener(RotateRight);
-        RotateLeftBtn.onClick.AddListener(RotateLeft);
-        BuildBtn.onClick.AddListener(Build);
+        if(RotateRightBtn)
+            RotateRightBtn.onClick.AddListener(RotateRight);
+        if(RotateLeftBtn)
+            RotateLeftBtn.onClick.AddListener(RotateLeft);
+        if(BuildBtn)
+            BuildBtn.onClick.AddListener(Build);
     }
 
     private void Update()
@@ -48,10 +46,12 @@ public class BuildWindow : WindowBehaviour
             if(!ghostBuildSystem.SelectedBuild)
                 return;
             ghostBuildSystem.SetGhostPosition(camera.GetLookAtCursorCell());
-            if(inputService.BuildPressed && !inputService.IsPointerOverUI)
-                ghostBuildSystem.BuildGhost();
+            if (inputService.BuildPressed && !inputService.IsPointerOverUI)
+                Build();
             if (inputService.RotateBuildingPressed)
                 RotateRight();
+            if(inputService.CancelPressed)
+                Close();
         }
     }
     

@@ -2,6 +2,7 @@ using System;
 using Factory;
 using UnityEngine;
 using VContainer;
+using Random = UnityEngine.Random;
 
 public class Map : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Map : MonoBehaviour
             {
                 var id = worldProvider.world.terrain[x,y];
                 var prefab = prefabs[id];
-                Instantiate(prefab, GetPosition(new Vector2Int(x, y)), prefab.transform.rotation, transform);
+                Instantiate(prefab, GetPosition(new Vector2Int(x, y)), Quaternion.Euler(0,Random.Range(0,4) * 90f,0), transform);
             }
         }
     }
