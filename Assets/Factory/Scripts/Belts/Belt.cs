@@ -1,20 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class Belt
+public class Belt : BaseBuild
 {
-    public uint id;
-
-    public float speed;
-    public int[] items;
-    public float[] progress;
-    public int itemToTransfer;
-
-    public Vector2Int cell;
     public BeltDirections inputDirection;
     public BeltDirections outputDirection;
+
+    public Belt(uint id, string soId, BeltDirections inputDirection, BeltDirections outputDirection) : base(id, soId)
+    {
+        this.inputDirection = inputDirection;
+        this.outputDirection = outputDirection;
+    }
 }
 public enum BeltDirections {NONE = -1, Up = 0, Right = 1, Down = 2, Left = 3 };

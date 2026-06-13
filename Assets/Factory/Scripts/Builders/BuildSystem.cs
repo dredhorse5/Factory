@@ -21,6 +21,7 @@ namespace Factory
 
         
 
+        /*
         public void CreateBeltQueue(int[] cells, BeltDirections inputDirection = BeltDirections.NONE, BeltDirections outputDirection = BeltDirections.NONE)
         {
             Vector2Int curCell = new Vector2Int(0,0);
@@ -57,13 +58,11 @@ namespace Factory
 
         public uint CreateBelt(int posx, int posy, BeltDirections inputDirection, BeltDirections outputDirection)=>
             CreateBelt(new Vector2Int(posx, posy), inputDirection, outputDirection);
+            */
         
         
         
-        #endregion
-        
-        
-        public uint CreateBelt(Vector2Int pos, BeltDirections inputDirection, BeltDirections outputDirection)
+        /*public uint CreateBelt(Vector2Int pos, BeltDirections inputDirection, BeltDirections outputDirection)
         {
             if (worldProvider.world.OccupiedTiles.ContainsKey(pos))
             {
@@ -74,23 +73,27 @@ namespace Factory
             var belt = new Belt()
             {
                 id = worldProvider.world.GetNextBuildId(),
-                
+
                 speed = GameSettings.BeltSpeed,
-                items = new int[GameSettings.BeltSize],
+                items = new ushort[GameSettings.BeltSize],
                 progress = new float[GameSettings.BeltSize],
-                
+
                 cell = pos,
                 inputDirection = inputDirection,
                 outputDirection = outputDirection,
             };
-            
+
             worldProvider.world.Belts.Add(belt.id, belt);
             worldProvider.world.OccupiedTiles.Add(pos, belt.id);
-            
+
             OnBuildCreated?.Invoke(belt.id);
-            
+
             return belt.id;
-        }
+        }*/
+        
+        #endregion
+        
+        
 
         public uint CreateBuild(BuildPlacement transform, string buildID)
         {

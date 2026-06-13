@@ -11,21 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9c5b78a-de25-42b1-839e-3b62037abb0f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltsSegment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltsSegment.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/ItemBuffer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/ItemBuffer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Material/Buildings.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Material/Buildings.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/UI/BuildWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/UI/BuildWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Settings/DI/GameLifetimeScope.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Settings/DI/GameLifetimeScope.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Grass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Grass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Grass.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Sand.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Sand.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Sand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Sand.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Sand.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Sand.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Water.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Water.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Water.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Tiles/Water.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Tiles/Water.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Belt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Belt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +49,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltsSegment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/UI/BuildWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Camera/MainCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Input/InputService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,61 +69,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000001388527" />
-      <entry key="S30" value="1.0007290106605293" />
-      <entry key="S60" value="1.0448191523921424" />
-      <entry key="M2" value="1.392872542058646" />
-      <entry key="M5" value="2.5439521913954772" />
-      <entry key="M10" value="3.4765164659279577" />
-      <entry key="M15" value="3.933716994223199" />
-      <entry key="M30" value="5.0322568058593244" />
-      <entry key="H1" value="9.71605333972417" />
-      <entry key="H2" value="22.690178479626393" />
-      <entry key="H4" value="40.107689232213694" />
-      <entry key="D1" value="68.05859536617344" />
-      <entry key="W1" value="74.8050114642907" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="6.303190579252913E-277" />
+      <entry key="S2" value="8.910276871601282E-70" />
+      <entry key="S5" value="2.4123860703979486E-28" />
+      <entry key="S10" value="1.6662839592264545E-14" />
+      <entry key="S30" value="4.25987553089979E-5" />
+      <entry key="S60" value="0.020800920172586567" />
+      <entry key="M2" value="0.6689529972656254" />
+      <entry key="M5" value="5.909257901582074" />
+      <entry key="M10" value="12.36381893598357" />
+      <entry key="M15" value="15.843199421515592" />
+      <entry key="M30" value="21.291403941101073" />
+      <entry key="H1" value="32.9046185947112" />
+      <entry key="H2" value="56.4333894300172" />
+      <entry key="H4" value="93.49831523348247" />
+      <entry key="D1" value="386.5355925469423" />
+      <entry key="W1" value="596.932604207591" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="8.465457281765513E-6" />
-      <entry key="MS500" value="0.1069886841835038" />
-      <entry key="S2" value="0.875985383979743" />
-      <entry key="S5" value="1.4243010108968008" />
-      <entry key="S10" value="1.6851383837510812" />
-      <entry key="S30" value="1.8883468597773325" />
-      <entry key="S60" value="1.9484064109306463" />
-      <entry key="M2" value="2.1142211959551425" />
-      <entry key="M5" value="3.042610564303226" />
-      <entry key="M10" value="4.0507526709876664" />
-      <entry key="M15" value="4.610648367086811" />
-      <entry key="M30" value="6.1134385769682735" />
-      <entry key="H1" value="11.076393052534454" />
-      <entry key="H2" value="22.508880223386193" />
-      <entry key="H4" value="36.96210451783884" />
-      <entry key="D1" value="59.61590295092175" />
-      <entry key="W1" value="65.04029003998318" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000219347" />
+      <entry key="S2" value="1.0021641256794236" />
+      <entry key="S5" value="1.085923704202331" />
+      <entry key="S10" value="1.2931276116091333" />
+      <entry key="S30" value="1.669685083530894" />
+      <entry key="S60" value="1.8893745870921734" />
+      <entry key="M2" value="2.223810208537823" />
+      <entry key="M5" value="3.1357468737670247" />
+      <entry key="M10" value="4.071969510094144" />
+      <entry key="M15" value="4.569202321246943" />
+      <entry key="M30" value="5.608929409970613" />
+      <entry key="H1" value="9.42741570200875" />
+      <entry key="H2" value="17.75876191846764" />
+      <entry key="H4" value="30.21695459696294" />
+      <entry key="D1" value="131.3745241980157" />
+      <entry key="W1" value="211.19045869483932" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0031291794537262455" />
-      <entry key="MS500" value="0.3319165246534213" />
-      <entry key="S2" value="1.337805531862115" />
-      <entry key="S5" value="2.1147091395126143" />
-      <entry key="S10" value="2.5078597667919853" />
-      <entry key="S30" value="2.824012348594465" />
-      <entry key="S60" value="2.9569847272686576" />
-      <entry key="M2" value="3.4790597691589653" />
-      <entry key="M5" value="5.5634919154105935" />
-      <entry key="M10" value="7.5110439791477965" />
-      <entry key="M15" value="8.532036103579067" />
-      <entry key="M30" value="11.137874864603988" />
-      <entry key="H1" value="20.78608541575554" />
-      <entry key="H2" value="45.19303267780545" />
-      <entry key="H4" value="77.06495295558294" />
-      <entry key="D1" value="127.67320812495997" />
-      <entry key="W1" value="139.84510055283508" />
+      <entry key="MS100" value="0.001262063311169426" />
+      <entry key="MS500" value="0.263157788678325" />
+      <entry key="S2" value="0.7172237797450325" />
+      <entry key="S5" value="0.9379010196361012" />
+      <entry key="S10" value="1.186175356679779" />
+      <entry key="S30" value="1.6139533062490616" />
+      <entry key="S60" value="1.8775841261157635" />
+      <entry key="M2" value="2.8731173022764747" />
+      <entry key="M5" value="9.030735799697153" />
+      <entry key="M10" value="16.42465066338149" />
+      <entry key="M15" value="20.403499080119808" />
+      <entry key="M30" value="26.89453790909009" />
+      <entry key="H1" value="42.32713163352317" />
+      <entry key="H2" value="74.18750988482483" />
+      <entry key="H4" value="123.71104243129392" />
+      <entry key="D1" value="517.9063575264016" />
+      <entry key="W1" value="808.1221930666777" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -143,6 +144,7 @@
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
@@ -238,7 +240,8 @@
       <workItem from="1780485787952" duration="835000" />
       <workItem from="1780519371007" duration="4903000" />
       <workItem from="1780768574493" duration="6034000" />
-      <workItem from="1781123378680" duration="10078000" />
+      <workItem from="1781123378680" duration="13631000" />
+      <workItem from="1781260376223" duration="25881000" />
     </task>
     <servers />
   </component>
@@ -253,6 +256,17 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
