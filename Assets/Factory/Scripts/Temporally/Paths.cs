@@ -1,4 +1,4 @@
-namespace Factory
+/*namespace Factory
 {
     public class Paths
     {
@@ -148,4 +148,4 @@ namespace Factory
             BuildSystem.CreateBeltQueue(new []{0,0, -1,0, -1,-1, 0,-1} , BeltDirections.Up, BeltDirections.Up);
         }
     }
-}
+}*/

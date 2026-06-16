@@ -59,7 +59,7 @@ namespace Factory
 
         private void RenderBelt(BeltView belt)
         {
-            var beltModel = belt.Model;
+            /*var beltModel = belt.Model;
             
             Vector3 itemPos = new Vector3();
             for (var i = 0; i < beltModel.items.Length; i++)
@@ -77,7 +77,7 @@ namespace Factory
                 var t = ((float)(beltModel.items.Length + beltModel.progress[^1]) / (float)beltModel.items.Length);
                 itemPos = belt.GetItemPosition(t);
                 RenderItem(beltModel.itemToTransfer, itemPos);
-            }
+            }*/
         }
 
         private void RenderItem(int item, Vector3 pos)

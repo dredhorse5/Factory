@@ -31,6 +31,8 @@ public class MainCamera : MonoBehaviour
     private float zoomVelocity;
 
     private float yaw;
+    
+    public Camera Camera => targetCamera;
 
     [Inject] 
     private Map map;
@@ -109,20 +111,5 @@ public class MainCamera : MonoBehaviour
 
         targetCamera.transform.localPosition = new Vector3(0f, 0f, -currentZoom);
         HandleZoom(true);
-    }
-
-    public Vector2Int GetLookAtCell()
-    {
-        return map.GetCellByPosition(transform.position);
-    }
-
-    public Vector2Int GetLookAtCursorCell()
-    {
-        Ray ray = targetCamera.ScreenPointToRay(inputService.Point);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 5000f))
-            return map.GetCellByPosition(hit.point);
-        
-        return map.GetCellByPosition(ray.origin + ray.direction * 10f);
     }
 }

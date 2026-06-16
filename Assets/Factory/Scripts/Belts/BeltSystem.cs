@@ -13,7 +13,7 @@ namespace Factory
         public BeltSystem(World world)
         {
             _world = world;
-            TickSystem.OnTick += Tick;
+            TickSystem.OnFixedTick += FixedTick;
         }
 
         private void CreateNewSegment()
@@ -21,7 +21,7 @@ namespace Factory
             
         }
         
-        public void Tick(float tickTime)
+        public void FixedTick(float tickTime)
         {
             foreach (var beltsSegment in beltsSegments)
                 beltsSegment.Tick(tickTime);
@@ -29,7 +29,7 @@ namespace Factory
         
         public void Dispose()
         {
-            TickSystem.OnTick -= Tick;
+            TickSystem.OnFixedTick -= FixedTick;
         }
     }
 }

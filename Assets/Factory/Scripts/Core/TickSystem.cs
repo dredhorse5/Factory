@@ -6,6 +6,7 @@ namespace Factory
 {
     public class TickSystem : ITickable
     {
+        public static event Action<float> OnFixedTick;
         public static event Action<float> OnTick;
 
         [SerializeField] private int targetTPS = 20;
@@ -26,7 +27,10 @@ namespace Factory
         }
         public void Tick()
         {
-            accumulator += Time.deltaTime;
+            var deltaTime = Time.deltaTime;
+            
+            OnTick?.Invoke(deltaTime);
+            accumulator += deltaTime;
 
             while (accumulator >= TickInterval)
             {
@@ -34,7 +38,7 @@ namespace Factory
 
                 CurrentTick++;
 
-                OnTick?.Invoke(TickInterval);
+                OnFixedTick?.Invoke(TickInterval);
             }
         }
     }

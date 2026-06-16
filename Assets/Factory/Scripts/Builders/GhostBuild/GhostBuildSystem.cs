@@ -1,31 +1,37 @@
 using System;
 using Factory;
+using Factory.GhostBuild;
+using Factory.Input;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
-public class GhostBuildSystem
+public class GhostBuildSystem : ITickable
 {
-
-    private BaseBuildSO selectedBuild;
-    public BaseBuildSO SelectedBuild => selectedBuild;
-    private BuildPlacement buildPlacement;
-    public BuildPlacement BuildPlacement => buildPlacement;
-
     public event Action<BaseBuildSO> Selected;
     public event Action Canceled;
-    public event Action<BuildPlacement> PlaceDataChanged;
+    public event Action PlaceDataChanged;
     
-    public bool IsSelected => selectedBuild != null;
-    public bool canBuild => IsSelected && isPlaceFree;
     
-    private bool isPlaceFree;
+    public BaseBuildSO SelectedBuild => currentMode?.SelectedBuild;
+    
+    
+    
+    public bool IsSelected => currentMode != null;
+    public bool CanBuild => currentMode.CanBuild;
 
-    [Inject]
-    private BuildsDatabase buildsDatabase;
-    [Inject]
-    private MainCamera mainCamera;
-    [Inject]
-    private BuildSystem buildSystem;
+    [Inject] BuildsDatabase buildsDatabase;
+    [Inject] BuildSystem buildSystem;
+    [Inject] IBuildModeFactory buildModeFactory;
+    [Inject] IInputService input;
+    
+    private IBuildMode currentMode;
+    private int lastBuildVersion;
+
+    public GhostBuildSystem()
+    {
+        Debug.Log("GhostBuildSystem created");
+    }
 
     public void SelectBuild(string buildName)
     {
@@ -37,55 +43,45 @@ public class GhostBuildSystem
     
     public void SelectBuild(BaseBuildSO buildSo)
     {
-        selectedBuild = buildSo;
-        Selected?.Invoke(selectedBuild);
+        currentMode = buildModeFactory.Create(buildSo);
+        currentMode.Enter(buildSo);
+        Selected?.Invoke(currentMode.SelectedBuild);
+    }
+
+    private void Build()
+    {
+        if(IsSelected && currentMode.CanBuild)
+        {
+            currentMode.Clear();
+            var ghostPlacements = currentMode.GetGhostPlacements();
+            for (int i = 0; i < ghostPlacements.Length; i++)
+                buildSystem.CreateBuild(ghostPlacements[i], SelectedBuild);
+        }
     }
     
-    public void SetGhostPosition(Vector2Int cell)
-    {
-        if(!selectedBuild)
-            return;
-        buildPlacement.Position = cell;
-        isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
-        PlaceDataChanged?.Invoke(buildPlacement);
-    }
+    public BuildPlacement[] GetGhostPlacements() => currentMode.GetGhostPlacements();
 
-    public void SetGhostRotation(BuildRotations rotation)
+    public void Cancel()
     {
-        if(!selectedBuild)
-            return;
-        buildPlacement.Rotation = rotation;
-        isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
-        PlaceDataChanged?.Invoke(buildPlacement);
-    }
-
-    public void RotateGhost(bool right = true)
-    {
-        int i = 0;
-        if (right)
+        if(currentMode != null)
         {
-            i = ((int)(buildPlacement.Rotation));
-            i++;
+            currentMode.Dispose();
+            currentMode = null;
         }
-        else
-        {
-            i = ((int)(buildPlacement.Rotation));
-            i--;
-            if(i < 0) i = 3;
-        }
-        i %= 4;
-        SetGhostRotation((BuildRotations)i);
-    }
-
-    public void BuildGhost()
-    {
-        buildSystem.CreateBuild(buildPlacement, selectedBuild);
-    }
-
-    public void CancelGhost()
-    {
-        selectedBuild = null;
-        buildPlacement = new BuildPlacement();
         Canceled?.Invoke();
+    }
+
+    public void Tick()
+    {
+        if (IsSelected)
+        {
+            currentMode.Tick();
+            if(lastBuildVersion != currentMode.Version)
+                PlaceDataChanged?.Invoke();
+            if (input.BuildPressed && !input.IsPointerOverUI)
+                Build();
+            if(input.CancelPressed)
+                Cancel();
+        }
     }
 }

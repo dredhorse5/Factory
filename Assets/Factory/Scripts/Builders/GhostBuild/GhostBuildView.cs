@@ -1,22 +1,21 @@
 using System;
+using System.Collections.Generic;
 using Factory;
 using UnityEngine;
-using UnityEngine.Rendering;
 using VContainer;
 
 public class GhostBuildView : MonoBehaviour
 {
     public Material ghostMaterial;
     public Material ghostMaterialErrorPlace;
-    [Inject]
-    private GhostBuildSystem system;
 
-    private BaseBuildView _ghost;
-    private MeshRenderer[] _meshRenderers;
-    private bool _canPlace;
+    [Inject] private GhostBuildSystem system;
+    [Inject] private Map map;
 
-    [Inject]
-    private Map map;
+    private List<BaseBuildView> _ghosts;
+    private BaseBuildSO _currentBuild;
+    private int _canPlaceMaterial = 0; // -1 - cant, 0 - not inited, 1 - can
+
     private void Start()
     {
         system.Selected += OnBuildSelected;
@@ -34,64 +33,118 @@ public class GhostBuildView : MonoBehaviour
         system.PlaceDataChanged -= OnPlaceDataChanged;
     }
 
-
-    private void OnPlaceDataChanged(BuildPlacement obj)
+    private void OnBuildSelected(BaseBuildSO obj)
     {
-        UpdateGhostTransform();
+        OnBuildCanceled();
+        _currentBuild = obj;
+        _ghosts = new List<BaseBuildView>();
+        UpdateGhosts();
     }
 
     private void OnBuildCanceled()
     {
-        DeleteGhost();
+        _currentBuild = null;
+        DeleteAllGhosts();
+        _canPlaceMaterial = 0;
     }
 
-    private void OnBuildSelected(BaseBuildSO obj)
+    private void OnPlaceDataChanged()
     {
-        CreateGhost(obj);
+        UpdateGhosts();
     }
 
-    private void UpdateGhostTransform()
+    private void UpdateGhosts()
     {
-        if (_ghost == null)
+        if (_ghosts == null)
             return;
-        var placement = system.BuildPlacement;
-        var buildSo = system.SelectedBuild;
         
-        var (pos, rot) = BuildTransformUtility.GetWorldTransform(new BuildTransform(placement.Position,placement.Rotation, buildSo.Size), map);
-        _ghost.transform.position = pos;
-        _ghost.transform.rotation = rot;
-        UpdateMaterial(system.canBuild);
+        var placements = system.GetGhostPlacements();
+        if (placements == null || placements.Length == 0)
+            return;
+        
+        UpdateGhostsCount(placements);
+        UpdateGhostsPlacements(placements);
+        UpdateGhostsMaterials();
+    }
+
+    private void UpdateGhostsCount(BuildPlacement[] placements)
+    {
+        if (_ghosts.Count != placements.Length)
+        {
+            if (_ghosts.Count > placements.Length)
+            {
+                for (var i = _ghosts.Count - 1; i >= placements.Length; i--)
+                {
+                    DeleteGhost(_ghosts[i]);
+                    _ghosts.RemoveAt(i);
+                }
+            }
+            else
+            {
+                for (int i = _ghosts.Count; i < placements.Length; i++)
+                {
+                    var ghost = CreateGhost(system.SelectedBuild);
+                    _ghosts.Add(ghost);
+                    UpdateMaterial(system.CanBuild, ghost);
+                }
+            }
+        }
     }
     
-    private void CreateGhost(BaseBuildSO obj)
+    private void DeleteAllGhosts()
     {
-        if(_ghost != null)
-            DeleteGhost();
-        _ghost = Instantiate(obj.Prefab);
-        UpdateGhostTransform();
-        _meshRenderers = _ghost.GetComponentsInChildren<MeshRenderer>();
-        UpdateMaterial(system.canBuild, true);
+        if(_ghosts == null)
+            return;
+        for (int i = 0; i < _ghosts.Count; i++)
+            DeleteGhost(_ghosts[i]);
+        _ghosts.Clear();
     }
 
-    private void UpdateMaterial(bool canPlace, bool updateImmediate = false)
+    private BaseBuildView CreateGhost(BaseBuildSO build)
     {
-        if(_meshRenderers == null || _meshRenderers.Length == 0)
-            return;
-        if (updateImmediate || canPlace != _canPlace)
+        var view = Instantiate(build.Prefab, transform);
+        view.renderers = view.GetComponentsInChildren<MeshRenderer>();
+        return view;
+    }
+
+    private void DeleteGhost(BaseBuildView ghost)
+    {
+        ghost.renderers = null;
+        Destroy(ghost.gameObject);
+    }
+    
+
+    
+    
+    private void UpdateGhostsPlacements(BuildPlacement[] placements)
+    {
+        for (var i = 0; i < _ghosts.Count; i++)
         {
-            _canPlace = canPlace;
-            for (var i = 0; i < _meshRenderers.Length; i++)
-                _meshRenderers[i].sharedMaterial = _canPlace? ghostMaterial : ghostMaterialErrorPlace;
+            var placement = placements[i];
+            var (pos, rot) = BuildTransformUtility.GetWorldTransform(
+                new BuildTransform(placement.Position, placement.Rotation, _currentBuild.Size),
+                map);
+            _ghosts[i].transform.position = pos;
+            _ghosts[i].transform.rotation = rot;
         }
     }
 
-    private void DeleteGhost()
+    
+    
+    private void UpdateGhostsMaterials()
     {
-        if (_ghost == null)
+        if((_canPlaceMaterial == 1) == system.CanBuild)
             return;
-
-        Destroy(_ghost.gameObject);
-        _ghost = null;
-        _meshRenderers = null;
+        _canPlaceMaterial = system.CanBuild ? 1 : -1;
+        for (var i = 0; i < _ghosts.Count; i++)
+            UpdateMaterial(system.CanBuild, _ghosts[i]);
     }
+
+    private void UpdateMaterial(bool canPlace, BaseBuildView ghost)
+    {
+        var mat = canPlace ? ghostMaterial : ghostMaterialErrorPlace;
+        for (int i = 0; i < ghost.renderers.Length; i++)
+            ghost.renderers[i].sharedMaterial = mat;
+    }
+
 }

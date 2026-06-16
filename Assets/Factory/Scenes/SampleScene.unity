@@ -1222,9 +1222,6 @@ MonoBehaviour:
   Window: {fileID: 684948838}
   itemContainer: {fileID: 823315867}
   itemPrefab: {fileID: 505413954}
-  RotateRightBtn: {fileID: 1093471988}
-  RotateLeftBtn: {fileID: 1981924486}
-  BuildBtn: {fileID: 688721145}
 --- !u!1 &688721143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1919.9991, y: 0}
+  m_AnchoredPosition: {x: -1920, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &823315869
@@ -2792,7 +2789,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 676887504}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.42705154
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
