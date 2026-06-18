@@ -16,16 +16,18 @@ namespace Factory.GhostBuild
         private readonly IInputService input;
         private readonly CursorWorldPositionProvider cursor;
         private readonly BuildSystem buildSystem;
+        private readonly GhostBuildSystem ghostBuildSystem;
         
         private bool isPlaceFree;
         private BuildPlacement buildPlacement;
 
         [Inject]
-        public SingleBuildMode(IInputService input, CursorWorldPositionProvider cursor, BuildSystem buildSystem)
+        public SingleBuildMode(IInputService input, CursorWorldPositionProvider cursor, BuildSystem buildSystem, GhostBuildSystem ghostBuildSystem)
         {
             this.input = input;
             this.cursor = cursor;
             this.buildSystem = buildSystem;
+            this.ghostBuildSystem = ghostBuildSystem;
         }
 
 
@@ -40,6 +42,8 @@ namespace Factory.GhostBuild
             SetPosition(cursor.GetCellUnderCursor());
             if (input.RotateBuildingPressed)
                 Rotate(true);
+            if(input.PointerClick && !input.IsPointerOverUI)
+                ghostBuildSystem.Build();
         }
         
         public void Clear() { }

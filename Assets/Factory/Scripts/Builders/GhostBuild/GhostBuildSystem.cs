@@ -28,11 +28,6 @@ public class GhostBuildSystem : ITickable
     private IBuildMode currentMode;
     private int lastBuildVersion;
 
-    public GhostBuildSystem()
-    {
-        Debug.Log("GhostBuildSystem created");
-    }
-
     public void SelectBuild(string buildName)
     {
         if (buildsDatabase.GetBuild(buildName, out BaseBuildSO build))
@@ -48,7 +43,7 @@ public class GhostBuildSystem : ITickable
         Selected?.Invoke(currentMode.SelectedBuild);
     }
 
-    private void Build()
+    public void Build()
     {
         if(IsSelected && currentMode.CanBuild)
         {

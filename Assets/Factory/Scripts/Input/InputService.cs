@@ -20,6 +20,9 @@ namespace Factory.Input
         public bool IsPointerOverUI =>
             EventSystem.current != null &&
             EventSystem.current.IsPointerOverGameObject();
+
+        public bool PointerDown => input.General.PointerDown.WasPressedThisFrame();
+        public bool PointerClick =>  input.General.PointerClick.WasPressedThisFrame();
         public bool RotateBuildingPressed => input.General.RotateBuilding.WasPressedThisFrame();
         public bool BuildPressed => input.General.PlaceBuilding.WasPressedThisFrame();
         public bool CancelPressed => input.General.Cancel.WasPressedThisFrame();

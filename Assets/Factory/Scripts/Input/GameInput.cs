@@ -154,6 +154,24 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PointerDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""0de64a9d-72db-4d80-a0ea-2daece917f10"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PointerClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""4124723c-a081-4adf-851c-5db18fd74e2b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -270,7 +288,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d35b617f-d5f5-4169-879c-91acbf598e69"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -310,6 +328,28 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""369c8937-99b4-4a47-a909-b8f5e6bc4aa2"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PointerDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40ec0e56-353e-4bea-870e-445798c62cd2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PointerClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -325,6 +365,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_General_PlaceBuilding = m_General.FindAction("PlaceBuilding", throwIfNotFound: true);
         m_General_Cancel = m_General.FindAction("Cancel", throwIfNotFound: true);
         m_General_Point = m_General.FindAction("Point", throwIfNotFound: true);
+        m_General_PointerDown = m_General.FindAction("PointerDown", throwIfNotFound: true);
+        m_General_PointerClick = m_General.FindAction("PointerClick", throwIfNotFound: true);
     }
 
     ~@GameInput()
@@ -412,6 +454,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_PlaceBuilding;
     private readonly InputAction m_General_Cancel;
     private readonly InputAction m_General_Point;
+    private readonly InputAction m_General_PointerDown;
+    private readonly InputAction m_General_PointerClick;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -451,6 +495,14 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "General/Point".
         /// </summary>
         public InputAction @Point => m_Wrapper.m_General_Point;
+        /// <summary>
+        /// Provides access to the underlying input action "General/PointerDown".
+        /// </summary>
+        public InputAction @PointerDown => m_Wrapper.m_General_PointerDown;
+        /// <summary>
+        /// Provides access to the underlying input action "General/PointerClick".
+        /// </summary>
+        public InputAction @PointerClick => m_Wrapper.m_General_PointerClick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -498,6 +550,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Point.started += instance.OnPoint;
             @Point.performed += instance.OnPoint;
             @Point.canceled += instance.OnPoint;
+            @PointerDown.started += instance.OnPointerDown;
+            @PointerDown.performed += instance.OnPointerDown;
+            @PointerDown.canceled += instance.OnPointerDown;
+            @PointerClick.started += instance.OnPointerClick;
+            @PointerClick.performed += instance.OnPointerClick;
+            @PointerClick.canceled += instance.OnPointerClick;
         }
 
         /// <summary>
@@ -530,6 +588,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Point.started -= instance.OnPoint;
             @Point.performed -= instance.OnPoint;
             @Point.canceled -= instance.OnPoint;
+            @PointerDown.started -= instance.OnPointerDown;
+            @PointerDown.performed -= instance.OnPointerDown;
+            @PointerDown.canceled -= instance.OnPointerDown;
+            @PointerClick.started -= instance.OnPointerClick;
+            @PointerClick.performed -= instance.OnPointerClick;
+            @PointerClick.canceled -= instance.OnPointerClick;
         }
 
         /// <summary>
@@ -619,5 +683,19 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPoint(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PointerDown" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPointerDown(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PointerClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPointerClick(InputAction.CallbackContext context);
     }
 }

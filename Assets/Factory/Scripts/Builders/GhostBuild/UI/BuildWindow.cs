@@ -16,7 +16,6 @@ public class BuildWindow : WindowBehaviour
     
     [Inject] GhostBuildSystem ghostBuildSystem;
     [Inject] BuildsDatabase buildsDatabase;
-    [Inject] MainCamera camera;
     [Inject] IInputService inputService;
     private void Start()
     {
@@ -34,6 +33,8 @@ public class BuildWindow : WindowBehaviour
         buildItem.Init(buildSo, this);
         return buildItem;
     }
+
+    public void RequestCancel() => ghostBuildSystem.Cancel();
 
     public void Select(BaseBuildSO buildSo)
     {

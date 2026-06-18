@@ -9,6 +9,8 @@ namespace Factory.Input
         float CameraRotate { get; }
         Vector2 Point { get; }
         bool IsPointerOverUI { get; }
+        bool PointerDown { get; }
+        bool PointerClick { get; }
 
         bool RotateBuildingPressed { get; }
         bool BuildPressed { get; }
