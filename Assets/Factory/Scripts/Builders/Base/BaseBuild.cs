@@ -13,4 +13,6 @@ public class BaseBuild
         this.id = id;
         SoId = soId;
     }
+    
+    public virtual void OnPlaced(){}
 }

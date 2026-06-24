@@ -5,14 +5,11 @@ using VContainer.Unity;
 
 public class GameEntryPoint : IStartable
 {
-    [Inject]
-    private BuildSystem buildSystem;
-    [Inject]
-    private WorldProvider worldProvider;
-    [Inject]
-    private WorldFactory worldFactory;
-    [Inject]
-    private Map map;
+    [Inject] BuildSystem buildSystem;
+    [Inject] WorldProvider worldProvider;
+    [Inject] WorldFactory worldFactory;
+    [Inject] Map map;
+    [Inject] BeltSystem _beltSystem;
     public void Start()
     {
         Application.targetFrameRate = 30;

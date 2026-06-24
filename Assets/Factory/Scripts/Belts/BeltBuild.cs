@@ -8,10 +8,15 @@ public class BeltBuild : BaseBuild
     public BeltDirections InputDirection;
     public BeltDirections OutputDirection;
 
-    public BeltBuild(uint id, string soId, BeltDirections inputDirection, BeltDirections outputDirection) : base(id, soId)
+    public BeltBuild(uint id, string soId) : base(id, soId) { }
+    public override void OnPlaced()
     {
-        this.InputDirection = inputDirection;
-        this.OutputDirection = outputDirection;
+        InputDirection = Rotate(BeltDirections.Down, (int)transform.Rotation);
+        OutputDirection = Rotate(BeltDirections.Down, (int)transform.Rotation);
+    }
+    private BeltDirections Rotate(BeltDirections dir, int rotation)
+    {
+        return (BeltDirections)(((int)dir + rotation) % 4);
     }
 }
 public enum BeltDirections {NONE = -1, Up = 0, Right = 1, Down = 2, Left = 3 };

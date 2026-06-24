@@ -89,6 +89,8 @@ namespace Factory
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
+            if(itemPoints == null)
+                return;
             for (var i = 0; i < itemPoints.Length; i++)
             {
                 Gizmos.DrawSphere(itemPoints[i], .2f);

@@ -6,6 +6,7 @@ namespace Factory
     public class BeltsSegmentSystem
     {
         private readonly Dictionary<uint, BeltsSegment> beltsSegments = new();
+        public IEnumerable<BeltsSegment> Segments => beltsSegments.Values;
 
         private uint lastBeltSegmentId;
 
@@ -33,8 +34,6 @@ namespace Factory
             newSegment.SetID(oldSegment.Id);
 
             beltsSegments[oldSegment.Id] = newSegment;
-
-            oldSegment.SetID(0);
         }
 
         public void UnregisterSegment(BeltsSegment segment) => UnregisterSegment(segment.Id);

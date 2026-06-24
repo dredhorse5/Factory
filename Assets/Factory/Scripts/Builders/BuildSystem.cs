@@ -111,10 +111,11 @@ namespace Factory
                 var build = buildSO.CreateBuild(worldProvider.world.GetNextBuildId());
                 build.transform = new BuildTransform()
                 {
-                    Position = transform.Position,
+                    Cell = transform.Position,
                     Rotation = transform.Rotation,
                     Size = buildSO.Size
                 };
+                build.OnPlaced();
                 worldProvider.world.Builds.Add(build.id, build);
                 for (var i = 0; i < tiles.Length; i++)
                     worldProvider.world.tiles[tiles[i].x, tiles[i].y] = build.id;

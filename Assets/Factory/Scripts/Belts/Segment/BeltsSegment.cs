@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Factory
 {
@@ -11,6 +12,9 @@ namespace Factory
 
         private IItemInput output; // для сегмента конвейеров выход - это вход какого-нибудь завода
         private IItemOutput input; // и наоборот - для конвейеров это вход
+
+        public Vector2Int GetOutputCell => belts[^1].GetOutputCell();
+        public Vector2Int GetInputCell => belts[0].GetInputCell();
 
         public BeltsSegmentData Data => data;
         public uint Id => id;

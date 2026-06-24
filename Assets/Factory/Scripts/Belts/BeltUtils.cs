@@ -13,8 +13,8 @@ namespace Factory
         };
         
         public static Vector2 GetVectorDirection(BeltDirections directions) => DirVectors[(int)directions];
-        public static Vector2Int GetOutputCell(this BeltBuild belt) => belt.transform.Position + DirVectors[(int)belt.OutputDirection];
-        public static Vector2Int GetInputCell(this BeltBuild belt) => belt.transform.Position - DirVectors[(int)belt.InputDirection];
+        public static Vector2Int GetOutputCell(this BeltBuild belt) => belt.transform.Cell + DirVectors[(int)belt.OutputDirection];
+        public static Vector2Int GetInputCell(this BeltBuild belt) => belt.transform.Cell - DirVectors[(int)belt.InputDirection];
         
         public static BeltShapes GetTurn(BeltBuild beltBuild)
         {

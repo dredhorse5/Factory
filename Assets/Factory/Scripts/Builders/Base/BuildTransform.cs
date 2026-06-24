@@ -3,12 +3,12 @@ using UnityEngine;
 
 public struct BuildTransform
 {
-    public Vector2Int Position;
+    public Vector2Int Cell;
     public BuildRotations Rotation;
     public Vector2Int Size;
 
     public BuildTransform(Vector2Int position, BuildRotations rotation, Vector2Int size) =>
-        (Position, Rotation, Size) = (position, rotation, size);
+        (Cell, Rotation, Size) = (position, rotation, size);
     
     public Vector2Int GetRotatedSize => Rotation is BuildRotations.R90 or BuildRotations.R270 ? new Vector2Int(Size.y, Size.x) : Size;
 }
