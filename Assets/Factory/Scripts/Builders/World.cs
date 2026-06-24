@@ -7,20 +7,19 @@ namespace Factory
     [Serializable]
     public class World
     {
-        public Dictionary<uint, Belt> Belts = new Dictionary<uint, Belt>();
         public Dictionary<uint, BaseBuild> Builds = new Dictionary<uint, BaseBuild>();
         public Dictionary<Vector2Int, uint> OccupiedTiles = new Dictionary<Vector2Int, uint>();
         public uint[,] tiles;
         public uint[,] terrain;
         
-        private uint NextBeltId = 0;
+        private uint nextBuildId = 0;
 
         public World(int sizex, int sizey)
         {
             tiles = new uint[sizex , sizey];
         }
         
-        public uint GetNextBuildId() => ++NextBeltId;
+        public uint GetNextBuildId() => ++nextBuildId;
         
         public bool GetOccupiedTileID(Vector2Int position, out uint id)
         {
@@ -34,22 +33,23 @@ namespace Factory
             return false;
         }
 
-        public bool GetBuildID(Vector2Int pos, out uint id)
+        public bool TryGetBuildID(Vector2Int pos, out uint id)
         {
-            if (pos.x > tiles.GetLength(0) || pos.y > tiles.GetLength(1) || pos.x < 0 || pos.y < 0)
-            {
-                id = 0;
-                return false;
-            }
-
-            id = tiles[pos.x, pos.y];
+            id = GetBuildID(pos);
             return id > 0;
         }
-        public bool GetBuild(uint id, out BaseBuild build) => Builds.TryGetValue(id, out build);
-        public bool GetBuild(Vector2Int pos, out BaseBuild build)
+
+        public uint GetBuildID(Vector2Int pos)
         {
-            if (GetBuildID(pos, out uint id))
-                return GetBuild(id, out build);
+            if (pos.x > tiles.GetLength(0) || pos.y > tiles.GetLength(1) || pos.x < 0 || pos.y < 0)
+                return 0;
+            return tiles[pos.x, pos.y];
+        }
+        public bool TryGetBuild(uint id, out BaseBuild build) => Builds.TryGetValue(id, out build);
+        public bool TryGetBuild(Vector2Int pos, out BaseBuild build)
+        {
+            if (TryGetBuildID(pos, out uint id))
+                return TryGetBuild(id, out build);
 
             build = null;
             return false;

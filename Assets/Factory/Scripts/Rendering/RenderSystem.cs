@@ -14,20 +14,19 @@ namespace Factory
         private Dictionary<uint, BeltView> belts = new Dictionary<uint, BeltView>();
         private Dictionary<uint, BaseBuildView> builds = new Dictionary<uint, BaseBuildView>();
 
-        [Inject]
-        private Map map;
-        [Inject]
-        private WorldProvider worldProvider;
-        [Inject]
-        private BuildsDatabase buildsDatabase;
-        private void OnEnable()
+        [Inject] Map map;
+        [Inject] WorldProvider worldProvider;
+        [Inject] BuildsDatabase buildsDatabase;
+        [Inject] BuildSystem  buildSystem;
+        
+        private void Start()
         {
-            BuildSystem.OnBuildCreated += CreateBuild;
+            buildSystem.OnBuildCreated += CreateBuild;
         }
 
         private void OnDestroy()
         {
-            BuildSystem.OnBuildCreated -= CreateBuild;
+            buildSystem.OnBuildCreated -= CreateBuild;
         }
 
         private void Update()
@@ -36,9 +35,8 @@ namespace Factory
                 RenderBelt(belt);
         }
 
-        private void CreateBuild(uint obj)
+        private void CreateBuild(uint obj, BaseBuild build)
         {
-            worldProvider.world.GetBuild(obj, out var build);
             if (buildsDatabase.GetBuild(build.SoId, out var buildSo))
             {
                 var (pos, rot) = BuildTransformUtility.GetWorldTransform(build.transform, map);

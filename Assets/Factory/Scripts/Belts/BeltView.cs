@@ -8,18 +8,18 @@ namespace Factory
 {
     public class BeltView : MonoBehaviour
     {
-        private Belt model;
+        private BeltBuild model;
 
         private Vector3[] itemPoints;
         
-        public Belt Model => model;
+        public BeltBuild Model => model;
 
         [Inject]
         private PrefabDatabase prefabDatabase;
-        public void SetBelt(Belt belt)
+        public void SetBelt(BeltBuild beltBuild)
         {
-            model = belt;
-            var shape = Utils.GetTurn(belt);
+            model = beltBuild;
+            var shape = BeltUtils.GetTurn(beltBuild);
 
             GameObject prefab = null;
             switch (shape)
@@ -35,15 +35,15 @@ namespace Factory
                     break;
             }
 
-            var mesh = Instantiate(prefab, transform.position, Quaternion.Euler(0,(int)belt.inputDirection * 90f, 0), transform);
-            CalculateItemPoints(belt, shape);
+            var mesh = Instantiate(prefab, transform.position, Quaternion.Euler(0,(int)beltBuild.InputDirection * 90f, 0), transform);
+            CalculateItemPoints(beltBuild, shape);
         }
 
-        private void CalculateItemPoints(Belt belt, BeltShapes shape)
+        private void CalculateItemPoints(BeltBuild beltBuild, BeltShapes shape)
         {
             var pos = transform.position;
-            var inDir = Utils.GetVectorDirection(belt.inputDirection);
-            var outDir = Utils.GetVectorDirection(belt.outputDirection);
+            var inDir = BeltUtils.GetVectorDirection(beltBuild.InputDirection);
+            var outDir = BeltUtils.GetVectorDirection(beltBuild.OutputDirection);
             float yPos = .3f;
             switch (shape)
             {
@@ -70,12 +70,12 @@ namespace Factory
                         if(isRight)
                         {
                             t = (float)i / ((float)itemPoints.Length - 1f);
-                            angle = (t + (int)belt.inputDirection - 1) * Mathf.PI / 2;
+                            angle = (t + (int)beltBuild.InputDirection - 1) * Mathf.PI / 2;
                         }
                         else
                         {
                             t = 1f - ((float)i / ((float)itemPoints.Length - 1f));
-                            angle = (t + (int)belt.inputDirection - 1) * Mathf.PI / 2 + Mathf.PI/2f;
+                            angle = (t + (int)beltBuild.InputDirection - 1) * Mathf.PI / 2 + Mathf.PI/2f;
                         }
                         
                         itemPoints[i] = cornerPointRight(angle) + new Vector3(centerv2.x, 0, centerv2.y);

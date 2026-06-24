@@ -7,7 +7,7 @@ namespace Factory
     public class BuildSystem
     {
         private readonly WorldProvider worldProvider;
-        public static Action<uint> OnBuildCreated;
+        public Action<uint, BaseBuild> OnBuildCreated;
         
         [Inject]
         private BuildsDatabase buildsDatabase;
@@ -118,7 +118,7 @@ namespace Factory
                 worldProvider.world.Builds.Add(build.id, build);
                 for (var i = 0; i < tiles.Length; i++)
                     worldProvider.world.tiles[tiles[i].x, tiles[i].y] = build.id;
-                OnBuildCreated?.Invoke(build.id);
+                OnBuildCreated?.Invoke(build.id, build);
             }
             else return 0;
             

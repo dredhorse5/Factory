@@ -20,6 +20,7 @@ public class GameLifetimeScope : LifetimeScope
         
         ConfigureBuild(builder);
         
+        builder.Register<BeltsSegmentSystem>(Lifetime.Singleton);
         builder.Register<BeltSystem>(Lifetime.Singleton);
         
         builder.RegisterComponentInHierarchy<RenderSystem>();

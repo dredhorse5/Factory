@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Factory
 {
-    public static class Utils
+    public static class BeltUtils
     {
         public static readonly Vector2Int[] DirVectors =
         {
@@ -13,12 +13,13 @@ namespace Factory
         };
         
         public static Vector2 GetVectorDirection(BeltDirections directions) => DirVectors[(int)directions];
-        //public static Vector2Int GetOutputCell(Belt belt) => belt.cell + DirVectors[(int)belt.outputDirection];
+        public static Vector2Int GetOutputCell(this BeltBuild belt) => belt.transform.Position + DirVectors[(int)belt.OutputDirection];
+        public static Vector2Int GetInputCell(this BeltBuild belt) => belt.transform.Position - DirVectors[(int)belt.InputDirection];
         
-        public static BeltShapes GetTurn(Belt belt)
+        public static BeltShapes GetTurn(BeltBuild beltBuild)
         {
-            Vector2Int input = DirVectors[(int)belt.inputDirection];
-            Vector2Int output = DirVectors[(int)belt.outputDirection];
+            Vector2Int input = DirVectors[(int)beltBuild.InputDirection];
+            Vector2Int output = DirVectors[(int)beltBuild.OutputDirection];
 
             if (input == output)
                 return BeltShapes.Straight;

@@ -16,7 +16,7 @@ namespace Factory.Input
         public Vector2 CameraMove => input.General.CameraMove.ReadValue<Vector2>();
         public float CameraZoom => input.General.CameraZoom.ReadValue<float>();
         public float CameraRotate => input.General.CameraRotate.ReadValue<float>();
-        public Vector2 Point  => input.General.Point.ReadValue<Vector2>();
+        public Vector2 Point => input.General.Point.ReadValue<Vector2>();
         public bool IsPointerOverUI =>
             EventSystem.current != null &&
             EventSystem.current.IsPointerOverGameObject();

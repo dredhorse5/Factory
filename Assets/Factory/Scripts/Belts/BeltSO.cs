@@ -7,7 +7,7 @@ namespace Factory
     {
         public override BaseBuild CreateBuild(uint id)
         {
-            return new Belt(id, ID, BeltDirections.Down, BeltDirections.Down);
+            return new BeltBuild(id, ID, BeltDirections.Down, BeltDirections.Down);
         }
     }
 }
