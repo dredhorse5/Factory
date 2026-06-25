@@ -11,22 +11,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9c5b78a-de25-42b1-839e-3b62037abb0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentDebugWindow.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentDebugWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Builds/Belt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Builds/Belt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Builds/Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Builds/Belt.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuild.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BuildTransform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BuildTransform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildTransformUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildTransformUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/SegmentsCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/SegmentsCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/World.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Core/TickSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Core/TickSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameLifetimeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameLifetimeScope.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/RenderSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/RenderSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Settings/DI/GameLifetimeScope.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Settings/DI/GameLifetimeScope.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +57,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10f16eb438b24f73a6b4a6c383f4ef54177000/5d/d64ff310/MeshRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/6d/dbd4b0e7/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cac1dea318b4499fb9eaf77618617c23469200/ca/0bc597c1/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cac1dea318b4499fb9eaf77618617c23469200/cc/9d2c6f7b/Lazy`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentDebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
@@ -69,8 +73,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/FactoryBuild/BeltsBuildModeInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/FactoryBuild/FactoryBuildModeFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Input/InputService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@14.0.12/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Annotations/InjectAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Container.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Internal/ReflectionInjector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Registry.cs" root0="SKIP_HIGHLIGHTING" />
@@ -85,61 +91,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6644150250134097E-93" />
-      <entry key="MS500" value="4.99382803753746E-19" />
-      <entry key="S2" value="5.546120552909707E-5" />
-      <entry key="S5" value="0.03817126849462671" />
-      <entry key="S10" value="0.3846953720153978" />
-      <entry key="S30" value="4.182892884412031" />
-      <entry key="S60" value="10.202644919455436" />
-      <entry key="M2" value="16.67858946507382" />
-      <entry key="M5" value="22.691337138297094" />
-      <entry key="M10" value="25.222132350931055" />
-      <entry key="M15" value="26.413540439490824" />
-      <entry key="M30" value="32.87274919028852" />
-      <entry key="H1" value="66.47123298164774" />
-      <entry key="H2" value="146.78856218909817" />
-      <entry key="H4" value="258.59570626334136" />
-      <entry key="D1" value="676.2812232921534" />
-      <entry key="W1" value="1566.7996726400272" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.00000000204394" />
+      <entry key="S2" value="1.0067238357856303" />
+      <entry key="S5" value="1.1354688661639754" />
+      <entry key="S10" value="1.3834425425413146" />
+      <entry key="S30" value="1.9669455117948802" />
+      <entry key="S60" value="2.35813266942575" />
+      <entry key="M2" value="2.883463248908054" />
+      <entry key="M5" value="4.53132284497922" />
+      <entry key="M10" value="6.161600327874893" />
+      <entry key="M15" value="7.219880845988606" />
+      <entry key="M30" value="10.328036354741203" />
+      <entry key="H1" value="17.35089987941034" />
+      <entry key="H2" value="29.20706983642251" />
+      <entry key="H4" value="48.567177391306835" />
+      <entry key="D1" value="471.1176006650276" />
+      <entry key="W1" value="1634.965572766254" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000770277731486" />
-      <entry key="S5" value="1.0350369126871575" />
-      <entry key="S10" value="1.3041643813080492" />
-      <entry key="S30" value="3.036130137803254" />
-      <entry key="S60" value="5.272327996821228" />
-      <entry key="M2" value="7.819932521191968" />
-      <entry key="M5" value="10.442020339923753" />
-      <entry key="M10" value="11.624610269502462" />
-      <entry key="M15" value="12.144621410514922" />
-      <entry key="M30" value="14.57000021122877" />
-      <entry key="H1" value="26.413441143326942" />
-      <entry key="H2" value="52.32152253402001" />
-      <entry key="H4" value="86.5085383486424" />
-      <entry key="D1" value="222.82543574778697" />
-      <entry key="W1" value="547.9168771702202" />
+      <entry key="MS100" value="2.0982966745630234E-150" />
+      <entry key="MS500" value="1.2622757837998513E-30" />
+      <entry key="S2" value="6.042774434062378E-8" />
+      <entry key="S5" value="0.002438643723910527" />
+      <entry key="S10" value="0.08514384544728686" />
+      <entry key="S30" value="0.9145905706616487" />
+      <entry key="S60" value="1.6808676324921552" />
+      <entry key="M2" value="2.4880592967681023" />
+      <entry key="M5" value="3.9392927976283656" />
+      <entry key="M10" value="5.088337016637379" />
+      <entry key="M15" value="5.720124667872717" />
+      <entry key="M30" value="7.096083548600193" />
+      <entry key="H1" value="9.062696834943939" />
+      <entry key="H2" value="11.196503073821013" />
+      <entry key="H4" value="15.754422295274935" />
+      <entry key="D1" value="160.82223048938647" />
+      <entry key="W1" value="577.9135469899172" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0033075988764161217" />
-      <entry key="MS500" value="0.3190821922072382" />
-      <entry key="S2" value="0.7516939701780507" />
-      <entry key="S5" value="0.9593660559158951" />
-      <entry key="S10" value="1.596004918004566" />
-      <entry key="S30" value="7.077815316339196" />
-      <entry key="S60" value="15.328935727071842" />
-      <entry key="M2" value="24.384916413981152" />
-      <entry key="M5" value="33.0723696899983" />
-      <entry key="M10" value="36.812903538022674" />
-      <entry key="M15" value="38.53461453509948" />
-      <entry key="M30" value="47.428564853273286" />
-      <entry key="H1" value="92.87140355812782" />
-      <entry key="H2" value="199.09644207791544" />
-      <entry key="H4" value="345.0926954610122" />
-      <entry key="D1" value="899.1016821390123" />
-      <entry key="W1" value="2114.7147258941395" />
+      <entry key="MS100" value="0.18556544632863112" />
+      <entry key="MS500" value="0.7140019912918286" />
+      <entry key="S2" value="0.9254015213236184" />
+      <entry key="S5" value="1.1000548126681102" />
+      <entry key="S10" value="1.4426739592443762" />
+      <entry key="S30" value="2.8605842128733987" />
+      <entry key="S60" value="4.022993178240245" />
+      <entry key="M2" value="5.3590205559360795" />
+      <entry key="M5" value="8.459953284880719" />
+      <entry key="M10" value="11.241953224627586" />
+      <entry key="M15" value="12.933726123531825" />
+      <entry key="M30" value="17.42002984489067" />
+      <entry key="H1" value="26.410792300648303" />
+      <entry key="H2" value="40.40161848596923" />
+      <entry key="H4" value="64.31998809839475" />
+      <entry key="D1" value="631.9363979171768" />
+      <entry key="W1" value="2212.8772404205833" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -153,33 +159,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor &amp; Play.executor&quot;: &quot;Debug&quot;,
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor & Play.executor": "Debug",
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.946281",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.62f3/Unity.app/Contents/MacOS/Unity" />
@@ -265,7 +272,7 @@
       <workItem from="1781637310640" duration="11589000" />
       <workItem from="1781795451118" duration="1959000" />
       <workItem from="1781802768634" duration="5641000" />
-      <workItem from="1782240401249" duration="18677000" />
+      <workItem from="1782240401249" duration="45447000" />
     </task>
     <servers />
   </component>
@@ -293,5 +300,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="DotNet_Exception_Breakpoints">
+          <properties exception="VContainer.VContainerException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="VContainerException" namespaceName="VContainer">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="DotNet_Exception_Breakpoints" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

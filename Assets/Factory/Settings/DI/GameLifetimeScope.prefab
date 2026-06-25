@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8092028895348593494}
   - component: {fileID: 8553825670124397038}
+  - component: {fileID: 3017638496786940896}
   m_Layer: 0
   m_Name: RenderSystem
   m_TagString: Untagged
@@ -42,6 +43,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8bc960bc5c405f92b3511e0dec4480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemMesh: {fileID: -3645058858012553506, guid: 1dae4e3e9dead2f49acd0ab9a0569317,
+    type: 3}
+  ItemMaterial: {fileID: -6538903991835684241, guid: 1dae4e3e9dead2f49acd0ab9a0569317,
+    type: 3}
+--- !u!114 &3017638496786940896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759721594629086308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec9b83e1fce4dcfbcc03697a951fa4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemMesh: {fileID: -3645058858012553506, guid: 1dae4e3e9dead2f49acd0ab9a0569317,

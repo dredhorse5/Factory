@@ -9,6 +9,9 @@ namespace Factory
         public IEnumerable<BeltsSegment> Segments => beltsSegments.Values;
 
         private uint lastBeltSegmentId;
+        
+        public event Action<BeltsSegment> OnSegmentCreated;
+        public event Action<BeltsSegment> OnSegmentRemoved;
 
         public uint RegisterSegment(BeltsSegment segment)
         {
@@ -17,6 +20,7 @@ namespace Factory
             segment.SetID(lastBeltSegmentId);
 
             beltsSegments.Add(lastBeltSegmentId, segment);
+            OnSegmentCreated?.Invoke(segment);
 
             return lastBeltSegmentId;
         }
@@ -33,7 +37,9 @@ namespace Factory
 
             newSegment.SetID(oldSegment.Id);
 
+            OnSegmentRemoved?.Invoke(oldSegment);
             beltsSegments[oldSegment.Id] = newSegment;
+            OnSegmentCreated?.Invoke(newSegment);
         }
 
         public void UnregisterSegment(BeltsSegment segment) => UnregisterSegment(segment.Id);
@@ -42,9 +48,7 @@ namespace Factory
             if (!beltsSegments.TryGetValue(id, out var segment))
                 throw new InvalidOperationException(
                     $"Segment {id} not found");
-
-            segment.SetID(0);
-
+            OnSegmentRemoved?.Invoke(segment);
             beltsSegments.Remove(id);
         }
 
@@ -63,6 +67,7 @@ namespace Factory
             return beltsSegments.TryGetValue(id, out segment);
         }
 
+        /// ⬅a⬅ + ⬅b⬅ = ⬅ab⬅
         public BeltsSegment MergeSegments(BeltsSegment a, BeltsSegment b)
         {
             var newSegment = SegmentsCalculator.MergeSegments(a, b);
@@ -78,9 +83,15 @@ namespace Factory
             return seg;
         }
 
-        public BeltsSegment AddBeltsToSegment(BeltsSegment segment, BeltBuild[] belts, bool asHead)
+        public BeltsSegment AddBeltsToSegment(BeltsSegment segment, BeltBuild[] belts)
         {
-            var seg = SegmentsCalculator.AddBeltsToSegment(segment, belts, asHead);
+            var seg = SegmentsCalculator.AddBeltsToSegment(segment, belts);
+            ReRegisterSegment(segment, seg);
+            return seg;
+        }
+        public BeltsSegment AddBeltsToSegment(BeltBuild[] belts, BeltsSegment segment)
+        {
+            var seg = SegmentsCalculator.AddBeltsToSegment(belts, segment);
             ReRegisterSegment(segment, seg);
             return seg;
         }

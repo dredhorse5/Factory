@@ -38,19 +38,19 @@ namespace Factory
                 // есть сегмент сзади, то добавляем к нему новый belt
                 if (backSegment != null && backSegment.GetOutputCell == beltBuild.transform.Cell)
                 {
-                    var seg1 = _segmentSystem.AddBeltsToSegment(backSegment, new BeltBuild[] { beltBuild }, true);
-                    //а если есть и передний, то соединяем два сегмента
-                    if(forwardSegment != null)
-                        _segmentSystem.MergeSegments(seg1, forwardSegment);
+                    var seg1 = _segmentSystem.AddBeltsToSegment(new BeltBuild[] { beltBuild }, backSegment);
+                    //а если есть и передний, то соединяем их
+                    if(forwardSegment != null && forwardSegment.GetInputCell == beltBuild.transform.Cell)
+                        _segmentSystem.MergeSegments(forwardSegment, seg1);
                 }
                 //если же только передний - то присоединяем к нему belt сзади
                 else if (forwardSegment != null &&  forwardSegment.GetInputCell == beltBuild.transform.Cell)
                 {
-                    _segmentSystem.AddBeltsToSegment(forwardSegment, new BeltBuild[] { beltBuild }, false);
+                    _segmentSystem.AddBeltsToSegment(forwardSegment, new BeltBuild[] { beltBuild });
                 }
+                // если ничего - создаем новый сегмент
                 else
                     _segmentSystem.CreateNewSegment(new BeltBuild[] { beltBuild });
-                
             }
         }
 

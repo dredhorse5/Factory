@@ -15,9 +15,8 @@ namespace Factory
         public static uint CurrentTick { get; private set; }
         public static float TickInterval { get; private set; }
 
-        public TickSystem(int targetTPS = 20)
+        public TickSystem()
         {
-            this.targetTPS = targetTPS;
             CalculateTickInterval();
         }
 

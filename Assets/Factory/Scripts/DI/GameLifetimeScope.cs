@@ -11,9 +11,8 @@ public class GameLifetimeScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {
+        builder.Register<TickSystem>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
         builder.Register<IInputService, InputService>(Lifetime.Singleton);
-        
-        builder.Register<TickSystem>(Lifetime.Singleton);
         
         builder.Register<CursorWorldPositionProvider>(Lifetime.Singleton);
         builder.RegisterComponentInHierarchy<MainCamera>();

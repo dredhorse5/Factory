@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Belt
   Icon: {fileID: 0}
-  Prefab: {fileID: 8992320651598989191, guid: 8c6400a57a09e46ff88f276e2515471d, type: 3}
+  Prefab: {fileID: 5935457340111299633, guid: 8c6400a57a09e46ff88f276e2515471d, type: 3}
   Size: {x: 1, y: 1}

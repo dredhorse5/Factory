@@ -6,15 +6,13 @@ using VContainer;
 
 namespace Factory
 {
-    public class BeltView : MonoBehaviour
+    public class BeltView : BaseBuildView
     {
         private BeltBuild model;
-
-        private Vector3[] itemPoints;
+        public Vector3[] itemPoints;
         
-        public BeltBuild Model => model;
 
-        [Inject]
+        /*[Inject]
         private PrefabDatabase prefabDatabase;
         public void SetBelt(BeltBuild beltBuild)
         {
@@ -84,7 +82,7 @@ namespace Factory
                     Vector3 cornerPointRight(float angle) => pos + new Vector3(Mathf.Sin(angle) / 2f, yPos, Mathf.Cos(angle) / 2f);
                 }
             }
-        }
+        }*/
 
         private void OnDrawGizmosSelected()
         {
@@ -93,7 +91,7 @@ namespace Factory
                 return;
             for (var i = 0; i < itemPoints.Length; i++)
             {
-                Gizmos.DrawSphere(itemPoints[i], .2f);
+                Gizmos.DrawSphere(transform.position + transform.rotation * itemPoints[i], .2f);
                 Gizmos.color = Color.green;
             }
         }
@@ -109,7 +107,8 @@ namespace Factory
             int i = Mathf.Min((int)scaled, count - 2);
 
             float localT = scaled - i;
-            return Vector3.Lerp(itemPoints[i], itemPoints[i + 1], localT);
+            Vector3 localPos = Vector3.Lerp(itemPoints[i], itemPoints[i + 1], localT);
+            return transform.position + transform.rotation * localPos;
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Factory
         [Inject] BuildsDatabase buildsDatabase;
         [Inject] BuildSystem  buildSystem;
         
+        public event Action<uint, BaseBuildView> OnCreated;
+        
         private void Start()
         {
             buildSystem.OnBuildCreated += CreateBuild;
@@ -43,6 +45,7 @@ namespace Factory
                 var view = Instantiate(buildSo.Prefab, pos, rot);
                 view.transform.SetParent(transform);
                 builds.Add(obj, view);
+                OnCreated?.Invoke(obj, view);
             }
         }
         

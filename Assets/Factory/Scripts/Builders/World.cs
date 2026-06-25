@@ -55,8 +55,14 @@ namespace Factory
             return false;
         }
 
-        public bool HasBuild(Vector2Int pos) => tiles[pos.x, pos.y] > 0;
-        public bool HasBuild(int x, int y) => tiles[x, y] > 0;
+        public bool HasBuild(Vector2Int pos) => HasBuild(pos.x, pos.y);
+        public bool HasBuild(int x, int y)
+        {
+            //TODO: slow
+            if(x < 0 || x >= tiles.GetLength(0) || y < 0 || y >= tiles.GetLength(1))
+                return false;
+            return tiles[x, y] > 0;
+        }
 
         public bool IsAreaFree(Vector2Int[] tiles)
         {
