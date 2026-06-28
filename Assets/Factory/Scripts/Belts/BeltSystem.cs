@@ -22,35 +22,46 @@ namespace Factory
             _segmentSystem = segmentSystem;
 
             _buildSystem.OnBuildCreated += OnNewBuild;
+            _buildSystem.OnBuildWillDestroy += OnBuildDestroy;
             TickSystem.OnFixedTick += FixedTick;
         }
-        
+
+
 
         private void OnNewBuild(uint obj, BaseBuild build)
         {
-            if (build is BeltBuild beltBuild)
+            if (build is BeltBuild belt)
             {
-                belts.Add(obj, beltBuild);
+                belts.Add(obj, belt);
                 
-                var backSegment = GetSegmentAtCell(beltBuild.GetInputCell());
-                var forwardSegment = GetSegmentAtCell(beltBuild.GetOutputCell());
+                var backSegment = GetSegmentAtCell(belt.GetInputCell());
+                var forwardSegment = GetSegmentAtCell(belt.GetOutputCell());
                 
                 // есть сегмент сзади, то добавляем к нему новый belt
-                if (backSegment != null && backSegment.GetOutputCell == beltBuild.transform.Cell)
+                if (backSegment != null && backSegment.GetOutputCell == belt.transform.Cell)
                 {
-                    var seg1 = _segmentSystem.AddBeltsToSegment(new BeltBuild[] { beltBuild }, backSegment);
+                    var seg1 = _segmentSystem.AddBeltsToSegment(new BeltBuild[] { belt }, backSegment);
                     //а если есть и передний, то соединяем их
-                    if(forwardSegment != null && forwardSegment.GetInputCell == beltBuild.transform.Cell)
+                    if(forwardSegment != null && forwardSegment.GetInputCell == belt.transform.Cell)
                         _segmentSystem.MergeSegments(forwardSegment, seg1);
                 }
                 //если же только передний - то присоединяем к нему belt сзади
-                else if (forwardSegment != null &&  forwardSegment.GetInputCell == beltBuild.transform.Cell)
+                else if (forwardSegment != null &&  forwardSegment.GetInputCell == belt.transform.Cell)
                 {
-                    _segmentSystem.AddBeltsToSegment(forwardSegment, new BeltBuild[] { beltBuild });
+                    _segmentSystem.AddBeltsToSegment(forwardSegment, new BeltBuild[] { belt });
                 }
                 // если ничего - создаем новый сегмент
                 else
-                    _segmentSystem.CreateNewSegment(new BeltBuild[] { beltBuild });
+                    _segmentSystem.CreateNewSegment(new BeltBuild[] { belt });
+            }
+        }
+        
+        private void OnBuildDestroy(uint arg1, BaseBuild arg2)
+        {
+            if (belts.TryGetValue(arg1, out var belt))
+            {
+                belts.Remove(arg1);
+                _segmentSystem.RemoveBeltFromSegment(belt.SegmentID, belt);
             }
         }
 
@@ -72,6 +83,8 @@ namespace Factory
         
         public void Dispose()
         {
+            _buildSystem.OnBuildCreated -= OnNewBuild;
+            _buildSystem.OnBuildWillDestroy -= OnBuildDestroy;
             TickSystem.OnFixedTick -= FixedTick;
         }
     }

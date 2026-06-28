@@ -122,7 +122,7 @@ public class GhostBuildView : MonoBehaviour
         {
             var placement = placements[i];
             var (pos, rot) = BuildTransformUtility.GetWorldTransform(
-                new BuildTransform(placement.Position, placement.Rotation, _currentBuild.Size),
+                new BuildTransform(placement.Cell, placement.Rotation, _currentBuild.Size),
                 map);
             _ghosts[i].transform.position = pos;
             _ghosts[i].transform.rotation = rot;

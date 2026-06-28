@@ -69,5 +69,113 @@ namespace Factory
         {
             return MergeSegments(CreateNewSegment(belts), segment);
         }
+
+        public static BeltsSegment[] RemoveBelt(BeltsSegment segment, BeltBuild byBelt)
+        {
+            if(segment.Belts.Length == 1) 
+                return Array.Empty<BeltsSegment>();
+            if(segment.Belts[^1] == byBelt)
+                return new[] { RemoveBeltAtSide(segment, BeltRemoveSide.Last) };
+            else if(segment.Belts[0] == byBelt)
+                return new[] { RemoveBeltAtSide(segment, BeltRemoveSide.First) };
+            return SeparateSegment(segment, byBelt);
+        }
+        public static BeltsSegment[] SeparateSegment(BeltsSegment segment, BeltBuild byBelt)
+        {
+            int splitIndex = Array.IndexOf(segment.Belts, byBelt);
+
+            if (splitIndex <= 0 || splitIndex >= segment.Belts.Length - 1)
+                throw new ArgumentException("Invalid split belt.", nameof(byBelt));
+
+            var leftBelts = new BeltBuild[splitIndex];
+            var rightBelts = new BeltBuild[segment.Belts.Length - splitIndex - 1];
+
+            Array.Copy(segment.Belts, 0, leftBelts, 0, leftBelts.Length);
+            Array.Copy(segment.Belts, splitIndex + 1, rightBelts, 0, rightBelts.Length);
+
+            var leftSegment = CreateNewSegment(leftBelts);
+            var rightSegment = CreateNewSegment(rightBelts);
+
+            var src = segment.Data;
+            var left = leftSegment.Data;
+            var right = rightSegment.Data;
+
+            int rightSize = right.size;
+            int boundary = rightSize + 1; // +1 за счет удаляемого конвейера
+
+            int end = src.head + src.count;
+            for (int i = src.head; i < end; i++)
+            {
+                int j = i % src.items.Length;
+                var item = src.items[j];
+
+                if (item.Progress < rightSize)
+                {
+                    // Предмет остается в правом сегменте
+                    right.items[right.count++] = item;
+                }
+                else if (item.Progress < boundary)
+                {
+                    // Предмет находился на удаляемом конвейере
+                    continue;
+                }
+                else
+                {
+                    // Предмет остается в левом сегменте
+                    item.Progress -= boundary;
+                    left.items[left.count++] = item;
+                }
+            }
+
+            return new[]
+            {
+                leftSegment,
+                rightSegment
+            };
+        }
+        public static BeltsSegment RemoveBeltAtSide(BeltsSegment segment, BeltRemoveSide size)
+        {
+            var belts = new BeltBuild[segment.Belts.Length - 1];
+
+            if (size == BeltRemoveSide.First)
+                Array.Copy(segment.Belts, 1, belts, 0, belts.Length);
+            else
+                Array.Copy(segment.Belts, 0, belts, 0, belts.Length);
+
+            var result = CreateNewSegment(belts);
+
+            var src = segment.Data;
+            var dst = result.Data;
+
+            int end = src.head + src.count;
+            int newSize = dst.size;
+
+            for (int i = src.head; i < end; i++)
+            {
+                int j = i % src.items.Length;
+                var item = src.items[j];
+
+                if (size == BeltRemoveSide.First)
+                {
+                    // предмет находился на удаляемом конвейере
+                    if (item.Progress >= newSize)
+                        continue;
+
+                }
+                else
+                {
+                    // предмет находился на удаляемом конвейере
+                    if (item.Progress < 1)
+                        continue;
+                    item.Progress--;
+                }
+
+                dst.items[dst.count++] = item;
+            }
+
+            return result;
+        }
     }
+    
+    public enum BeltRemoveSide { First, Last }
 }

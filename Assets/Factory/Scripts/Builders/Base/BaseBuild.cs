@@ -15,4 +15,5 @@ public class BaseBuild
     }
     
     public virtual void OnPlaced(){}
+    public virtual void OnDestroyed(){}
 }

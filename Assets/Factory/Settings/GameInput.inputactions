@@ -86,6 +86,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RightPointerDown",
+                    "type": "Button",
+                    "id": "810c2682-e45e-4295-9aff-833ec060e940",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -226,7 +235,7 @@
                     "id": "3f8d0c6e-b79a-4e40-b6d6-79390c66f383",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "Scale(factor=0.1)",
+                    "processors": "Scale(factor=0.01)",
                     "groups": "",
                     "action": "CameraZoom",
                     "isComposite": false,
@@ -262,6 +271,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PointerClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bd74d8c-e4ac-4a85-a28a-df00e2fcc279",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPointerDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -7,14 +7,17 @@ namespace Factory
     public class BuildSystem
     {
         private readonly WorldProvider worldProvider;
-        public Action<uint, BaseBuild> OnBuildCreated;
+        private readonly BuildsDatabase buildsDatabase;
         
-        [Inject]
-        private BuildsDatabase buildsDatabase;
+        public Action<uint, BaseBuild> OnBuildCreated;
+        public Action<uint, BaseBuild> OnBuildWillDestroy;
+        public Action<uint, BaseBuild> OnBuildDestroyed;
+        
 
-        public BuildSystem(WorldProvider worldProvider)
+        public BuildSystem(WorldProvider worldProvider, BuildsDatabase buildsDatabase)
         {
             this.worldProvider = worldProvider;
+            this.buildsDatabase = buildsDatabase;
         }
 
         #region Belt
@@ -95,40 +98,66 @@ namespace Factory
         
         
 
-        public uint CreateBuild(BuildPlacement transform, string buildID)
+        public uint CreateBuild(Vector2Int cell, BuildRotations rotation, string buildID)
         {
             if (buildsDatabase.GetBuild(buildID, out var build))
-                return CreateBuild(transform, build);
+                return CreateBuild(cell, rotation, build);
             Debug.LogError("Build not found with id: " + buildID);
             return 0;
         }
         
-        public uint CreateBuild(BuildPlacement transform, BaseBuildSO buildSO)
+        public uint CreateBuild(Vector2Int cell, BuildRotations rotation, BaseBuildSO buildSO)
         {
-            var tiles = transform.GetOccupiedTiles(buildSO.Size);
+            var tiles = BuildTransformCalculator.GetOccupiedTiles(cell, rotation, buildSO.Size);
             if (CanPlaceBuild(tiles, buildSO))
             {
                 var build = buildSO.CreateBuild(worldProvider.world.GetNextBuildId());
-                build.transform = new BuildTransform()
-                {
-                    Cell = transform.Position,
-                    Rotation = transform.Rotation,
-                    Size = buildSO.Size
-                };
+                build.transform = new BuildTransform(cell, rotation, buildSO.Size);
                 build.OnPlaced();
                 worldProvider.world.Builds.Add(build.id, build);
                 for (var i = 0; i < tiles.Length; i++)
                     worldProvider.world.tiles[tiles[i].x, tiles[i].y] = build.id;
                 OnBuildCreated?.Invoke(build.id, build);
+                return build.id;
             }
-            else return 0;
             
             return 0;
         }
 
-        public bool CanPlaceBuild(BuildPlacement transform, BaseBuildSO buildSO)
+        public void DestroyBuild(Vector2Int atCell)
         {
-            var tiles = transform.GetOccupiedTiles(buildSO.Size);
+            var buildId = worldProvider.world.tiles[atCell.x, atCell.y];
+            if(buildId > 0)
+                DestroyBuild(buildId);
+        }
+
+        public void DestroyBuild(uint buildId)
+        {
+            if(worldProvider.world.Builds.TryGetValue(buildId, out var build))
+                DestroyBuild(build);
+        }
+
+        public void DestroyBuild(BaseBuild build)
+        {
+            if (!worldProvider.world.Builds.ContainsKey(build.id))
+            {
+                Debug.LogError($"Build {build.id} already destroyed");
+                return;
+            }
+            
+            OnBuildWillDestroy?.Invoke(build.id, build);
+            build.OnDestroyed();
+            var tiles = build.transform.GetOccupiedTiles();
+            for (var i = 0; i < tiles.Length; i++)
+                worldProvider.world.tiles[tiles[i].x, tiles[i].y] = 0;
+            worldProvider.world.Builds.Remove(build.id);
+            OnBuildDestroyed?.Invoke(build.id, build);
+        }
+
+
+        public bool CanPlaceBuild(Vector2Int cell, BuildRotations rotation, BaseBuildSO buildSO)
+        {
+            var tiles = BuildTransformCalculator.GetOccupiedTiles(cell, rotation, buildSO.Size);
             return CanPlaceBuild(tiles, buildSO);
         }
         public bool CanPlaceBuild(Vector2Int[] tiles, BaseBuildSO buildSO) => worldProvider.world.IsAreaFree(tiles);

@@ -25,6 +25,7 @@ namespace Factory.Input
         public bool PointerClick =>  input.General.PointerClick.WasPressedThisFrame();
         public bool RotateBuildingPressed => input.General.RotateBuilding.WasPressedThisFrame();
         public bool BuildPressed => input.General.PlaceBuilding.WasPressedThisFrame();
+        public bool DestroyBuildPressed => input.General.RightPointerDown.WasPressedThisFrame();
         public bool CancelPressed => input.General.Cancel.WasPressedThisFrame();
     }
 }

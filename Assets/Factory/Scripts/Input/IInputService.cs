@@ -14,6 +14,7 @@ namespace Factory.Input
 
         bool RotateBuildingPressed { get; }
         bool BuildPressed { get; }
+        bool DestroyBuildPressed { get; }
         bool CancelPressed { get; }
     }
 }

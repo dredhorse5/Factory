@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Factory
 {
     public class BeltsSegmentSystem
     {
-        private readonly Dictionary<uint, BeltsSegment> beltsSegments = new();
-        public IEnumerable<BeltsSegment> Segments => beltsSegments.Values;
+        private readonly Dictionary<uint, BeltsSegment> segments = new();
+        public IEnumerable<BeltsSegment> Segments => segments.Values;
 
         private uint lastBeltSegmentId;
         
@@ -19,7 +20,7 @@ namespace Factory
 
             segment.SetID(lastBeltSegmentId);
 
-            beltsSegments.Add(lastBeltSegmentId, segment);
+            segments.Add(lastBeltSegmentId, segment);
             OnSegmentCreated?.Invoke(segment);
 
             return lastBeltSegmentId;
@@ -38,18 +39,18 @@ namespace Factory
             newSegment.SetID(oldSegment.Id);
 
             OnSegmentRemoved?.Invoke(oldSegment);
-            beltsSegments[oldSegment.Id] = newSegment;
+            segments[oldSegment.Id] = newSegment;
             OnSegmentCreated?.Invoke(newSegment);
         }
 
         public void UnregisterSegment(BeltsSegment segment) => UnregisterSegment(segment.Id);
         public void UnregisterSegment(uint id)
         {
-            if (!beltsSegments.TryGetValue(id, out var segment))
+            if (!segments.TryGetValue(id, out var segment))
                 throw new InvalidOperationException(
                     $"Segment {id} not found");
             OnSegmentRemoved?.Invoke(segment);
-            beltsSegments.Remove(id);
+            segments.Remove(id);
         }
 
         public BeltsSegment GetSegment(uint id)
@@ -57,14 +58,14 @@ namespace Factory
             if (id == 0)
                 return null;
 
-            beltsSegments.TryGetValue(id, out var segment);
+            segments.TryGetValue(id, out var segment);
 
             return segment;
         }
 
         public bool TryGetSegment(uint id, out BeltsSegment segment)
         {
-            return beltsSegments.TryGetValue(id, out segment);
+            return segments.TryGetValue(id, out segment);
         }
 
         /// ⬅a⬅ + ⬅b⬅ = ⬅ab⬅
@@ -96,10 +97,32 @@ namespace Factory
             return seg;
         }
 
+        public void RemoveBeltFromSegment(uint segmentId, BeltBuild byBelt)
+        {
+            if(segments.TryGetValue(segmentId, out var segment))
+                RemoveBeltFromSegment(segment, byBelt);
+            else
+                Debug.LogWarning($"Segment {segmentId} not found");
+        }
+
+        public void RemoveBeltFromSegment(BeltsSegment segment, BeltBuild byBelt)
+        {
+            if(segment.Data.size == 1)
+            {
+                UnregisterSegment(segment);
+                return;
+            }
+            var newSegments = SegmentsCalculator.RemoveBelt(segment, byBelt);
+            ReRegisterSegment(segment, newSegments[0]);
+            if (newSegments.Length == 2)
+                RegisterSegment(newSegments[1]);
+        }
+
         public void Tick(float dt)
         {
-            foreach (var segment in beltsSegments.Values)
+            foreach (var segment in segments.Values)
                 segment.Tick(dt);
         }
+
     }
 }

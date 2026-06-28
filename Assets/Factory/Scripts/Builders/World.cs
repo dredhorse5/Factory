@@ -8,7 +8,7 @@ namespace Factory
     public class World
     {
         public Dictionary<uint, BaseBuild> Builds = new Dictionary<uint, BaseBuild>();
-        public Dictionary<Vector2Int, uint> OccupiedTiles = new Dictionary<Vector2Int, uint>();
+        //public Dictionary<Vector2Int, uint> OccupiedTiles = new Dictionary<Vector2Int, uint>();
         public uint[,] tiles;
         public uint[,] terrain;
         
@@ -21,7 +21,7 @@ namespace Factory
         
         public uint GetNextBuildId() => ++nextBuildId;
         
-        public bool GetOccupiedTileID(Vector2Int position, out uint id)
+        /*public bool GetOccupiedTileID(Vector2Int position, out uint id)
         {
             if (OccupiedTiles.ContainsKey(position))
             {
@@ -31,7 +31,7 @@ namespace Factory
 
             id = 0;
             return false;
-        }
+        }*/
 
         public bool TryGetBuildID(Vector2Int pos, out uint id)
         {

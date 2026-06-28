@@ -50,10 +50,17 @@ public class GhostBuildSystem : ITickable
             currentMode.Clear();
             var ghostPlacements = currentMode.GetGhostPlacements();
             for (int i = 0; i < ghostPlacements.Length; i++)
-                buildSystem.CreateBuild(ghostPlacements[i], SelectedBuild);
+                buildSystem.CreateBuild(ghostPlacements[i].Cell,ghostPlacements[i].Rotation, SelectedBuild);
         }
     }
-    
+
+    public void DestroyBuild()
+    {
+        var ghostPlacements = currentMode.GetGhostPlacements();
+        for (int i = 0; i < ghostPlacements.Length; i++)
+            buildSystem.DestroyBuild(ghostPlacements[i].Cell);
+    }
+
     public BuildPlacement[] GetGhostPlacements() => currentMode.GetGhostPlacements();
 
     public void Cancel()
@@ -75,6 +82,8 @@ public class GhostBuildSystem : ITickable
                 PlaceDataChanged?.Invoke();
             if (input.BuildPressed && !input.IsPointerOverUI)
                 Build();
+            if (input.DestroyBuildPressed && !input.IsPointerOverUI)
+                DestroyBuild();
             if(input.CancelPressed)
                 Cancel();
         }

@@ -20,15 +20,18 @@ namespace Factory
         [Inject] BuildSystem  buildSystem;
         
         public event Action<uint, BaseBuildView> OnCreated;
+        public event Action<uint, BaseBuildView> OnWillDestroy;
+        public event Action<uint> OnDestroyed;
         
         private void Start()
         {
             buildSystem.OnBuildCreated += CreateBuild;
+            buildSystem.OnBuildWillDestroy += DestroyBuild;
         }
-
         private void OnDestroy()
         {
             buildSystem.OnBuildCreated -= CreateBuild;
+            buildSystem.OnBuildWillDestroy -= DestroyBuild;
         }
 
         private void Update()
@@ -48,6 +51,20 @@ namespace Factory
                 OnCreated?.Invoke(obj, view);
             }
         }
+        
+        private void DestroyBuild(uint arg1, BaseBuild arg2)
+        {
+            if (builds.TryGetValue(arg1, out var view))
+            {
+                OnWillDestroy?.Invoke(arg1, view);
+                Destroy(view.gameObject);
+                builds.Remove(arg1);
+                OnDestroyed?.Invoke(arg1);
+            }
+            else
+                Debug.LogWarning($"Build {arg1} not found");
+        }
+
         
         /*private void CreateBelt(uint obj)
         {

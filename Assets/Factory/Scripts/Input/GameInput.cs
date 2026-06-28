@@ -172,6 +172,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightPointerDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""810c2682-e45e-4295-9aff-833ec060e940"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -312,7 +321,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""id"": ""3f8d0c6e-b79a-4e40-b6d6-79390c66f383"",
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
-                    ""processors"": ""Scale(factor=0.1)"",
+                    ""processors"": ""Scale(factor=0.01)"",
                     ""groups"": """",
                     ""action"": ""CameraZoom"",
                     ""isComposite"": false,
@@ -350,6 +359,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""PointerClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bd74d8c-e4ac-4a85-a28a-df00e2fcc279"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightPointerDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -367,6 +387,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_General_Point = m_General.FindAction("Point", throwIfNotFound: true);
         m_General_PointerDown = m_General.FindAction("PointerDown", throwIfNotFound: true);
         m_General_PointerClick = m_General.FindAction("PointerClick", throwIfNotFound: true);
+        m_General_RightPointerDown = m_General.FindAction("RightPointerDown", throwIfNotFound: true);
     }
 
     ~@GameInput()
@@ -456,6 +477,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_Point;
     private readonly InputAction m_General_PointerDown;
     private readonly InputAction m_General_PointerClick;
+    private readonly InputAction m_General_RightPointerDown;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -503,6 +525,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "General/PointerClick".
         /// </summary>
         public InputAction @PointerClick => m_Wrapper.m_General_PointerClick;
+        /// <summary>
+        /// Provides access to the underlying input action "General/RightPointerDown".
+        /// </summary>
+        public InputAction @RightPointerDown => m_Wrapper.m_General_RightPointerDown;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -556,6 +582,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @PointerClick.started += instance.OnPointerClick;
             @PointerClick.performed += instance.OnPointerClick;
             @PointerClick.canceled += instance.OnPointerClick;
+            @RightPointerDown.started += instance.OnRightPointerDown;
+            @RightPointerDown.performed += instance.OnRightPointerDown;
+            @RightPointerDown.canceled += instance.OnRightPointerDown;
         }
 
         /// <summary>
@@ -594,6 +623,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @PointerClick.started -= instance.OnPointerClick;
             @PointerClick.performed -= instance.OnPointerClick;
             @PointerClick.canceled -= instance.OnPointerClick;
+            @RightPointerDown.started -= instance.OnRightPointerDown;
+            @RightPointerDown.performed -= instance.OnRightPointerDown;
+            @RightPointerDown.canceled -= instance.OnRightPointerDown;
         }
 
         /// <summary>
@@ -697,5 +729,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPointerClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RightPointerDown" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRightPointerDown(InputAction.CallbackContext context);
     }
 }

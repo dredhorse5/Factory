@@ -50,10 +50,10 @@ namespace Factory.GhostBuild
 
         private void SetPosition(Vector2Int position)
         {
-            if (position != buildPlacement.Position)
+            if (position != buildPlacement.Cell)
                 _version++;
-            buildPlacement.Position = position;
-            isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
+            buildPlacement.Cell = position;
+            isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement.Cell, buildPlacement.Rotation, selectedBuild);
         }
 
         private void Rotate(bool right = true)
@@ -80,7 +80,7 @@ namespace Factory.GhostBuild
             if (rotation != buildPlacement.Rotation)
                 _version++;
             buildPlacement.Rotation = rotation;
-            isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement, selectedBuild);
+            isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement.Cell, buildPlacement.Rotation, selectedBuild);
         }
 
 

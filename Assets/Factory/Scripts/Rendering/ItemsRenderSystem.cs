@@ -18,17 +18,25 @@ namespace Factory
         private void Start()
         {
             _renderSystem.OnCreated += TryAddBeltView;
+            _renderSystem.OnWillDestroy += TryRemoveBeltView;
         }
-
+        
         private void OnDestroy()
         {
             _renderSystem.OnCreated -= TryAddBeltView;
+            _renderSystem.OnWillDestroy -= TryRemoveBeltView;
         }
 
         private void TryAddBeltView(uint arg1, BaseBuildView arg2)
         {
             if(arg2 is BeltView beltView)
                 _beltViews.Add(arg1, beltView);
+        }
+        
+        private void TryRemoveBeltView(uint arg1, BaseBuildView arg2)
+        {
+            if(_beltViews.ContainsKey(arg1))
+                _beltViews.Remove(arg1);
         }
 
         private void Update()
@@ -46,7 +54,6 @@ namespace Factory
 
                     RenderItem(item.Id, view.GetItemPosition(item.Progress - cellProgress));
                 }
-
             }
         }
         
