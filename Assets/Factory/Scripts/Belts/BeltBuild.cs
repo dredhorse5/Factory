@@ -8,7 +8,7 @@ public class BeltBuild : BaseBuild
     public BeltDirections InputDirection;
     public BeltDirections OutputDirection;
 
-    public BeltBuild(uint id, string soId) : base(id, soId) { }
+    public BeltBuild(uint id, string soId, BaseBuildData data) : base(id, soId, data) { }
     public override void OnPlaced()
     {
         InputDirection = Rotate(BeltDirections.Down, (int)transform.Rotation);
@@ -20,3 +20,9 @@ public class BeltBuild : BaseBuild
     }
 }
 public enum BeltDirections {NONE = -1, Up = 0, Right = 1, Down = 2, Left = 3 };
+
+[Serializable]
+public class BeltBuildData : BaseBuildData
+{
+    
+}

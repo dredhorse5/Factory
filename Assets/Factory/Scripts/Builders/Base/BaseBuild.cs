@@ -7,11 +7,14 @@ public class BaseBuild
     public readonly uint id;
     public readonly string SoId;
     public BuildTransform transform;
+    public BaseBuildData data;
+    
 
-    public BaseBuild(uint id, string soId)
+    public BaseBuild(uint id, string soId, BaseBuildData data)
     {
         this.id = id;
-        SoId = soId;
+        this.SoId = soId;
+        this.data = data;
     }
     
     public virtual void OnPlaced(){}
