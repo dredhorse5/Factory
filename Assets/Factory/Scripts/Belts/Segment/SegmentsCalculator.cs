@@ -109,17 +109,17 @@ namespace Factory
                 int j = i % src.items.Length;
                 var item = src.items[j];
 
-                if (item.Progress < rightSize)
+                if (item.Progress <= rightSize)
                 {
                     // Предмет остается в правом сегменте
                     right.items[right.count++] = item;
                 }
-                else if (item.Progress < boundary)
+                else if (item.Progress <= boundary)
                 {
                     // Предмет находился на удаляемом конвейере
                     continue;
                 }
-                else
+                else if(left.count < left.items.Length)
                 {
                     // Предмет остается в левом сегменте
                     item.Progress -= boundary;
@@ -152,6 +152,8 @@ namespace Factory
 
             for (int i = src.head; i < end; i++)
             {
+                if(dst.items.Length <= i)
+                    break;
                 int j = i % src.items.Length;
                 var item = src.items[j];
 
