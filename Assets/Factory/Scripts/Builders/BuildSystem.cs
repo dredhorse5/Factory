@@ -98,20 +98,20 @@ namespace Factory
         
         
 
-        public uint CreateBuild(Vector2Int cell, BuildRotations rotation, string buildID)
+        public uint CreateBuild(Vector2Int cell, BuildRotations rotation, string buildID, BaseBuildData data)
         {
             if (buildsDatabase.GetBuild(buildID, out var build))
-                return CreateBuild(cell, rotation, build);
+                return CreateBuild(cell, rotation, build, data);
             Debug.LogError("Build not found with id: " + buildID);
             return 0;
         }
         
-        public uint CreateBuild(Vector2Int cell, BuildRotations rotation, BaseBuildSO buildSO)
+        public uint CreateBuild(Vector2Int cell, BuildRotations rotation, BaseBuildSO buildSO, BaseBuildData data)
         {
             var tiles = BuildTransformCalculator.GetOccupiedTiles(cell, rotation, buildSO.Size);
             if (CanPlaceBuild(tiles, buildSO))
             {
-                var build = buildSO.CreateBuild(worldProvider.world.GetNextBuildId());
+                var build = buildSO.CreateBuild(worldProvider.world.GetNextBuildId(), data);
                 build.transform = new BuildTransform(cell, rotation, buildSO.Size);
                 build.OnPlaced();
                 worldProvider.world.Builds.Add(build.id, build);

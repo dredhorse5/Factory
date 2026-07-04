@@ -91,7 +91,7 @@ namespace Factory
                 return;
             for (var i = 0; i < itemPoints.Length; i++)
             {
-                Gizmos.DrawSphere(transform.position + transform.rotation * itemPoints[i], .2f);
+                Gizmos.DrawSphere(transform.position + transform.rotation * itemPoints[i], .08f);
                 Gizmos.color = Color.green;
             }
         }

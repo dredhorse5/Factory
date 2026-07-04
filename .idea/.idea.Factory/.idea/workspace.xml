@@ -11,13 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9c5b78a-de25-42b1-839e-3b62037abb0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Builds/Belt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Builds/Belt.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuild.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/GhostBuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/GhostBuildSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Stuff/Stuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Stuff/Stuff.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Stuff/StuffSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Stuff/StuffSo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/RenderSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/RenderSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,61 +87,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.00000000204394" />
-      <entry key="S2" value="1.0067238357856303" />
-      <entry key="S5" value="1.1354688661639754" />
-      <entry key="S10" value="1.3834425425413146" />
-      <entry key="S30" value="1.9669455117948802" />
-      <entry key="S60" value="2.35813266942575" />
-      <entry key="M2" value="2.883463248908054" />
-      <entry key="M5" value="4.53132284497922" />
-      <entry key="M10" value="6.161600327874893" />
-      <entry key="M15" value="7.219880845988606" />
-      <entry key="M30" value="10.328036354741203" />
-      <entry key="H1" value="17.35089987941034" />
-      <entry key="H2" value="29.20706983642251" />
-      <entry key="H4" value="48.567177391306835" />
-      <entry key="D1" value="471.1176006650276" />
-      <entry key="W1" value="1634.965572766254" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="7.572307130458017E-120" />
+      <entry key="S5" value="4.980422278089397E-48" />
+      <entry key="S10" value="5.092377953312735E-24" />
+      <entry key="S30" value="6.546836042372476E-8" />
+      <entry key="S60" value="8.510679974469605E-4" />
+      <entry key="M2" value="0.12335369071176933" />
+      <entry key="M5" value="3.675725611017762" />
+      <entry key="M10" value="15.90042202325566" />
+      <entry key="M15" value="29.808398066846195" />
+      <entry key="M30" value="68.90296546016515" />
+      <entry key="H1" value="123.03525626697078" />
+      <entry key="H2" value="178.67150452063393" />
+      <entry key="H4" value="229.6786674030374" />
+      <entry key="D1" value="672.6159415821272" />
+      <entry key="W1" value="1855.069024284207" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.0982966745630234E-150" />
-      <entry key="MS500" value="1.2622757837998513E-30" />
-      <entry key="S2" value="6.042774434062378E-8" />
-      <entry key="S5" value="0.002438643723910527" />
-      <entry key="S10" value="0.08514384544728686" />
-      <entry key="S30" value="0.9145905706616487" />
-      <entry key="S60" value="1.6808676324921552" />
-      <entry key="M2" value="2.4880592967681023" />
-      <entry key="M5" value="3.9392927976283656" />
-      <entry key="M10" value="5.088337016637379" />
-      <entry key="M15" value="5.720124667872717" />
-      <entry key="M30" value="7.096083548600193" />
-      <entry key="H1" value="9.062696834943939" />
-      <entry key="H2" value="11.196503073821013" />
-      <entry key="H4" value="15.754422295274935" />
-      <entry key="D1" value="160.82223048938647" />
-      <entry key="W1" value="577.9135469899172" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000017238574441" />
+      <entry key="S2" value="1.0644355199246742" />
+      <entry key="S5" value="1.3339259228367093" />
+      <entry key="S10" value="1.5778632388694667" />
+      <entry key="S30" value="1.8329621055458003" />
+      <entry key="S60" value="1.927027731003373" />
+      <entry key="M2" value="2.3130684570194973" />
+      <entry key="M5" value="6.202222353430158" />
+      <entry key="M10" value="15.635399183960159" />
+      <entry key="M15" value="23.956691457538632" />
+      <entry key="M30" value="41.14393809634423" />
+      <entry key="H1" value="59.63454896509155" />
+      <entry key="H2" value="76.02964887463249" />
+      <entry key="H4" value="90.04262556706192" />
+      <entry key="D1" value="239.32207113274714" />
+      <entry key="W1" value="662.1011414340919" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.18556544632863112" />
-      <entry key="MS500" value="0.7140019912918286" />
-      <entry key="S2" value="0.9254015213236184" />
-      <entry key="S5" value="1.1000548126681102" />
-      <entry key="S10" value="1.4426739592443762" />
-      <entry key="S30" value="2.8605842128733987" />
-      <entry key="S60" value="4.022993178240245" />
-      <entry key="M2" value="5.3590205559360795" />
-      <entry key="M5" value="8.459953284880719" />
-      <entry key="M10" value="11.241953224627586" />
-      <entry key="M15" value="12.933726123531825" />
-      <entry key="M30" value="17.42002984489067" />
-      <entry key="H1" value="26.410792300648303" />
-      <entry key="H2" value="40.40161848596923" />
-      <entry key="H4" value="64.31998809839475" />
-      <entry key="D1" value="631.9363979171768" />
-      <entry key="W1" value="2212.8772404205833" />
+      <entry key="MS100" value="1.5320089856625575E-8" />
+      <entry key="MS500" value="0.02736268559256453" />
+      <entry key="S2" value="0.45757868188923156" />
+      <entry key="S5" value="1.0016020750537584" />
+      <entry key="S10" value="1.386539433714202" />
+      <entry key="S30" value="1.761741665332049" />
+      <entry key="S60" value="1.8910738626124683" />
+      <entry key="M2" value="2.4159073885237325" />
+      <entry key="M5" value="9.855878466015248" />
+      <entry key="M10" value="31.50318666626672" />
+      <entry key="M15" value="53.72933362657586" />
+      <entry key="M30" value="110.01353707714921" />
+      <entry key="H1" value="182.6443791633268" />
+      <entry key="H2" value="254.6844525379798" />
+      <entry key="H4" value="319.7111714508963" />
+      <entry key="D1" value="911.9330820476213" />
+      <entry key="W1" value="2517.1680557712707" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -188,7 +196,9 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\UnityProjects\Factory -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProjects\Factory" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -196,24 +206,34 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProjects\Factory -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProjects\Factory" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="44921">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="44921" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list>
+          <MonoRuntime />
+        </list>
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -287,5 +307,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="DotNet_Exception_Breakpoints" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -53,6 +53,40 @@ namespace Factory
                 // если ничего - создаем новый сегмент
                 else
                     _segmentSystem.CreateNewSegment(new BeltBuild[] { belt });
+
+                TryRotateBackwardBelt(belt);
+            }
+        }
+
+        private void TryRotateBackwardBelt(BeltBuild toBelt)
+        {
+            var cell = toBelt.GetInputCell();
+            var buildid = _world.world.tiles[cell.x,cell.y];
+            if (buildid > 0)
+            {
+                if(_world.world.TryGetBuild(buildid, out var build))
+                {
+                    if (build is BeltBuild belt)
+                    {
+                        var cellFromRight = belt.GetCellFromRight();
+                        var cellFromLeft = belt.GetCellFromLeft();
+                        
+                        if (cellFromRight == toBelt.transform.Cell)
+                        {
+                            _buildSystem.DestroyBuild(cell);
+                            var data = belt.beltData;
+                            data.Shape = BeltShapes.CornerRight;
+                            _buildSystem.CreateBuild(belt.transform.Cell, belt.transform.Rotation, "Belt", data);
+                        }
+                        else if (cellFromLeft == toBelt.transform.Cell)
+                        {
+                            _buildSystem.DestroyBuild(cell);
+                            var data = belt.beltData;
+                            data.Shape = BeltShapes.CornerLeft;
+                            _buildSystem.CreateBuild(belt.transform.Cell, belt.transform.Rotation, "Belt", data);
+                        }
+                    }
+                }
             }
         }
         

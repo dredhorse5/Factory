@@ -50,7 +50,7 @@ public class GhostBuildSystem : ITickable
             currentMode.Clear();
             var ghostPlacements = currentMode.GetGhostPlacements();
             for (int i = 0; i < ghostPlacements.Length; i++)
-                buildSystem.CreateBuild(ghostPlacements[i].Cell,ghostPlacements[i].Rotation, SelectedBuild);
+                buildSystem.CreateBuild(ghostPlacements[i].Cell,ghostPlacements[i].Rotation, SelectedBuild, new BaseBuildData());
         }
     }
 
