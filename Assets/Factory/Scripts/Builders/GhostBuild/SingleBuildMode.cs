@@ -34,12 +34,12 @@ namespace Factory.GhostBuild
         public void Enter(BaseBuildSO buildSO)
         {
             selectedBuild = buildSO;
-            SetPosition(cursor.GetLookAtCell());
+            SetCell(cursor.GetLookAtCell());
         }
         
         public void Tick()
         {
-            SetPosition(cursor.GetCellUnderCursor());
+            SetCell(cursor.GetCellUnderCursor());
             if (input.RotateBuildingPressed)
                 Rotate(true);
             if(input.PointerClick && !input.IsPointerOverUI)
@@ -48,11 +48,11 @@ namespace Factory.GhostBuild
         
         public void Clear() { }
 
-        private void SetPosition(Vector2Int position)
+        private void SetCell(Cell cell)
         {
-            if (position != buildPlacement.Cell)
+            if (cell != buildPlacement.Cell)
                 _version++;
-            buildPlacement.Cell = position;
+            buildPlacement.Cell = cell;
             isPlaceFree = buildSystem.CanPlaceBuild(buildPlacement.Cell, buildPlacement.Rotation, selectedBuild);
         }
 

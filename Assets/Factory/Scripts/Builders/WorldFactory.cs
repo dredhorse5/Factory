@@ -16,7 +16,7 @@ namespace Factory
             var world = new World(width, height);
 
             world.terrain = _generator.GenerateTerrain(width, height);
-            world.tiles = _generator.GenerateBuilds(width, height);
+            world.cells = _generator.GenerateBuilds(width, height);
 
             return world;
         }

@@ -11,14 +11,14 @@ public class Map : MonoBehaviour
     private PrefabDatabase prefabDatabase;
     private WorldProvider worldProvider;
     
-    public Vector3 GetPosition(Vector2Int cell)
+    public Vector3 GetPosition(Cell cell)
     {
         return new Vector3(cell.x * CellSize, 0, cell.y * CellSize);
     }
 
-    public Vector2Int GetCellByPosition(Vector3 position)
+    public Cell GetCellByPosition(Vector3 position)
     {
-        return new Vector2Int(Mathf.RoundToInt(position.x / CellSize), Mathf.RoundToInt(position.z / CellSize));
+        return new Cell(Mathf.RoundToInt(position.x / CellSize), Mathf.RoundToInt(position.z / CellSize));
     }
 
 
@@ -38,7 +38,7 @@ public class Map : MonoBehaviour
             {
                 var id = worldProvider.world.terrain[x,y];
                 var prefab = prefabs[id];
-                Instantiate(prefab, GetPosition(new Vector2Int(x, y)), Quaternion.Euler(0,Random.Range(0,4) * 90f,0), transform);
+                Instantiate(prefab, GetPosition(new Cell(x, y)), Quaternion.Euler(0,Random.Range(0,4) * 90f,0), transform);
             }
         }
     }

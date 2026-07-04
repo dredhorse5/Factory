@@ -13,7 +13,7 @@ namespace Factory
         private readonly BeltsSegmentSystem _segmentSystem;
 
         private readonly Dictionary<uint, BeltBuild> belts = new();
-
+        private readonly Queue<BeltBuild> dirtyBelts = new();
         [Inject]
         public BeltSystem(WorldProvider world, BuildSystem buildSystem, BeltsSegmentSystem segmentSystem)
         {
@@ -32,9 +32,11 @@ namespace Factory
         {
             if (build is BeltBuild belt)
             {
+                MarkDirty(belt);
+                
                 belts.Add(obj, belt);
                 
-                var backSegment = GetSegmentAtCell(belt.GetInputCell());
+                /*var backSegment = GetSegmentAtCell(belt.GetInputCell());
                 var forwardSegment = GetSegmentAtCell(belt.GetOutputCell());
                 
                 // есть сегмент сзади, то добавляем к нему новый belt
@@ -54,14 +56,14 @@ namespace Factory
                 else
                     _segmentSystem.CreateNewSegment(new BeltBuild[] { belt });
 
-                TryRotateBackwardBelt(belt);
+                TryRotateBackwardBelt(belt);*/
             }
         }
 
         private void TryRotateBackwardBelt(BeltBuild toBelt)
         {
             var cell = toBelt.GetInputCell();
-            var buildid = _world.world.tiles[cell.x,cell.y];
+            var buildid = _world.world.cells[cell.x,cell.y];
             if (buildid > 0)
             {
                 if(_world.world.TryGetBuild(buildid, out var build))
@@ -73,17 +75,15 @@ namespace Factory
                         
                         if (cellFromRight == toBelt.transform.Cell)
                         {
-                            _buildSystem.DestroyBuild(cell);
                             var data = belt.beltData;
                             data.Shape = BeltShapes.CornerRight;
-                            _buildSystem.CreateBuild(belt.transform.Cell, belt.transform.Rotation, "Belt", data);
+                            _buildSystem.ReconfigureBuild(belt, data);
                         }
                         else if (cellFromLeft == toBelt.transform.Cell)
                         {
-                            _buildSystem.DestroyBuild(cell);
                             var data = belt.beltData;
                             data.Shape = BeltShapes.CornerLeft;
-                            _buildSystem.CreateBuild(belt.transform.Cell, belt.transform.Rotation, "Belt", data);
+                            _buildSystem.ReconfigureBuild(belt, data);
                         }
                     }
                 }
@@ -99,7 +99,7 @@ namespace Factory
             }
         }
 
-        private BeltsSegment GetSegmentAtCell(Vector2Int cell)
+        private BeltsSegment GetSegmentAtCell(Cell cell)
         {
             if (!_world.world.TryGetBuild(cell, out var build))
                 return null;
@@ -114,7 +114,16 @@ namespace Factory
         {
             _segmentSystem.Tick(tickTime);
         }
-        
+
+        private void TryAddDirty(Cell cell)
+        {
+            
+        }
+        private void MarkDirty(BeltBuild belt)
+        {
+            if(!dirtyBelts.Contains(belt))
+                dirtyBelts.Enqueue(belt);
+        }
         public void Dispose()
         {
             _buildSystem.OnBuildCreated -= OnNewBuild;

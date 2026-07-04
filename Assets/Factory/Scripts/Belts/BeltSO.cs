@@ -8,12 +8,12 @@ namespace Factory
         public BaseBuildView CornerLeftPrefab;
         public BaseBuildView CornerRightPrefab;
         
-        public override BaseBuild CreateBuild(uint id, BaseBuildData data)
+        public override BaseBuild CreateBuild(uint id, IBuildData data)
         {
             return new BeltBuild(id, ID, data);
         }
 
-        public override BaseBuildView GetPrefabView(BaseBuildData data)
+        public override BaseBuildView GetPrefabView(IBuildData data)
         {
             if (data is BeltBuildData beltData)
             {

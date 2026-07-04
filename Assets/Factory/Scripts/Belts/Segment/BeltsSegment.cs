@@ -13,11 +13,11 @@ namespace Factory
         private IItemInput output; // для сегмента конвейеров выход - это вход какого-нибудь завода
         private IItemOutput input; // и наоборот - для конвейеров это вход
 
-        public Vector2Int GetOutputCell => belts[0].GetOutputCell();
-        public Vector2Int GetInputCell => belts[^1].GetInputCell();
+        public Cell GetOutputCell => belts[0].GetOutputCell();
+        public Cell GetInputCell => belts[^1].GetInputCell();
 
-        public Vector2Int GetHeadCell => belts[0].transform.Cell;
-        public Vector2Int GetTailCell => belts[^1].transform.Cell;
+        public Cell GetHeadCell => belts[0].transform.Cell;
+        public Cell GetTailCell => belts[^1].transform.Cell;
 
         public BeltsSegmentData Data => data;
         public uint Id => id;
@@ -79,7 +79,6 @@ namespace Factory
             if (data.count == 0)
                 return true;
             
-            //var tail = (data.head + data.count) % data.items.Length;
             var lastItem = (data.head + data.count - 1 + data.items.Length) % data.items.Length;
             if(data.items[lastItem].Progress - BeltSettings.MinDistanceBetweenItems > 0)
                 return true;

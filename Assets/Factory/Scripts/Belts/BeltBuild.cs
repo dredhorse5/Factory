@@ -5,32 +5,36 @@ using UnityEngine.Serialization;
 public class BeltBuild : BaseBuild
 {
     public uint SegmentID;
-    public BeltDirections InputDirection;
-    public BeltDirections OutputDirection;
+    public CellDirections InputDirection;
+    public CellDirections OutputDirection;
+    
+    public BeltBuildData beltData => GetData<BeltBuildData>();
 
-    public BeltBuildData beltData;
+    public BeltBuild(uint id, string soId, IBuildData data) : base(id, soId, data) { }
 
-    public BeltBuild(uint id, string soId, BaseBuildData data) : base(id, soId, data)
+    public override void SetData(IBuildData data)
     {
-        if (data is BeltBuildData beltData)
-            this.beltData = beltData;
-        else
-            this.beltData = new BeltBuildData();
+        if(data == null) this.data = new BeltBuildData();
+        else if (data is BeltBuildData beltData) this.data = beltData;
+        else this.data = new BeltBuildData();
     }
-    public override void OnPlaced()
+
+    public override void OnPlaced() => UpdateDirections();
+    public override void OnReconfigured() => UpdateDirections();
+
+    private void UpdateDirections()
     {
-        InputDirection = Rotate(BeltDirections.Down, (int)transform.Rotation);
-        OutputDirection = Rotate(BeltDirections.Down, (int)transform.Rotation + (int)beltData.Shape);
+        InputDirection = Rotate(CellDirections.Down, (int)transform.Rotation);
+        OutputDirection = Rotate(CellDirections.Down, (int)transform.Rotation + (int)beltData.Shape);
     }
-    private BeltDirections Rotate(BeltDirections dir, int rotation)
+    private CellDirections Rotate(CellDirections dir, int rotation)
     {
-        return (BeltDirections)(((int)dir + rotation) % 4);
+        return (CellDirections)(((int)dir + rotation) % 4);
     }
 }
-public enum BeltDirections {NONE = -1, Up = 0, Right = 1, Down = 2, Left = 3 };
 
 [Serializable]
-public class BeltBuildData : BaseBuildData
+public class BeltBuildData : IBuildData
 {
     public BeltShapes Shape;
 }

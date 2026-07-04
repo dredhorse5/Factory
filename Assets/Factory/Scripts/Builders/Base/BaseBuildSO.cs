@@ -8,10 +8,10 @@ public abstract class BaseBuildSO : ScriptableObject
     public Vector2Int Size;
     public BaseBuildView Prefab;
 
-    public virtual BaseBuild CreateBuild(uint id, BaseBuildData data)
+    public virtual BaseBuild CreateBuild(uint id, IBuildData data)
     {
         return new BaseBuild(id, ID, data);
     }
 
-    public virtual BaseBuildView GetPrefabView(BaseBuildData data) => Prefab;
+    public virtual BaseBuildView GetPrefabView(IBuildData data) => Prefab;
 }

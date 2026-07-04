@@ -18,7 +18,7 @@ namespace Factory
             this.input = input;
         }
 
-        public Vector2Int GetCellUnderCursor()
+        public Cell GetCellUnderCursor()
         {
             Ray ray = camera.Camera.ScreenPointToRay(input.Point);
 
@@ -28,7 +28,7 @@ namespace Factory
             return map.GetCellByPosition(ray.origin + ray.direction * 10f);
         }
         
-        public Vector2Int GetLookAtCell()
+        public Cell GetLookAtCell()
         {
             return map.GetCellByPosition(camera.transform.position);
         }

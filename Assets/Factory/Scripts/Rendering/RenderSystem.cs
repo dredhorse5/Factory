@@ -26,11 +26,14 @@ namespace Factory
         {
             buildSystem.OnBuildCreated += CreateBuild;
             buildSystem.OnBuildWillDestroy += DestroyBuild;
+            buildSystem.OnBuildReconfigured += ReconfigureBuild;
         }
+
         private void OnDestroy()
         {
             buildSystem.OnBuildCreated -= CreateBuild;
             buildSystem.OnBuildWillDestroy -= DestroyBuild;
+            buildSystem.OnBuildReconfigured -= ReconfigureBuild;
         }
 
         private void CreateBuild(uint obj, BaseBuild build)
@@ -56,6 +59,12 @@ namespace Factory
             }
             else
                 Debug.LogWarning($"Build {arg1} not found");
+        }
+        
+        private void ReconfigureBuild(uint arg1, BaseBuild arg2)
+        {
+            DestroyBuild(arg1, arg2);
+            CreateBuild(arg1, arg2);
         }
     }
 }
