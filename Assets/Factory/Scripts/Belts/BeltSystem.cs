@@ -13,7 +13,8 @@ namespace Factory
         private readonly BeltsSegmentSystem _segmentSystem;
 
         private readonly Dictionary<uint, BeltBuild> belts = new();
-        private readonly Queue<BeltBuild> dirtyBelts = new();
+        
+        private readonly DirtyCellsQueue dirtyCells = new();
         [Inject]
         public BeltSystem(WorldProvider world, BuildSystem buildSystem, BeltsSegmentSystem segmentSystem)
         {
@@ -23,6 +24,7 @@ namespace Factory
 
             _buildSystem.OnBuildCreated += OnNewBuild;
             _buildSystem.OnBuildWillDestroy += OnBuildDestroy;
+            _buildSystem.OnBuildReconfigured += OnBuildReconfigure;
             TickSystem.OnFixedTick += FixedTick;
         }
 
@@ -32,10 +34,9 @@ namespace Factory
         {
             if (build is BeltBuild belt)
             {
-                MarkDirty(belt);
-                
-                belts.Add(obj, belt);
-                
+                MarkDirtyCellAndNeighbours(build.transform.Cell);
+
+
                 /*var backSegment = GetSegmentAtCell(belt.GetInputCell());
                 var forwardSegment = GetSegmentAtCell(belt.GetOutputCell());
                 
@@ -60,7 +61,7 @@ namespace Factory
             }
         }
 
-        private void TryRotateBackwardBelt(BeltBuild toBelt)
+        /*private void TryRotateBackwardBelt(BeltBuild toBelt)
         {
             var cell = toBelt.GetInputCell();
             var buildid = _world.world.cells[cell.x,cell.y];
@@ -88,18 +89,25 @@ namespace Factory
                     }
                 }
             }
-        }
+        }*/
         
         private void OnBuildDestroy(uint arg1, BaseBuild arg2)
         {
             if (belts.TryGetValue(arg1, out var belt))
             {
+                MarkDirtyCellAndNeighbours(arg2.transform.Cell);
                 belts.Remove(arg1);
-                _segmentSystem.RemoveBeltFromSegment(belt.SegmentID, belt);
+                //_segmentSystem.RemoveBeltFromSegment(belt.SegmentID, belt);
             }
         }
+        
+        private void OnBuildReconfigure(uint arg1, BaseBuild arg2)
+        {
+            if (belts.TryGetValue(arg1, out var belt))
+                MarkDirtyCellAndNeighbours(arg2.transform.Cell);
+        }
 
-        private BeltsSegment GetSegmentAtCell(Cell cell)
+        /*private BeltsSegment GetSegmentAtCell(Cell cell)
         {
             if (!_world.world.TryGetBuild(cell, out var build))
                 return null;
@@ -108,26 +116,24 @@ namespace Factory
                 return null;
 
             return _segmentSystem.GetSegment(belt.SegmentID);
-        }
+        }*/
 
         public void FixedTick(float tickTime)
         {
             _segmentSystem.Tick(tickTime);
         }
 
-        private void TryAddDirty(Cell cell)
+        private void MarkDirtyCellAndNeighbours(Cell cell)
         {
-            
+            dirtyCells.Enqueue(cell);
+            cell.ForEachNeighbour(false, dirtyCells.Enqueue);
         }
-        private void MarkDirty(BeltBuild belt)
-        {
-            if(!dirtyBelts.Contains(belt))
-                dirtyBelts.Enqueue(belt);
-        }
+
         public void Dispose()
         {
             _buildSystem.OnBuildCreated -= OnNewBuild;
             _buildSystem.OnBuildWillDestroy -= OnBuildDestroy;
+            _buildSystem.OnBuildReconfigured -= OnBuildReconfigure;
             TickSystem.OnFixedTick -= FixedTick;
         }
     }
