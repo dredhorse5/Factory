@@ -13,6 +13,10 @@ namespace Factory
         
         public event Action<BeltsSegment> OnSegmentCreated;
         public event Action<BeltsSegment> OnSegmentRemoved;
+        
+        private readonly DirtyCellsQueue dirtyCells = new();
+        
+        public void MarkDirtyCell(Cell cell) => dirtyCells.Enqueue(cell);
 
         public uint RegisterSegment(BeltsSegment segment)
         {

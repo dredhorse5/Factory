@@ -14,7 +14,6 @@ namespace Factory
 
         private readonly Dictionary<uint, BeltBuild> belts = new();
         
-        private readonly DirtyCellsQueue dirtyCells = new();
         [Inject]
         public BeltSystem(WorldProvider world, BuildSystem buildSystem, BeltsSegmentSystem segmentSystem)
         {
@@ -23,7 +22,7 @@ namespace Factory
             _segmentSystem = segmentSystem;
 
             _buildSystem.OnBuildCreated += OnNewBuild;
-            _buildSystem.OnBuildWillDestroy += OnBuildDestroy;
+            _buildSystem.OnBuildDestroyed += OnBuildDestroy;
             _buildSystem.OnBuildReconfigured += OnBuildReconfigure;
             TickSystem.OnFixedTick += FixedTick;
         }
@@ -132,7 +131,7 @@ namespace Factory
         public void Dispose()
         {
             _buildSystem.OnBuildCreated -= OnNewBuild;
-            _buildSystem.OnBuildWillDestroy -= OnBuildDestroy;
+            _buildSystem.OnBuildDestroyed -= OnBuildDestroy;
             _buildSystem.OnBuildReconfigured -= OnBuildReconfigure;
             TickSystem.OnFixedTick -= FixedTick;
         }
