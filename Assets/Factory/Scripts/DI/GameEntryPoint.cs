@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Factory;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class GameEntryPoint : IStartable
     [Inject] Map map;
     [Inject] BeltSystem _beltSystem;
     [Inject] BeltsSegmentSystem _beltsSegmentSystem;
+    [Inject] SimulationSystem _simulationSystem;
+    [Inject] ConnectionsSystem _connectionsSystem;
     public void Start()
     {
         Application.targetFrameRate = 30;
@@ -26,8 +29,12 @@ public class GameEntryPoint : IStartable
     {
         while (true)
         {
-            foreach (var seg in _beltsSegmentSystem.Segments)
-                seg.TryAccept(1, 0);
+            if(_beltSystem.Belts.Any())
+            {
+                var beltBuild = _beltSystem.Belts.Last();
+                if (beltBuild != null)
+                    beltBuild.InputConnection.Endpoint.TryInsert(new Item() { Id = 1, Progress = 0 });
+            }
             
 
             await Task.Delay(5000);

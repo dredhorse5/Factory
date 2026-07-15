@@ -27,6 +27,10 @@ public readonly struct Cell : IEquatable<Cell>
 
     public static bool operator !=(Cell left, Cell right) => !left.Equals(right);
 
+    public static Cell operator +(Cell a, CellDirections direction) => a.GetNeighbour(direction);
+    public static Cell operator -(Cell a, CellDirections direction) => a.GetNeighbour(direction, true);
+    
+
     public bool Equals(Cell other) => x == other.x && y == other.y;
 
     public override bool Equals(object obj) => obj is Cell other && Equals(other);

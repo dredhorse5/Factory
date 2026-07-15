@@ -18,12 +18,5 @@ namespace Factory
             this.count = count;
             this.head = head;
         }
-        
-        [Serializable]
-        public struct Item
-        {
-            public ushort Id;
-            public float Progress;
-        }
     }
 }

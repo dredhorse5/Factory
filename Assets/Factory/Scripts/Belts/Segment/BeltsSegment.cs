@@ -91,12 +91,12 @@ namespace Factory
             {
                 var tail = (data.head + data.count) % data.items.Length;
                 if (data.count == 0)
-                    data.items[tail] = new BeltsSegmentData.Item() { Id = item, Progress = progress };
+                    data.items[tail] = new Item() { Id = item, Progress = progress };
                 else
                 {
                     var lastItem = (data.head + data.count - 1 + data.items.Length) % data.items.Length;
                     var maxDist = data.items[lastItem].Progress - BeltSettings.MinDistanceBetweenItems;
-                    data.items[tail] = new BeltsSegmentData.Item() { Id = item, Progress = progress > maxDist? maxDist : progress };
+                    data.items[tail] = new Item() { Id = item, Progress = progress > maxDist? maxDist : progress };
                 }
 
                 data.count++;

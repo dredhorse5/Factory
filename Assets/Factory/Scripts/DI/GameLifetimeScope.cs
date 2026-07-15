@@ -22,6 +22,11 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<BeltsSegmentSystem>(Lifetime.Singleton);
         builder.Register<BeltSystem>(Lifetime.Singleton);
         
+        builder.Register<SimulationSystem>(Lifetime.Singleton);
+        builder.Register<BeltSimulation>(Lifetime.Singleton);
+
+        builder.Register<ConnectionsSystem>(Lifetime.Singleton);
+        
         builder.RegisterComponentInHierarchy<RenderSystem>();
         builder.RegisterComponentInHierarchy<PrefabDatabase>();
         

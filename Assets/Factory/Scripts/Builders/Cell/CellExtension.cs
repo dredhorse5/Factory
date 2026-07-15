@@ -37,8 +37,19 @@ public static class CellExtensions
         };
     }
 
-    public static Cell GetNeighbour(this Cell cell, CellDirections direction)
+    public static Cell GetNeighbour(this Cell cell, CellDirections direction, bool reverse = false)
     {
+        if (reverse)
+        {
+            return direction switch
+            {
+                CellDirections.Up => cell - Up,
+                CellDirections.Right => cell - Right,
+                CellDirections.Down => cell - Down,
+                CellDirections.Left => cell - Left,
+                _ => cell
+            };
+        }
         return direction switch
         {
             CellDirections.Up => cell + Up,

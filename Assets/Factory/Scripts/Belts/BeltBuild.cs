@@ -1,16 +1,26 @@
 using System;
+using System.Collections.Generic;
+using Factory;
 using UnityEngine.Serialization;
 
 [Serializable]
-public class BeltBuild : BaseBuild
+public class BeltBuild : FactoryBuild
 {
     public uint SegmentID;
     public CellDirections InputDirection;
     public CellDirections OutputDirection;
+    public BeltItemBuffer ItemBuffer;
+    public Connection OutputConnection => OutputConnections[0];
+    public Connection InputConnection => InputConnections[0];
     
     public BeltBuildData beltData => GetData<BeltBuildData>();
 
-    public BeltBuild(uint id, string soId, IBuildData data) : base(id, soId, data) { }
+    public BeltBuild(uint id, string soId, IBuildData data) : base(id, soId, data)
+    {
+        ItemBuffer = new BeltItemBuffer(BeltSettings.MaxItemsInTile);
+        OutputConnections = new Connection[1];
+        InputConnections = new Connection[1];
+    }
 
     public override void SetData(IBuildData data)
     {
@@ -26,10 +36,9 @@ public class BeltBuild : BaseBuild
     {
         InputDirection = Rotate(CellDirections.Down, (int)transform.Rotation);
         OutputDirection = Rotate(CellDirections.Down, (int)transform.Rotation + (int)beltData.Shape);
-    }
-    private CellDirections Rotate(CellDirections dir, int rotation)
-    {
-        return (CellDirections)(((int)dir + rotation) % 4);
+        OutputConnections[0] = new Connection(transform.Cell, OutputDirection, Connection.Types.Output, ItemBuffer);
+        InputConnections[0] = new Connection(transform.Cell, InputDirection, Connection.Types.Input, ItemBuffer);
+        CellDirections Rotate(CellDirections dir, int rotation) => (CellDirections)(((int)dir + rotation) % 4);
     }
 }
 

@@ -12,7 +12,7 @@ namespace Factory
             
             int size = ad.size + bd.size;
             float speed = ad.speed;
-            BeltsSegmentData.Item[] items = new BeltsSegmentData.Item[size * BeltSettings.MaxItemsInTile];
+            Item[] items = new Item[size * BeltSettings.MaxItemsInTile];
 
             int k = 0;
             int j = 0;
@@ -54,7 +54,7 @@ namespace Factory
         {
             int size = belts.Length;
             float speed = BeltSettings.Speed;
-            var items = new BeltsSegmentData.Item[size * BeltSettings.MaxItemsInTile];
+            var items = new Item[size * BeltSettings.MaxItemsInTile];
             int count = 0;
             int head = 0;
             

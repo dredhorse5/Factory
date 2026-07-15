@@ -10,7 +10,7 @@ namespace Factory
         public Mesh ItemMesh;
         public Material ItemMaterial;
         
-        [Inject] BeltsSegmentSystem _beltsSegmentSystem;
+        [Inject] BeltSystem _beltsSystem;
         [Inject] RenderSystem _renderSystem;
         
         private Dictionary<uint, BeltView> _beltViews = new Dictionary<uint, BeltView>();
@@ -41,7 +41,16 @@ namespace Factory
 
         private void Update()
         {
-            foreach (var beltsSegment in _beltsSegmentSystem.Segments)
+            foreach (var belt in _beltsSystem.Belts)
+            {
+                var view = _beltViews[belt.id];
+                for (var i = 0; i < belt.ItemBuffer.items.Count; i++)
+                {
+                    var item = belt.ItemBuffer.items[i];
+                    RenderItem(item.Id, view.GetItemPosition(item.Progress));
+                }
+            }
+            /*foreach (var beltsSegment in _beltsSegmentSystem.Segments)
             {
                 for (var i = 0; i < beltsSegment.Data.items.Length; i++)
                 {
@@ -54,7 +63,7 @@ namespace Factory
 
                     RenderItem(item.Id, view.GetItemPosition(item.Progress - cellProgress));
                 }
-            }
+            }*/
         }
         
         

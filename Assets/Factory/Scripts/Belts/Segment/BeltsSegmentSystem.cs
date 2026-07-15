@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Factory
 {
-    public class BeltsSegmentSystem
+    public class BeltsSegmentSystem : IDisposable
     {
         private readonly Dictionary<uint, BeltsSegment> segments = new();
         public IEnumerable<BeltsSegment> Segments => segments.Values;
@@ -17,6 +17,15 @@ namespace Factory
         private readonly DirtyCellsQueue dirtyCells = new();
         
         public void MarkDirtyCell(Cell cell) => dirtyCells.Enqueue(cell);
+
+        public BeltsSegmentSystem()
+        {
+            TickSystem.OnFixedTick += Tick;
+        }
+
+        #region Registe/Unregister
+
+        
 
         public uint RegisterSegment(BeltsSegment segment)
         {
@@ -57,6 +66,12 @@ namespace Factory
             segments.Remove(id);
         }
 
+        
+        
+        #endregion
+        
+        
+        
         public BeltsSegment GetSegment(uint id)
         {
             if (id == 0)
@@ -71,6 +86,12 @@ namespace Factory
         {
             return segments.TryGetValue(id, out segment);
         }
+
+
+        #region Calculation
+
+        
+
 
         /// ⬅a⬅ + ⬅b⬅ = ⬅ab⬅
         public BeltsSegment MergeSegments(BeltsSegment a, BeltsSegment b)
@@ -122,11 +143,21 @@ namespace Factory
                 RegisterSegment(newSegments[1]);
         }
 
+        
+        
+        #endregion
+        
+        
+        
         public void Tick(float dt)
         {
             foreach (var segment in segments.Values)
                 segment.Tick(dt);
         }
 
+        public void Dispose()
+        {
+            TickSystem.OnFixedTick -= Tick;
+        }
     }
 }
