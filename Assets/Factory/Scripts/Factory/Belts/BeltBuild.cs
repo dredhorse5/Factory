@@ -4,7 +4,7 @@ using Factory;
 using UnityEngine.Serialization;
 
 [Serializable]
-public class BeltBuild : FactoryBuild
+public class BeltBuild : BaseBuild, IConnectable
 {
     public uint SegmentID;
     public CellDirections InputDirection;
@@ -12,6 +12,9 @@ public class BeltBuild : FactoryBuild
     public BeltItemBuffer ItemBuffer;
     public Connection OutputConnection => OutputConnections[0];
     public Connection InputConnection => InputConnections[0];
+    
+    public Connection[] OutputConnections { get; set; }
+    public Connection[] InputConnections { get; set; }
     
     public BeltBuildData beltData => GetData<BeltBuildData>();
 
@@ -40,6 +43,7 @@ public class BeltBuild : FactoryBuild
         InputConnections[0] = new Connection(transform.Cell, InputDirection, Connection.Types.Input, ItemBuffer);
         CellDirections Rotate(CellDirections dir, int rotation) => (CellDirections)(((int)dir + rotation) % 4);
     }
+
 }
 
 [Serializable]

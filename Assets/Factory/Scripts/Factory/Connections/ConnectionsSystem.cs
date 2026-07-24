@@ -21,40 +21,40 @@ namespace Factory
 
         private void OnBuildDestroyed(uint arg1, BaseBuild arg2)
         {
-            if (arg2 is FactoryBuild factoryBuild)
-                DisconnectAll(factoryBuild);
+            if (arg2 is IConnectable connectable)
+                DisconnectAll(connectable);
         }
 
         private void OnBuildReconfigured(uint arg1, BaseBuild arg2)
         {
-            if (arg2 is FactoryBuild factoryBuild)
+            if (arg2 is IConnectable connectable)
             {
-                DisconnectAll(factoryBuild);
-                ConnectAll(factoryBuild);
+                DisconnectAll(connectable);
+                ConnectAll(connectable);
             }
         }
 
         private void OnBuildCreated(uint arg1, BaseBuild arg2)
         {
-            if (arg2 is FactoryBuild factoryBuild)
-                ConnectAll(factoryBuild);
+            if (arg2 is IConnectable connectable)
+                ConnectAll(connectable);
         }
         
-        private void ConnectAll(FactoryBuild build)
+        private void ConnectAll(IConnectable connectable)
         {
-            foreach (var connection in build.InputConnections)
+            foreach (var connection in connectable.InputConnections)
                 TryConnect(connection);
 
-            foreach (var connection in build.OutputConnections)
+            foreach (var connection in connectable.OutputConnections)
                 TryConnect(connection);
         }
 
-        private void DisconnectAll(FactoryBuild build)
+        private void DisconnectAll(IConnectable connectable)
         {
-            foreach (var connection in build.InputConnections)
+            foreach (var connection in connectable.InputConnections)
                 Disconnect(connection);
 
-            foreach (var connection in build.OutputConnections)
+            foreach (var connection in connectable.OutputConnections)
                 Disconnect(connection);
         }
         
@@ -72,11 +72,11 @@ namespace Factory
             if(connection.Connected != null)
                 return false;
             var nextCell = connection.GetLookAtCell();
-            if(_worldProvider.world.TryGetBuild(nextCell, out var build) && build is FactoryBuild factoryBuild)
+            if(_worldProvider.world.TryGetBuild(nextCell, out var build) && build is IConnectable connectable)
             {
                 var candidates = connection.Type == Connection.Types.Input
-                    ? factoryBuild.OutputConnections
-                    : factoryBuild.InputConnections;
+                    ? connectable.OutputConnections
+                    : connectable.InputConnections;
                 
                 for (var i = 0; i < candidates.Length; i++)
                 {

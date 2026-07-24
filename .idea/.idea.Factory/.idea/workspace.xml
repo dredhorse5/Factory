@@ -11,42 +11,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9c5b78a-de25-42b1-839e-3b62037abb0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltItemBuffer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltItemBuffer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/Connection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/Connection.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionExtensions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionsSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionsSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/FactoryBuild.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/FactoryBuild.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/IItemEndpoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/IItemEndpoint.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/BeltSimulation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/BeltSimulation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/SimulationSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/SimulationSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Some.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Some/CircularBuffer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Some/CircularBuffer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Some/Item.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Some/Item.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/IConnectable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/IConnectable.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/SegmentsCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/SegmentsCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Cell/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Cell/Cell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Cell/CellExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Cell/CellExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameLifetimeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameLifetimeScope.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltBuild.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltBuild.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltBuild.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltItemBuffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltItemBuffer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltItemBuffer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltItemBuffer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltSO.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltSettings.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltUtils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltUtils.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/Connection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/Connection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/Connection.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/Connection.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectionExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectionExtensions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionsSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectionsSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/ConnectionsSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectionsSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/FactoryBuild.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/FactoryBuild.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/IItemEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/IItemEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/IItemEndpoint.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/IItemEndpoint.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/ItemBuffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/ItemBuffer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/ItemBuffer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/ItemBuffer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegment.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegment.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegmentData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegmentData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentDebugWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegmentDebugWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentDebugWindow.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegmentDebugWindow.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegmentSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/BeltsSegmentSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/SegmentsCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/SegmentsCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/SegmentsCalculator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Segment/SegmentsCalculator.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +82,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/BeltSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Connections/IConnectable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Belts/Segment/BeltsSegmentDebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/IBuildMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Builders/GhostBuild/IBuildModeFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -96,9 +105,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Unity/EntryPointExceptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Unity/LifetimeScope.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@6e6972730c/Runtime/Unity/ObjectResolverUnityExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/97/8d49fafb/IEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b3/b297a467/IEnumerable`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -107,61 +113,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000001519296" />
-      <entry key="MS500" value="1.0311701551450492" />
-      <entry key="S2" value="2.012736833269636" />
-      <entry key="S5" value="4.96599243130786" />
-      <entry key="S10" value="8.966666180980916" />
-      <entry key="S30" value="14.563940982868361" />
-      <entry key="S60" value="16.605400451617655" />
-      <entry key="M2" value="17.754807552425067" />
-      <entry key="M5" value="18.489911219570633" />
-      <entry key="M10" value="18.742908844577883" />
-      <entry key="M15" value="18.828147679848538" />
-      <entry key="M30" value="18.913843880704967" />
-      <entry key="H1" value="18.956892243038624" />
-      <entry key="H2" value="19.039045624262368" />
-      <entry key="H4" value="22.465449627635497" />
-      <entry key="D1" value="336.41077726779577" />
-      <entry key="W1" value="1794.7135184881943" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000279703" />
+      <entry key="S5" value="1.0001721119508054" />
+      <entry key="S10" value="1.051195656779624" />
+      <entry key="S30" value="3.740055009171133" />
+      <entry key="S60" value="8.559732509807567" />
+      <entry key="M2" value="13.58949023714457" />
+      <entry key="M5" value="18.110068789976854" />
+      <entry key="M10" value="19.95491535636241" />
+      <entry key="M15" value="20.613328610948827" />
+      <entry key="M30" value="21.294753918410585" />
+      <entry key="H1" value="21.64437524681903" />
+      <entry key="H2" value="21.881581542847833" />
+      <entry key="H4" value="25.373649649368325" />
+      <entry key="D1" value="339.1978427242183" />
+      <entry key="W1" value="1797.551924549845" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.916775146761319E-4" />
-      <entry key="MS500" value="0.21793955990495953" />
-      <entry key="S2" value="0.6853897387683565" />
-      <entry key="S5" value="0.9441093397541697" />
-      <entry key="S10" value="1.2189376343588718" />
-      <entry key="S30" value="1.660114109301109" />
-      <entry key="S60" value="1.9488209885814183" />
-      <entry key="M2" value="2.279387457754273" />
-      <entry key="M5" value="2.6385996822175355" />
-      <entry key="M10" value="2.8038530310595133" />
-      <entry key="M15" value="2.8655091948318248" />
-      <entry key="M30" value="2.930812145086286" />
-      <entry key="H1" value="2.9649161391442753" />
-      <entry key="H2" value="3.00579675607848" />
-      <entry key="H4" value="4.329435529406603" />
-      <entry key="D1" value="119.2901865948715" />
-      <entry key="W1" value="642.9177374758253" />
+      <entry key="MS100" value="1.9395869398604117E-226" />
+      <entry key="MS500" value="7.215668820006915E-46" />
+      <entry key="S2" value="6.234853499972037E-12" />
+      <entry key="S5" value="4.8377514858824365E-5" />
+      <entry key="S10" value="0.010820985249092831" />
+      <entry key="S30" value="0.44763014165595966" />
+      <entry key="S60" value="1.2075995711253613" />
+      <entry key="M2" value="2.0970480664721363" />
+      <entry key="M5" value="3.041935287221584" />
+      <entry key="M10" value="3.47784206010976" />
+      <entry key="M15" value="3.6413217678762897" />
+      <entry key="M30" value="3.815099484836157" />
+      <entry key="H1" value="3.9061159889228425" />
+      <entry key="H2" value="3.975979104036492" />
+      <entry key="H4" value="5.309507777064816" />
+      <entry key="D1" value="120.21449892109754" />
+      <entry key="W1" value="643.859824543864" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.073814490047676" />
-      <entry key="MS500" value="0.6881007608577485" />
-      <entry key="S2" value="2.228881168271714" />
-      <entry key="S5" value="5.53852444541697" />
-      <entry key="S10" value="9.918617628972562" />
-      <entry key="S30" value="16.102270383409437" />
-      <entry key="S60" value="18.486558572530818" />
-      <entry key="M2" value="19.997695376007744" />
-      <entry key="M5" value="21.112952549941955" />
-      <entry key="M10" value="21.538778617303237" />
-      <entry key="M15" value="21.68828510486213" />
-      <entry key="M30" value="21.841944165934642" />
-      <entry key="H1" value="21.920445721664635" />
-      <entry key="H2" value="22.044154351539493" />
-      <entry key="H4" value="26.794398837019678" />
-      <entry key="D1" value="455.6986221269424" />
-      <entry key="W1" value="2437.629258024981" />
+      <entry key="MS100" value="8.813044406265232E-5" />
+      <entry key="MS500" value="0.15453440761511894" />
+      <entry key="S2" value="0.6269837686124801" />
+      <entry key="S5" value="0.8298641569008567" />
+      <entry key="S10" value="0.9704421204062011" />
+      <entry key="S30" value="4.12318543709079" />
+      <entry key="S60" value="9.70777327601543" />
+      <entry key="M2" value="15.642581998172899" />
+      <entry key="M5" value="21.129149641726464" />
+      <entry key="M10" value="23.420216726722607" />
+      <entry key="M15" value="24.24602078799558" />
+      <entry key="M30" value="25.10539809674989" />
+      <entry key="H1" value="25.548227281366525" />
+      <entry key="H2" value="25.856414495053016" />
+      <entry key="H4" value="30.682440676711703" />
+      <entry key="D1" value="459.40996258764756" />
+      <entry key="W1" value="2441.4097457900048" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -201,47 +207,50 @@
     "nodejs_package_manager_path": "npm",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\dredhorse5\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\dredhorse5\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\dredhorse5\\AppData\\Local\\Symbols\\src"
-    ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.62f3/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\UnityProjects\Factory -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProjects\Factory" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.62f3/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProjects\Factory -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProjects\Factory" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="47864">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="47864" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -293,6 +302,7 @@
       <workItem from="1783703560410" duration="3742000" />
       <workItem from="1783854890720" duration="4692000" />
       <workItem from="1783863617321" duration="38783000" />
+      <workItem from="1784922687900" duration="1685000" />
     </task>
     <servers />
   </component>
