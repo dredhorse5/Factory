@@ -25,8 +25,8 @@ namespace Factory
         
         public void SetID(uint id)
         {
-            for (var i = 0; i < belts.Length; i++)
-                belts[i].SegmentID = id;
+            /*for (var i = 0; i < belts.Length; i++)
+                belts[i].SegmentID = id;*/
 
             this.id = id;
         }

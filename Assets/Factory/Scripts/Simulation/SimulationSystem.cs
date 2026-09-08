@@ -4,18 +4,21 @@ using VContainer;
 
 public class SimulationSystem : IDisposable
 {
-    private readonly BeltSimulation _beltSimulation;
+    private readonly BeltSimulation beltSimulation;
+    private readonly TransferSimulation transferSimulation;
 
     [Inject]
-    public SimulationSystem(BeltSimulation beltSimulation)
+    public SimulationSystem(BeltSimulation beltSimulation, TransferSimulation transferSimulation)
     {
-        _beltSimulation = beltSimulation;
+        this.beltSimulation = beltSimulation;
+        this.transferSimulation = transferSimulation;
         TickSystem.OnFixedTick += Tick;
     }
 
     private void Tick(float obj)
     {
-        _beltSimulation.Tick(obj);
+        beltSimulation.Tick(obj);
+        transferSimulation.Tick(obj);
     }
 
     public void Dispose()

@@ -2,7 +2,7 @@ using Factory;
 using UnityEngine;
 using VContainer;
 
-public class BeltSimulation
+public class BeltSimulation : ISimulation
 {
     private readonly BeltSystem beltSystem;
 
@@ -16,10 +16,7 @@ public class BeltSimulation
     {
         var belts = beltSystem.Belts;
         foreach (var belt in belts)
-        {
             MoveItems(belt, dt);
-            TryTransfer(belt);
-        }
     }
 
     private void MoveItems(BeltBuild belt, float dt)
@@ -44,21 +41,5 @@ public class BeltSimulation
 
             belt.ItemBuffer.items[i] = item;
         }
-    }
-
-    void TryTransfer(BeltBuild belt)
-    {
-        var connection = belt.OutputConnection.Connected;
-        if (connection == null)
-            return;
-
-        if (!belt.OutputConnection.Endpoint.CanExtract())
-            return;
-
-        if (!connection.Endpoint.CanInsert(default))
-            return;
-        belt.OutputConnection.Endpoint.TryExtract(out var item);
-        item.Progress--;
-        connection.Endpoint.TryInsert(item);
     }
 }

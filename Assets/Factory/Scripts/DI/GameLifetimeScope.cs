@@ -24,6 +24,7 @@ public class GameLifetimeScope : LifetimeScope
         
         builder.Register<SimulationSystem>(Lifetime.Singleton);
         builder.Register<BeltSimulation>(Lifetime.Singleton);
+        builder.Register<TransferSimulation>(Lifetime.Singleton);
 
         builder.Register<ConnectionsSystem>(Lifetime.Singleton);
         

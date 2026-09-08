@@ -6,23 +6,29 @@ using UnityEngine.Serialization;
 [Serializable]
 public class BeltBuild : BaseBuild, IConnectable
 {
-    public uint SegmentID;
     public CellDirections InputDirection;
     public CellDirections OutputDirection;
     public BeltItemBuffer ItemBuffer;
-    public Connection OutputConnection => OutputConnections[0];
-    public Connection InputConnection => InputConnections[0];
-    
-    public Connection[] OutputConnections { get; set; }
-    public Connection[] InputConnections { get; set; }
     
     public BeltBuildData beltData => GetData<BeltBuildData>();
+    private ConnectorBuildComponent _connector;
+    
+    public Connection[] OutputConnections
+    {
+        get => _connector.OutputConnections;
+        set => _connector.OutputConnections = value;
+    }
+    public Connection[] InputConnections 
+    {
+        get => _connector.InputConnections;
+        set => _connector.InputConnections = value;
+    }
 
     public BeltBuild(uint id, string soId, IBuildData data) : base(id, soId, data)
     {
+        _connector = new ConnectorBuildComponent(new Connection[1], new Connection[1]);
+        AddComponent(_connector);
         ItemBuffer = new BeltItemBuffer(BeltSettings.MaxItemsInTile);
-        OutputConnections = new Connection[1];
-        InputConnections = new Connection[1];
     }
 
     public override void SetData(IBuildData data)
@@ -39,8 +45,8 @@ public class BeltBuild : BaseBuild, IConnectable
     {
         InputDirection = Rotate(CellDirections.Down, (int)transform.Rotation);
         OutputDirection = Rotate(CellDirections.Down, (int)transform.Rotation + (int)beltData.Shape);
-        OutputConnections[0] = new Connection(transform.Cell, OutputDirection, Connection.Types.Output, ItemBuffer);
-        InputConnections[0] = new Connection(transform.Cell, InputDirection, Connection.Types.Input, ItemBuffer);
+        _connector.OutputConnections[0] = new Connection(transform.Cell, OutputDirection, Connection.Types.Output, ItemBuffer);
+        _connector.InputConnections[0] = new Connection(transform.Cell, InputDirection, Connection.Types.Input, ItemBuffer);
         CellDirections Rotate(CellDirections dir, int rotation) => (CellDirections)(((int)dir + rotation) % 4);
     }
 
