@@ -16,10 +16,10 @@ public class BeltSimulation : ISimulation
     {
         var belts = beltSystem.Belts;
         foreach (var belt in belts)
-            MoveItems(belt, dt);
+            MoveItems(belt.belt, dt);
     }
 
-    private void MoveItems(BeltBuild belt, float dt)
+    private void MoveItems(BeltComponent belt, float dt)
     {
         bool movingIsFree = false;
         for (var i = 0; i < belt.ItemBuffer.items.Count; i++)

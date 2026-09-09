@@ -4,31 +4,16 @@ using Factory;
 using UnityEngine.Serialization;
 
 [Serializable]
-public class BeltBuild : BaseBuild, IConnectable
+public class BeltBuild : BaseBuild
 {
-    public CellDirections InputDirection;
-    public CellDirections OutputDirection;
-    public BeltItemBuffer ItemBuffer;
-    
     public BeltBuildData beltData => GetData<BeltBuildData>();
-    private ConnectorBuildComponent _connector;
     
-    public Connection[] OutputConnections
-    {
-        get => _connector.OutputConnections;
-        set => _connector.OutputConnections = value;
-    }
-    public Connection[] InputConnections 
-    {
-        get => _connector.InputConnections;
-        set => _connector.InputConnections = value;
-    }
+    public BeltComponent belt { get; private set; }
 
     public BeltBuild(uint id, string soId, IBuildData data) : base(id, soId, data)
     {
-        _connector = new ConnectorBuildComponent(new Connection[1], new Connection[1]);
-        AddComponent(_connector);
-        ItemBuffer = new BeltItemBuffer(BeltSettings.MaxItemsInTile);
+        belt = new BeltComponent(new Connection[1], new Connection[1], BeltSettings.MaxItemsInTile);
+        AddComponent(belt);
     }
 
     public override void SetData(IBuildData data)
@@ -43,10 +28,10 @@ public class BeltBuild : BaseBuild, IConnectable
 
     private void UpdateDirections()
     {
-        InputDirection = Rotate(CellDirections.Down, (int)transform.Rotation);
-        OutputDirection = Rotate(CellDirections.Down, (int)transform.Rotation + (int)beltData.Shape);
-        _connector.OutputConnections[0] = new Connection(transform.Cell, OutputDirection, Connection.Types.Output, ItemBuffer);
-        _connector.InputConnections[0] = new Connection(transform.Cell, InputDirection, Connection.Types.Input, ItemBuffer);
+        var input = Rotate(CellDirections.Down, (int)transform.Rotation);
+        var output = Rotate(CellDirections.Down, (int)transform.Rotation + (int)beltData.Shape);
+        belt.SetOutputConnection(transform.Cell, output);
+        belt.SetInputConnection(transform.Cell, input);
         CellDirections Rotate(CellDirections dir, int rotation) => (CellDirections)(((int)dir + rotation) % 4);
     }
 

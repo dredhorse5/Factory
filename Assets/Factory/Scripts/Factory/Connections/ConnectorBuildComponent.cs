@@ -1,17 +1,15 @@
 namespace Factory
 {
-    public class ConnectorBuildComponent : IBuildComponent, IConnectable
+    public class ConnectorBuildComponent : BaseBuildComponent, IConnectable
     {
+        public BaseBuild parentBuild { get; protected set; }
         public ConnectorBuildComponent(Connection[] outputConnections, Connection[] inputConnections)
         {
             OutputConnections = outputConnections;
             InputConnections = inputConnections;
         }
 
-        public void Initialize(BaseBuild build)
-        {
-            
-        }
+        protected override void OnInitialize() { }
 
         public Connection[] OutputConnections { get; set; }
         public Connection[] InputConnections { get; set; }

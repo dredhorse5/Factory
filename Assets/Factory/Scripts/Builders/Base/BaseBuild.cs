@@ -10,7 +10,7 @@ public class BaseBuild
     public BuildTransform transform;
     protected IBuildData data;
 
-    private Dictionary<Type, IBuildComponent> _components = new Dictionary<Type, IBuildComponent>();
+    private List<IBuildComponent> _components = new List<IBuildComponent>();
 
     public BaseBuild(uint id, string soId, IBuildData data)
     {
@@ -18,15 +18,28 @@ public class BaseBuild
         this.SoId = soId;
         SetData(data);
     }
-
+    
     public T GetData<T>() where T : class, IBuildData => data as T;
     public IBuildData GetData() => data;
     public virtual void SetData(IBuildData data) => this.data = data;
     
+
+    public void Initialize()
+    {
+        foreach (var comp in _components)
+            comp.Initialize(this);
+        OnInitialize();
+    }
+
+
+
+    public virtual void OnInitialize() { }
     public virtual void OnPlaced() { }
     public virtual void OnDestroyed() { }
     public virtual void OnReconfigured(){}
 
+    
+    
     #region Component
     
     
@@ -38,15 +51,18 @@ public class BaseBuild
 
     public bool HasComponent<T>() where T : class, IBuildComponent
     {
-        return _components.ContainsKey(typeof(T));
+        return TryGetComponent<T>(out _);
     }
 
     public bool TryGetComponent<T>(out T component) where T : class, IBuildComponent
     {
-        if(_components.TryGetValue((typeof(T)), out var _component))
+        foreach (var _component in _components)
         {
-            component = _component as T;
-            return true;
+            if (_component is T typedComponent)
+            {
+                component = typedComponent;
+                return true;
+            }
         }
         component = null;
         return false;
@@ -54,12 +70,12 @@ public class BaseBuild
 
     protected bool AddComponent<T>(T component) where T : class, IBuildComponent
     {
-        if (_components.ContainsKey(typeof(T)))
+        if (HasComponent<T>())
         {
             Debug.LogError($"Component {typeof(T)} is already registered. Object id: {id}");
             return false;
         }
-        _components.Add(typeof(T), component);
+        _components.Add(component);
         return true;
     }
     

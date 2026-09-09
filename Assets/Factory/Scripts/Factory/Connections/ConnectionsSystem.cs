@@ -21,13 +21,13 @@ namespace Factory
 
         private void OnBuildDestroyed(uint arg1, BaseBuild arg2)
         {
-            if (arg2 is IConnectable connectable)
+            if (arg2.TryGetComponent<ConnectorBuildComponent>(out var connectable))
                 DisconnectAll(connectable);
         }
 
         private void OnBuildReconfigured(uint arg1, BaseBuild arg2)
         {
-            if (arg2 is IConnectable connectable)
+            if (arg2.TryGetComponent<ConnectorBuildComponent>(out var connectable))
             {
                 DisconnectAll(connectable);
                 ConnectAll(connectable);
@@ -36,7 +36,7 @@ namespace Factory
 
         private void OnBuildCreated(uint arg1, BaseBuild arg2)
         {
-            if (arg2 is IConnectable connectable)
+            if (arg2.TryGetComponent<ConnectorBuildComponent>(out var connectable))
                 ConnectAll(connectable);
         }
         
@@ -72,7 +72,7 @@ namespace Factory
             if(connection.Connected != null)
                 return false;
             var nextCell = connection.GetLookAtCell();
-            if(_worldProvider.world.TryGetBuild(nextCell, out var build) && build is IConnectable connectable)
+            if(_worldProvider.world.TryGetBuild(nextCell, out var build) && build.TryGetComponent<ConnectorBuildComponent>(out var connectable))
             {
                 var candidates = connection.Type == Connection.Types.Input
                     ? connectable.OutputConnections

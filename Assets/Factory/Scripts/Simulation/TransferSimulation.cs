@@ -37,12 +37,15 @@ public class TransferSimulation : ISimulation
     {
         if (connection == null)
             return;
+        var target = connection.Connected;
+        if (target == null)
+            return;
         if (!connection.Endpoint.CanExtract())
             return;
-        if (!connection.Endpoint.CanInsert(default))
+        if (!target.Endpoint.CanInsert(default))
             return;
         connection.Endpoint.TryExtract(out var item);
         item.Progress--;
-        connection.Endpoint.TryInsert(item);
+        target.Endpoint.TryInsert(item);
     }
 }

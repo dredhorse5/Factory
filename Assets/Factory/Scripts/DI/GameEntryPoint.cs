@@ -32,8 +32,8 @@ public class GameEntryPoint : IStartable
             if(_beltSystem.Belts.Any())
             {
                 var beltBuild = _beltSystem.Belts.Last();
-                if (beltBuild != null)
-                    beltBuild.InputConnections[0].Endpoint.TryInsert(new Item() { Id = 1, Progress = 0 });
+                if (beltBuild != null && beltBuild.TryGetComponent(out ConnectorBuildComponent conn))
+                    conn.OutputConnections[0].Endpoint.TryInsert(new Item() { Id = 1, Progress = 0 });
             }
             
 

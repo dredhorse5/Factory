@@ -10,10 +10,10 @@ public static class BeltUtils
         new(-1, 0)   // Left
     };
     
-    public static Cell GetOutputCell(this BeltBuild belt) => belt.transform.Cell + DirVectors[(int)belt.OutputDirection];
-    public static Cell GetInputCell(this BeltBuild belt) => belt.transform.Cell - DirVectors[(int)belt.InputDirection];
-    public static Cell GetCellFromRight(this BeltBuild belt) => belt.transform.Cell + DirVectors[((int)belt.OutputDirection + 1) % 4];
-    public static Cell GetCellFromLeft(this BeltBuild belt) => belt.transform.Cell + DirVectors[((int)belt.OutputDirection + 3) % 4];
+    public static Cell GetOutputCell(this BeltBuild belt) => belt.transform.Cell + DirVectors[(int)belt.belt.OutputConnections[0].Direction];
+    public static Cell GetInputCell(this BeltBuild belt) => belt.transform.Cell - DirVectors[(int)belt.belt.InputConnections[0].Direction];
+    public static Cell GetCellFromRight(this BeltBuild belt) => belt.transform.Cell + DirVectors[((int)belt.belt.InputConnections[0].Direction + 1) % 4];
+    public static Cell GetCellFromLeft(this BeltBuild belt) => belt.transform.Cell + DirVectors[((int)belt.belt.OutputConnections[0].Direction + 3) % 4];
 }
 
 public enum BeltShapes {CornerLeft = -1, Straight = 0, CornerRight = 1 }

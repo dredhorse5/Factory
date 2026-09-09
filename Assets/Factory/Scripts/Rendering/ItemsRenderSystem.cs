@@ -44,9 +44,9 @@ namespace Factory
             foreach (var belt in _beltsSystem.Belts)
             {
                 var view = _beltViews[belt.id];
-                for (var i = 0; i < belt.ItemBuffer.items.Count; i++)
+                for (var i = 0; i < belt.belt.ItemBuffer.items.Count; i++)
                 {
-                    var item = belt.ItemBuffer.items[i];
+                    var item = belt.belt.ItemBuffer.items[i];
                     RenderItem(item.Id, view.GetItemPosition(item.Progress));
                 }
             }

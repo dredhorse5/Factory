@@ -42,6 +42,7 @@ namespace Factory
                 worldProvider.world.Builds.Add(build.id, build);
                 for (var i = 0; i < tiles.Length; i++)
                     worldProvider.world.cells[tiles[i].x, tiles[i].y] = build.id;
+                build.Initialize();
                 OnBuildCreated?.Invoke(build.id, build);
                 return build.id;
             }
