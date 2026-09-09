@@ -12,7 +12,6 @@ public class GameEntryPoint : IStartable
     [Inject] WorldFactory worldFactory;
     [Inject] Map map;
     [Inject] BeltSystem _beltSystem;
-    [Inject] BeltsSegmentSystem _beltsSegmentSystem;
     [Inject] SimulationSystem _simulationSystem;
     [Inject] ConnectionsSystem _connectionsSystem;
     public void Start()
