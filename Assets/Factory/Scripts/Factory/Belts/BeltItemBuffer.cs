@@ -2,11 +2,11 @@ namespace Factory
 {
     public class BeltItemBuffer : IItemEndpoint
     {
-        public readonly CircularBuffer<Item> items;
+        public readonly CircularBuffer<ItemProgress> items;
         
-        public BeltItemBuffer(int capacity) => items = new CircularBuffer<Item>(capacity);
+        public BeltItemBuffer(int capacity) => items = new CircularBuffer<ItemProgress>(capacity);
 
-        public bool CanInsert(Item item)
+        public bool CanInsert(ItemProgress item)
         {
             if (items.IsFull)
                 return false;
@@ -18,7 +18,7 @@ namespace Factory
             return lastItem.Progress - BeltSettings.MinDistanceBetweenItems >= 0;
         }
 
-        public bool TryInsert(Item item)
+        public bool TryInsert(ItemProgress item)
         {
             if (CanInsert(item))
             {
@@ -35,10 +35,10 @@ namespace Factory
             return false;
         }
 
-        public bool CanExtract() => items.Peek(out Item item) && item.Progress > 0.9999f;
+        public bool CanExtract() => items.Peek(out ItemProgress item) && item.Progress > 0.9999f;
         
 
-        public bool TryExtract(out Item item)
+        public bool TryExtract(out ItemProgress item)
         {
             if (!CanExtract())
             {

@@ -32,7 +32,7 @@ public class GameEntryPoint : IStartable
             {
                 var beltBuild = _beltSystem.Belts.Last();
                 if (beltBuild != null && beltBuild.TryGetComponent(out ConnectorBuildComponent conn))
-                    conn.OutputConnections[0].Endpoint.TryInsert(new Item() { Id = 1, Progress = 0 });
+                    conn.OutputConnections[0].Endpoint.TryInsert(new ItemProgress() { Item = 0, Progress = 0 });
             }
             
 

@@ -1,8 +1,8 @@
 using System;
 
 [Serializable]
-public struct Item
+public struct ItemProgress
 {
-    public ushort Id;
+    public Item Item;
     public float Progress;
 }

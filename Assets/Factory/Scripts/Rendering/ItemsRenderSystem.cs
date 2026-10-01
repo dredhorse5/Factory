@@ -47,27 +47,13 @@ namespace Factory
                 for (var i = 0; i < belt.belt.ItemBuffer.items.Count; i++)
                 {
                     var item = belt.belt.ItemBuffer.items[i];
-                    RenderItem(item.Id, view.GetItemPosition(item.Progress));
+                    RenderItem(item.Item, view.GetItemPosition(item.Progress));
                 }
             }
-            /*foreach (var beltsSegment in _beltsSegmentSystem.Segments)
-            {
-                for (var i = 0; i < beltsSegment.Data.items.Length; i++)
-                {
-                    var item = beltsSegment.Data.items[i];
-                    if(item.Id == 0)
-                        continue;
-                    var cellProgress = (int)(item.Progress - 0.001f);
-                    var beltID = beltsSegment.Belts[beltsSegment.Belts.Length - 1 - cellProgress].id;
-                    var view = _beltViews[beltID];
-
-                    RenderItem(item.Id, view.GetItemPosition(item.Progress - cellProgress));
-                }
-            }*/
         }
         
         
-        private void RenderItem(int item, Vector3 pos)
+        private void RenderItem(Item item, Vector3 pos)
         {
             Graphics.DrawMesh(
                 ItemMesh,

@@ -1,8 +1,8 @@
 public interface IItemEndpoint
 {
-    bool CanInsert(Item item);
-    bool TryInsert(Item item);
+    bool CanInsert(ItemProgress item);
+    bool TryInsert(ItemProgress item);
 
     bool CanExtract();
-    bool TryExtract(out Item item);
+    bool TryExtract(out ItemProgress item);
 }

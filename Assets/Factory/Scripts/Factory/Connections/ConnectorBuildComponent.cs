@@ -2,7 +2,6 @@ namespace Factory
 {
     public class ConnectorBuildComponent : BaseBuildComponent, IConnectable
     {
-        public BaseBuild parentBuild { get; protected set; }
         public ConnectorBuildComponent(Connection[] outputConnections, Connection[] inputConnections)
         {
             OutputConnections = outputConnections;

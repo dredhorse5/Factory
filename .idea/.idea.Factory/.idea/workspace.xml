@@ -11,23 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9c5b78a-de25-42b1-839e-3b62037abb0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuildComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Factory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/BaseBuild.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/IBuildComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/Base/IBuildComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Builders/BuildSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/DI/GameEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltBuild.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectionsSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectionsSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectorBuildComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectorBuildComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Rendering/ItemsRenderSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/BeltSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/BeltSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/TransferSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Simulation/TransferSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/MinerBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/MinerBuild.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +50,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/CursorWorldPositionProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Belts/BeltComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Connections/ConnectorBuildComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/FactoryComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/FactoryWork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/IFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/MinerBuild.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/Factory/Factory/Receipt/Receipt.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/FactoryBuild/BeltsBuildMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/FactoryBuild/BeltsBuildModeInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Factory/Scripts/FactoryBuild/FactoryBuildModeFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,60 +80,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000003883874717" />
-      <entry key="S2" value="1.0249657568205122" />
-      <entry key="S5" value="1.2384118875475427" />
-      <entry key="S10" value="1.705456770918199" />
-      <entry key="S30" value="3.8187711254152865" />
-      <entry key="S60" value="5.648090706644847" />
-      <entry key="M2" value="7.2825949623609745" />
-      <entry key="M5" value="8.776482114383903" />
-      <entry key="M10" value="9.899638740044754" />
-      <entry key="M15" value="10.908707247093979" />
-      <entry key="M30" value="13.848766633544223" />
-      <entry key="H1" value="23.89591089773502" />
-      <entry key="H2" value="46.0981252273147" />
-      <entry key="H4" value="76.77305524600318" />
-      <entry key="D1" value="415.7280498948136" />
-      <entry key="W1" value="1990.5391914251047" />
+      <entry key="MS500" value="1.0002449574850283" />
+      <entry key="S2" value="1.3012448728311088" />
+      <entry key="S5" value="3.268302031022376" />
+      <entry key="S10" value="6.129978971518625" />
+      <entry key="S30" value="12.620000987576336" />
+      <entry key="S60" value="17.449585552723043" />
+      <entry key="M2" value="24.483023353490644" />
+      <entry key="M5" value="36.67802193677099" />
+      <entry key="M10" value="45.35145567308871" />
+      <entry key="M15" value="51.34455097044381" />
+      <entry key="M30" value="67.87374115111173" />
+      <entry key="H1" value="92.92277465140019" />
+      <entry key="H2" value="126.43393212006224" />
+      <entry key="H4" value="169.74257252291514" />
+      <entry key="D1" value="519.5874870126075" />
+      <entry key="W1" value="2107.2796744916477" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.2754609935797644E-125" />
-      <entry key="MS500" value="1.140591499926192E-25" />
-      <entry key="S2" value="9.330205329246533E-7" />
-      <entry key="S5" value="0.006915058152221641" />
-      <entry key="S10" value="0.1416000492099673" />
-      <entry key="S30" value="1.0797322812402395" />
-      <entry key="S60" value="1.7988271065621393" />
-      <entry key="M2" value="2.3255542778876572" />
-      <entry key="M5" value="2.878497931672641" />
-      <entry key="M10" value="4.09935136061876" />
-      <entry key="M15" value="5.593632166636759" />
-      <entry key="M30" value="9.209775582060331" />
-      <entry key="H1" value="14.588443474237964" />
-      <entry key="H2" value="22.60665265772476" />
-      <entry key="H4" value="32.67700773919781" />
-      <entry key="D1" value="149.7179008754089" />
-      <entry key="W1" value="711.8228331787487" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="2.994724476400526E-161" />
+      <entry key="S2" value="7.397572293577588E-41" />
+      <entry key="S5" value="8.864121233864462E-17" />
+      <entry key="S10" value="9.4150860303462E-9" />
+      <entry key="S30" value="0.002303305035772741" />
+      <entry key="S60" value="0.08594152819705014" />
+      <entry key="M2" value="0.8187663371270182" />
+      <entry key="M5" value="3.7429497718641804" />
+      <entry key="M10" value="6.551937314366735" />
+      <entry key="M15" value="8.388039592675137" />
+      <entry key="M30" value="12.869065520082943" />
+      <entry key="H1" value="20.069811091775" />
+      <entry key="H2" value="31.16459382022448" />
+      <entry key="H4" value="46.00777804078836" />
+      <entry key="D1" value="167.35674927707984" />
+      <entry key="W1" value="733.8431669496758" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.108969643972505E-5" />
-      <entry key="MS500" value="0.1480339514817041" />
-      <entry key="S2" value="0.6203026338277848" />
-      <entry key="S5" value="0.8536557243092843" />
-      <entry key="S10" value="1.3723705196618683" />
-      <entry key="S30" value="4.522479951363461" />
-      <entry key="S60" value="7.20362151841046" />
-      <entry key="M2" value="9.468778635842387" />
-      <entry key="M5" value="11.593922564012091" />
-      <entry key="M10" value="13.965680951050247" />
-      <entry key="M15" value="16.478091331076918" />
-      <entry key="M30" value="23.043926129806536" />
-      <entry key="H1" value="38.47498812675261" />
-      <entry key="H2" value="68.6984088615951" />
-      <entry key="H4" value="109.44571173304239" />
-      <entry key="D1" value="565.4426569839906" />
-      <entry key="W1" value="2702.359767920869" />
+      <entry key="MS100" value="0.02134437901178743" />
+      <entry key="MS500" value="0.4633026844379418" />
+      <entry key="S2" value="1.0351880003920706" />
+      <entry key="S5" value="2.998488170330653" />
+      <entry key="S10" value="5.91417166147363" />
+      <entry key="S30" value="12.506752675782415" />
+      <entry key="S60" value="17.45542362371562" />
+      <entry key="M2" value="25.237405077064075" />
+      <entry key="M5" value="40.3706354611449" />
+      <entry key="M10" value="51.86797998170426" />
+      <entry key="M15" value="59.70520630998019" />
+      <entry key="M30" value="80.72534197707023" />
+      <entry key="H1" value="112.98080295546032" />
+      <entry key="H2" value="157.59008893760145" />
+      <entry key="H4" value="215.74436216775518" />
+      <entry key="D1" value="686.9405957846759" />
+      <entry key="W1" value="2841.1205223301977" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -282,7 +271,7 @@
       <workItem from="1783854890720" duration="4692000" />
       <workItem from="1783863617321" duration="38783000" />
       <workItem from="1784922687900" duration="3795000" />
-      <workItem from="1788866169790" duration="20788000" />
+      <workItem from="1788866169790" duration="30525000" />
     </task>
     <servers />
   </component>
