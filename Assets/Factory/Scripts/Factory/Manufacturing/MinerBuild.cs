@@ -1,7 +1,7 @@
 using System;
 using Factory;
 
-public class MinerBuild : BaseBuild, IFactory
+public class MinerBuild : BaseBuild, IManufacturing
 {
 
     public Connection[] OutputConnections { get; set; }

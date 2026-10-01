@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using Factory;
 
-public class FactoryComponent : ConnectorBuildComponent
+public class ManufacturingComponent : ConnectorBuildComponent
 {
     protected readonly List<BeltItemBuffer> itemsInputs;
     protected readonly List<BeltItemBuffer> itemsOutputs;
     public Receipt Receipt { get; protected set; }
     
-    public FactoryComponent(Connection[] outputConnections, Connection[] inputConnections) : base(outputConnections, inputConnections)
+    public ManufacturingComponent(Connection[] outputConnections, Connection[] inputConnections) : base(outputConnections, inputConnections)
     {
         itemsInputs = new List<BeltItemBuffer>();
         itemsOutputs = new List<BeltItemBuffer>();
