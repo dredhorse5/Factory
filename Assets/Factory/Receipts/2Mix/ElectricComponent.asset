@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3309fd40694903a2551439d978c7ed, type: 3}
   m_Name: ElectricComponent
   m_EditorClassIdentifier: 
-  ProductionTime: 3
-  InputItems:
+  productionTime: 3
+  inputItems:
   - Item: 120
     Count: 1
   - Item: 51
     Count: 1
-  OutputItems:
+  outputItems:
   - Item: 131
     Count: 1

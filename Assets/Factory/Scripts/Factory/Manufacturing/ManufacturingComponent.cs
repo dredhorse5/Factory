@@ -5,7 +5,7 @@ public class ManufacturingComponent : ConnectorBuildComponent
 {
     protected readonly List<BeltItemBuffer> itemsInputs;
     protected readonly List<BeltItemBuffer> itemsOutputs;
-    public Receipt Receipt { get; protected set; }
+    public Recipe Recipe { get; protected set; }
     
     public ManufacturingComponent(Connection[] outputConnections, Connection[] inputConnections) : base(outputConnections, inputConnections)
     {
@@ -13,5 +13,5 @@ public class ManufacturingComponent : ConnectorBuildComponent
         itemsOutputs = new List<BeltItemBuffer>();
     }
 
-    public void SetReceipt(Receipt receipt) => Receipt = receipt;
+    public void SetRecipe(Recipe recipe) => Recipe = recipe;
 }

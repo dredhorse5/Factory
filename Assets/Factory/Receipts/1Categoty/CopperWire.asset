@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3309fd40694903a2551439d978c7ed, type: 3}
   m_Name: CopperWire
   m_EditorClassIdentifier: 
-  ProductionTime: 2
-  InputItems:
+  productionTime: 2
+  inputItems:
   - Item: 52
     Count: 2
-  OutputItems:
+  outputItems:
   - Item: 120
     Count: 1

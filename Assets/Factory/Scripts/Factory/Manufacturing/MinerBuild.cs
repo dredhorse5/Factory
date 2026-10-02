@@ -3,7 +3,6 @@ using Factory;
 
 public class MinerBuild : BaseBuild, IManufacturing
 {
-
     public Connection[] OutputConnections { get; set; }
     public Connection[] InputConnections { get; set; }
 

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3309fd40694903a2551439d978c7ed, type: 3}
   m_Name: CopperIngot
   m_EditorClassIdentifier: 
-  ProductionTime: 1
-  InputItems:
+  productionTime: 1
+  inputItems:
   - Item: 2
     Count: 1
-  OutputItems:
+  outputItems:
   - Item: 51
     Count: 1
