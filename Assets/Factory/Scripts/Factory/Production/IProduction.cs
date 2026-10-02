@@ -1,4 +1,4 @@
-public interface IManufacturing
+public interface IProduction
 {
     public void Update(float dt);
 }
