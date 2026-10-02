@@ -1,10 +1,12 @@
 
 public enum Item : ushort
 {
+    None = 0,
+    
     // Raw resources
-    Wood = 0,
-    IronOre = 1,
-    CopperOre = 2,
+    Wood = 1,
+    IronOre = 2,
+    CopperOre = 3,
 
     // Basic processed materials
     Planks = 50,
